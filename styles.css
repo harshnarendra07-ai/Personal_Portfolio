@@ -456,8 +456,17 @@ ul {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     padding: var(--space-3) var(--space-4);
-    background: rgba(0, 0, 0, 0.5);
+    background: #ffffff;
+    /* User requested white background for the rectangle */
     display: inline-block;
+}
+
+.dark-text {
+    color: var(--bg-dark) !important;
+}
+
+.dark-text.cursor {
+    border-right-color: var(--bg-dark) !important;
 }
 
 .splash-box .hero-title {
