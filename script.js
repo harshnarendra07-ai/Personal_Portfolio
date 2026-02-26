@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 try {
                     // Replace YOUR_FORMSPREE_ID with the actual code from Formspree
-                    const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+                    const response = await fetch('https://formspree.io/f/mzdaowaa', {
                         method: 'POST',
                         body: formData,
                         headers: {
