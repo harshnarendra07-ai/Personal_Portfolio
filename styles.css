@@ -39,10 +39,11 @@
     --radius-md: var(--space-2);
     --radius-lg: var(--space-3);
 
-    /* Transitions */
-    --transition-fast: 0.2s ease;
-    --transition-base: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Transitions - Smoothed for better scroll feel */
+    --transition-fast: 0.25s ease-out;
+    --transition-base: 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    --transition-slow: 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    /* Silkier glide */
 }
 
 /* ==========================================================================
@@ -74,6 +75,8 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    /* Prevents fixed header from overlapping sections on anchor clicks */
 }
 
 /* Accessibility: Respect prefers-reduced-motion */
