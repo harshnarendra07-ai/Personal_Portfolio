@@ -1,0 +1,35 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Experience {
+  id          String    @id @default(uuid())
+  title       String
+  company     String
+  startDate   DateTime
+  endDate     DateTime?
+  description String[] // using String[] for Postgres bullet points
+  type        String // 'Education', 'Work', 'Mentorship'
+}
+
+model Project {
+  id          String @id @default(uuid())
+  title       String
+  description String
+  iconClass   String
+  link        String
+  order       Int
+}
+
+model Message {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  content   String
+  createdAt DateTime @default(now())
+}
