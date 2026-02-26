@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- Premium Smooth Scrolling (Lenis) ---
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 2.0, // Slower, more luxurious glide
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Silky ease-out curve
+            smooth: true,
+            mouseMultiplier: 0.8, // Slightly lower mouse sensitivity for more weight
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    }
+
     // Current year for footer
     const yearEl = document.getElementById("year");
     if (yearEl) {
