@@ -1,20 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- Premium Smooth Scrolling (Lenis) ---
-    if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
-            lerp: 0.1, // Quick, responsive normal smooth scroll
-            smooth: true,
-            mouseMultiplier: 1.0,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
-    }
-
     // Current year for footer
     const yearEl = document.getElementById("year");
     if (yearEl) {
