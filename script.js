@@ -482,3 +482,36 @@ document.addEventListener("DOMContentLoaded", () => {
         if (journeyFill) journeyFill.style.height = '100%';
     }
 });
+
+/* ==========================================================================
+   Project Page Presentation Slider Logic
+   ========================================================================== */
+let currentSlideIndex = 0;
+
+window.changeSlide = function (direction) {
+    const slides = document.querySelectorAll('.presentation-slide');
+    const slideCounter = document.getElementById('current-slide');
+
+    if (!slides || slides.length === 0) return;
+
+    // Remove active class from current slide
+    slides[currentSlideIndex].classList.remove('active');
+
+    // Calculate new index
+    currentSlideIndex += direction;
+
+    // Loop bounds
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = slides.length - 1;
+    }
+
+    // Add active class to new slide
+    slides[currentSlideIndex].classList.add('active');
+
+    // Update counter text
+    if (slideCounter) {
+        slideCounter.textContent = currentSlideIndex + 1;
+    }
+};

@@ -600,6 +600,88 @@ ul {
     justify-content: center;
 }
 
+/* ==========================================================================
+   Presentation Slider (Projects Page)
+   ========================================================================== */
+.presentation-container {
+    width: 100%;
+    background: #000;
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    margin-top: var(--space-4);
+    position: relative;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.presentation-slide {
+    display: none;
+    animation: fadeInSlide 0.5s ease-in-out forwards;
+}
+
+.presentation-slide.active {
+    display: block;
+}
+
+.presentation-slide h4 {
+    color: var(--accent-gold);
+    font-size: clamp(20px, 2vw, 24px);
+    margin-bottom: var(--space-3);
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.presentation-slide p {
+    color: var(--text-offwhite);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.presentation-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--space-5);
+    padding-top: var(--space-3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.presentation-controls button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-cream);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.2s ease;
+}
+
+.presentation-controls button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-cream);
+}
+
+.slide-counter {
+    font-family: monospace;
+    color: var(--text-muted);
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .feature-icon::after {
     content: '';
     width: 24px;

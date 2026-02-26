@@ -115,45 +115,46 @@
                     </div>
                 </div>
 
-                <div class="features-grid" style="margin-top: var(--space-8);">
-                    <article class="feature-card fade-up">
-                        <div class="feature-icon icon-computing"></div>
-                        <h3 class="feature-title">E-Commerce Ecosystem</h3>
-                        <p class="feature-desc" style="margin-bottom: var(--space-3);">A high-performance full-stack
-                            application built to handle massive concurrent traffic with a luxurious frontend.</p>
-                        <a href="https://github.com/harshnarendra07-ai" target="_blank"
-                            style="color: var(--accent-gold); font-size: 14px; text-decoration: underline; font-weight: 500;">View
-                            Prototype</a>
-                    </article>
+                <div class="features-grid" style="margin-top: var(--space-8); grid-template-columns: 1fr;">
+                    <article class="feature-card fade-up"
+                        style="display: flex; flex-direction: column; gap: var(--space-4);">
+                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                            <div class="feature-icon icon-computing"></div>
+                            <h3 class="feature-title" style="margin-bottom: 0;">AI Driven Deployed Portfolio</h3>
+                        </div>
+                        <p class="feature-desc">A premium, cinematic personal portfolio architected with AI-assisted
+                            workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic
+                            typewriter aesthetics.</p>
 
-                    <article class="feature-card fade-up delay-1">
-                        <div class="feature-icon icon-design"></div>
-                        <h3 class="feature-title">Financial Dashboard</h3>
-                        <p class="feature-desc" style="margin-bottom: var(--space-3);">Real-time analytical dashboard
-                            with complex data visualizations prioritizing minimalism and data clarity.</p>
-                        <a href="https://github.com/harshnarendra07-ai" target="_blank"
-                            style="color: var(--accent-gold); font-size: 14px; text-decoration: underline; font-weight: 500;">View
-                            Application</a>
-                    </article>
+                        <!-- Native Web Presentation Slider -->
+                        <div class="presentation-container" id="portfolio-presentation">
+                            <div class="presentation-slide active">
+                                <h4>1. Inspiration & Concept</h4>
+                                <p>The vision was to create a luxury, "award-winning agency" feel. Moving away from
+                                    generic templates, the site utilizes a stark dark theme, perfectly contrasted with
+                                    pure white entrance typography and cinematic Canvas API particle layers.</p>
+                            </div>
+                            <div class="presentation-slide">
+                                <h4>2. Key Design Principles</h4>
+                                <p><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid systems map
+                                    visually to analytical precision.<br><strong>Accessibility:</strong> Semantic HTML5
+                                    and ARIA labels ensure the interactive dashboards and custom controls remain
+                                    navigable for all users.</p>
+                            </div>
+                            <div class="presentation-slide">
+                                <h4>3. Custom Web Effects</h4>
+                                <p>Features a custom JavaScript scroll-interceptor that locks the viewport upon entry,
+                                    displaying a sequence of CSS `@keyframes` manipulating `max-width` to create an
+                                    authentic typewriter and blinking cursor effect before revealing the main layout.
+                                </p>
+                            </div>
 
-                    <article class="feature-card fade-up delay-2">
-                        <div class="feature-icon icon-detail"></div>
-                        <h3 class="feature-title">AI Processing API</h3>
-                        <p class="feature-desc" style="margin-bottom: var(--space-3);">Scalable microservices
-                            architecture managing asynchronous machine learning workloads seamlessly.</p>
-                        <a href="https://github.com/harshnarendra07-ai" target="_blank"
-                            style="color: var(--accent-gold); font-size: 14px; text-decoration: underline; font-weight: 500;">View
-                            Architecture</a>
-                    </article>
-
-                    <article class="feature-card fade-up">
-                        <div class="feature-icon icon-computing"></div>
-                        <h3 class="feature-title">Premium Web Identity</h3>
-                        <p class="feature-desc" style="margin-bottom: var(--space-3);">A meticulously crafted personal
-                            portfolio leveraging Canvas APIs for advanced scrolling physics.</p>
-                        <a href="https://github.com/harshnarendra07-ai" target="_blank"
-                            style="color: var(--accent-gold); font-size: 14px; text-decoration: underline; font-weight: 500;">View
-                            Source</a>
+                            <div class="presentation-controls">
+                                <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
+                                <span class="slide-counter"><span id="current-slide">1</span> / 3</span>
+                                <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
+                            </div>
+                        </div>
                     </article>
                 </div>
             </div>
