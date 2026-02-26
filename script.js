@@ -303,6 +303,58 @@ document.addEventListener("DOMContentLoaded", () => {
             // Map progress to frame
             currentFrame = Math.floor(progress * (frameCount - 1));
 
+            // --- Scroll Text Animation Logic ---
+            const mainContent = document.querySelector('.hero-content');
+            const t1 = document.getElementById('scroll-text-1');
+            const t2 = document.getElementById('scroll-text-2');
+            const t3 = document.getElementById('scroll-text-3');
+
+            // 1. Fade out main hero content quickly
+            if (mainContent) {
+                let mainOpacity = Math.max(0, 1 - (progress / 0.15));
+                mainContent.style.opacity = mainOpacity;
+                mainContent.style.transform = `translateY(${progress * -100}px)`;
+                // Disable pointer events when faded out
+                mainContent.style.pointerEvents = mainOpacity === 0 ? 'none' : 'auto';
+            }
+
+            // Helper to animate text based on a start and end progress window
+            const animateText = (el, p, start, end) => {
+                if (!el) return;
+                if (p > start && p < end) {
+                    const localP = (p - start) / (end - start); // 0 to 1
+                    // Sine wave for opacity (0 -> 1 -> 0)
+                    const opacity = Math.sin(localP * Math.PI);
+                    // Scale goes from 0.8 to 1.2
+                    const scale = 0.8 + (localP * 0.4);
+
+                    el.style.opacity = opacity.toFixed(3);
+                    el.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
+                } else if (p >= end && el.id === 'scroll-text-3') {
+                    // Keep the last text visible at the end of the scroll
+                    el.style.opacity = 0; // Wait, actually the user continues to the next section, so let it fade out or stay? Let's let it fade out so it doesn't overlap the next section.
+                    // Wait, if it fades out, it's consistent. Let's just use the strict start/end.
+                } else {
+                    el.style.opacity = 0;
+                }
+            };
+
+            // Cleaned up animateText version:
+            const runTextAnimation = (el, p, start, end) => {
+                if (!el) return;
+                if (p > start && p < end) {
+                    const localP = (p - start) / (end - start);
+                    el.style.opacity = Math.sin(localP * Math.PI).toFixed(3);
+                    el.style.transform = `translate(-50%, -50%) scale(${(0.8 + (localP * 0.4)).toFixed(3)})`;
+                } else {
+                    el.style.opacity = 0;
+                }
+            };
+
+            runTextAnimation(t1, progress, 0.15, 0.40);
+            runTextAnimation(t2, progress, 0.40, 0.65);
+            runTextAnimation(t3, progress, 0.65, 0.90);
+
             requestAnimationFrame(renderFrame);
         };
 
