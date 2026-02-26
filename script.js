@@ -123,19 +123,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 statusEl.textContent = 'Sending message...';
                 submitBtn.disabled = true;
 
-                const formData = {
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    message: document.getElementById('message').value
-                };
+                const formData = new FormData(contactForm);
 
                 try {
-                    const response = await fetch('http://localhost:3000/api/contact', {
+                    // Replace YOUR_FORMSPREE_ID with the actual code from Formspree
+                    const response = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
                         method: 'POST',
+                        body: formData,
                         headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(formData)
+                            'Accept': 'application/json'
+                        }
                     });
 
                     const result = await response.json();
@@ -149,10 +146,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         statusEl.textContent = result.error || 'Failed to send message. Please try again.';
                     }
                 } catch (error) {
-                    // Fallback if backend isn't running yet smoothly handle it
                     console.error('API Error:', error);
                     statusEl.style.color = '#ff6b6b';
-                    statusEl.innerHTML = 'Server is currently unreachable. Please <a href="mailto:harshnarendra07@gmail.com" style="color: var(--accent-gold); text-decoration: underline;">email directly</a>.';
+                    statusEl.innerHTML = 'There was a network error. Please <a href="mailto:harshnarendra07@gmail.com" style="color: var(--accent-gold); text-decoration: underline;">email me directly</a>.';
                 } finally {
                     submitBtn.disabled = false;
                     setTimeout(() => {
