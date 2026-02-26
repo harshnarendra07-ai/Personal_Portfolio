@@ -165,7 +165,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Intersection Observer for scroll animations
     const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -195,6 +194,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // --- Robust Fallback for Fade-Up Animations ---
+    // In case IntersectionObserver fails (e.g., on Vercel deployment edge cases),
+    // we use a scroll event listener and a timeout to ensure content is always revealed.
+    const revealElementsFallback = () => {
+        document.querySelectorAll('.fade-up:not(.is-visible)').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // If element is within viewport
+            if (rect.top <= window.innerHeight) {
+                el.classList.add('is-visible');
+            }
+        });
+    };
+
+    // Run fallback on scroll
+    window.addEventListener('scroll', revealElementsFallback, { passive: true });
+
+    // Run fallback immediately and after a short delay for elements above the fold
+    revealElementsFallback();
+    setTimeout(revealElementsFallback, 500);
+
     // --- Canvas Hero Animation ---
     const canvas = document.getElementById("hero-canvas");
     if (canvas && !prefersReducedMotion) {
@@ -219,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const img = new Image();
             // Using Make_this_cinematic_extended_9d076d2d50_000.jpg format
             const frameIndex = i.toString().padStart(3, '0');
-            img.src = \`images/heroanimation/Make_this_cinematic_extended_9d076d2d50_\${frameIndex}.jpg\`;
+            img.src = `images/heroanimation/Make_this_cinematic_extended_9d076d2d50_${frameIndex}.jpg`;
             img.onload = () => {
                 loadedImages++;
                 // Draw first frame right away to prevent blank screen
@@ -292,7 +311,7 @@ document.addEventListener("DOMContentLoaded", () => {
         canvas.height = window.innerHeight;
 
         const img = new Image();
-        img.src = \`images/heroanimation/Make_this_cinematic_extended_9d076d2d50_000.jpg\`;
+        img.src = `images/heroanimation/Make_this_cinematic_extended_9d076d2d50_000.jpg`;
         const renderFirstFrame = () => {
             if (img.complete && img.width > 0) {
                 const imgRatio = img.width / img.height;
@@ -344,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Cap the fill line to the container bounds
             const maxFill = containerRect.height;
             const percentage = Math.max(0, Math.min(100, (fillHeight / maxFill) * 100));
-            journeyFill.style.height = \`\${percentage}%\`;
+            journeyFill.style.height = `${percentage}%`;
 
             // Trigger items as the line passes them
             timelineItems.forEach(item => {
