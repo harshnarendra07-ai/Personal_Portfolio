@@ -1,4 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- Splash Screen & Nav Logo Assembly ---
+    const splashScreen = document.getElementById("splash-screen");
+    const navLogo = document.getElementById("nav-logo");
+
+    // Only run splash logic if we are on a page with a splash screen (i.e., index.html)
+    if (splashScreen) {
+        // Force scroll to top on reload so the intro works
+        window.scrollTo(0, 0);
+        document.body.style.overflow = "hidden"; // Prevent scrolling initially
+
+        const handleFirstScroll = (e) => {
+            // Prevent default scroll behavior initially
+            e.preventDefault();
+
+            // Fade out the splash screen
+            splashScreen.classList.add("fade-out");
+
+            // Allow normal scrolling again
+            document.body.style.overflow = "";
+
+            // Wait for splash fade (1.5s as defined in CSS), then assemble the nav logo
+            setTimeout(() => {
+                if (navLogo) {
+                    navLogo.classList.add("animate-typing");
+                }
+            }, 1000); // Trigger slightly before splash is completely gone for fluidity
+
+            // Remove the listeners since splash is gone
+            window.removeEventListener("wheel", handleFirstScroll);
+            window.removeEventListener("touchmove", handleFirstScroll);
+        };
+
+        // Listen for the first scroll attempt (mouse wheel or touch swipe)
+        window.addEventListener("wheel", handleFirstScroll, { passive: false });
+        window.addEventListener("touchmove", handleFirstScroll, { passive: false });
+    } else if (navLogo) {
+        // If on another page (no splash screen), just assemble immediately
+        navLogo.classList.add("animate-typing");
+    }
+
     // Current year for footer
     const yearEl = document.getElementById("year");
     if (yearEl) {

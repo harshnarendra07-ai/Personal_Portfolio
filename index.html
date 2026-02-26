@@ -33,9 +33,19 @@
 </head>
 
 <body>
+    <!-- Entrance Animation Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+        <div class="splash-box">
+            <span class="typewriter-text cursor">Harshkumar Narendra Portfolio</span>
+        </div>
+        <div class="scroll-indicator fade-up is-visible">Scroll to Enter</div>
+    </div>
+
     <header class="site-header">
         <nav class="nav-container">
-            <a href="#" class="logo">Harshkumar Narendra Portfolio<span>.</span></a>
+            <!-- Notice the span classes wrapping the text to handle the timeline typewriter reveal -->
+            <a href="#" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra
+                    Portfolio</span><span>.</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
