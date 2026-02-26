@@ -2,10 +2,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- Premium Smooth Scrolling (Lenis) ---
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis({
-            duration: 1.2, // Faster, natural glide (was 2.0)
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            lerp: 0.1, // Quick, responsive normal smooth scroll
             smooth: true,
-            mouseMultiplier: 1.0, // Restored to normal sensitivity
+            mouseMultiplier: 1.0,
         });
 
         function raf(time) {

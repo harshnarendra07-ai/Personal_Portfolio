@@ -312,7 +312,7 @@ ul {
    ========================================================================== */
 
 .hero-scroll-wrapper {
-    height: 1200vh;
+    height: 600vh;
     /* significantly slow the animation scrub speed */
     /* creates scroll distance to scrub 150 frames */
     position: relative;
