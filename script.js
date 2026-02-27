@@ -25,8 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const splashDisplay = document.getElementById('splash-text-display');
 
     if (splashToggleTrack && splashDisplay) {
-        const quotePhilosophy = '"The unexamined life is not worth living." — Socrates';
-        const quoteAnalytics = '"Why do data analysts prefer dark mode? Because light attracts bugs!"';
+        const quotesPhilosophy = [
+            '"The unexamined life is not worth living." — Socrates',
+            '"I think, therefore I am." — René Descartes',
+            '"We are what we repeatedly do. Excellence, then, is not an act, but a habit." — Aristotle',
+            '"He who has a why to live can bear almost any how." — Friedrich Nietzsche',
+            '"Happiness is not an ideal of reason, but of imagination." — Immanuel Kant'
+        ];
+
+        const quotesAnalytics = [
+            '"Why do data analysts prefer dark mode? Because light attracts bugs!"',
+            '"A SQL query walks into a bar, walks up to two tables, and asks... \'Can I join you?\'"',
+            '"There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors."',
+            '"To err is human, but to really foul things up you need a computer."',
+            '"I have a joke about UDP, but you might not get it."'
+        ];
+
+        const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
         const zones = splashToggleTrack.querySelectorAll('.toggle-zone');
         let currentPos = 'center';
@@ -62,10 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 // After halfway point, swap content and background
                 setTimeout(() => {
                     if (targetPos === 'left') {
-                        splashDisplay.textContent = quotePhilosophy;
+                        splashDisplay.textContent = getRandomItem(quotesPhilosophy);
                         splashScreen.className = 'splash-screen bg-philosophy';
                     } else if (targetPos === 'right') {
-                        splashDisplay.textContent = quoteAnalytics;
+                        splashDisplay.textContent = getRandomItem(quotesAnalytics);
                         splashScreen.className = 'splash-screen bg-analytical';
                     } else {
                         splashDisplay.textContent = '';
