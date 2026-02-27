@@ -172,14 +172,19 @@ ul {
 }
 
 .btn-primary {
+    background: transparent;
+    color: var(--text-cream);
+    border: 1px solid var(--text-cream);
+}
+
+.btn-primary:active {
     background: var(--text-cream);
     color: var(--bg-dark);
 }
 
 .btn-primary:hover {
-    background: var(--accent-gold);
-    transform: translateY(-2px);
-    box-shadow: 0 var(--space-1) var(--space-3) var(--accent-gold-dim);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
 }
 
 .btn-secondary {
@@ -481,23 +486,147 @@ ul {
 .splash-box {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
-    padding: var(--space-3) var(--space-4);
+    padding: var(--space-4) var(--space-5);
     background: #ffffff;
     /* User requested white background for the rectangle */
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .dark-text {
     color: var(--bg-dark) !important;
 }
 
-.dark-text.cursor {
-    border-right-color: var(--bg-dark) !important;
+/* Flip Container for Spash Screen */
+.intro-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    color: var(--bg-dark);
 }
 
-.splash-box .hero-title {
-    margin-bottom: 0;
-    /* Override hero title margin for the box */
+.flip-container {
+    height: 42px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.flip-text {
+    height: 42px;
+    line-height: 42px;
+    color: var(--accent-gold);
+    font-weight: 700;
+    margin-bottom: 0px;
+    font-family: 'Lato', sans-serif;
+    white-space: nowrap;
+}
+
+.flip-container> :first-child {
+    animation: splashFlip 12s infinite cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes splashFlip {
+
+    0%,
+    14% {
+        margin-top: 0;
+    }
+
+    16%,
+    30% {
+        margin-top: -42px;
+    }
+
+    33%,
+    47% {
+        margin-top: -84px;
+    }
+
+    50%,
+    64% {
+        margin-top: -126px;
+    }
+
+    66%,
+    80% {
+        margin-top: -168px;
+    }
+
+    83%,
+    97% {
+        margin-top: -210px;
+    }
+
+    100% {
+        margin-top: -210px;
+    }
+}
+
+/* Grid Template Links */
+.sci {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.sci::before {
+    content: 'Connect';
+    position: absolute;
+    color: var(--bg-dark);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    cursor: default;
+}
+
+.sci:hover::before {
+    opacity: 0;
+}
+
+.sci li {
+    position: absolute;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(0) scale(0.5);
+    z-index: 5;
+}
+
+.sci:hover li {
+    opacity: 1;
+    transform: translateX(calc((var(--index) - (var(--count) - 1) / 2) * 85px)) scale(1);
+}
+
+.sci a {
+    color: var(--bg-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.sci a:hover {
+    background: var(--bg-dark);
+    color: var(--text-cream);
 }
 
 /* Splash Screen Toggle & Quote */
