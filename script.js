@@ -316,21 +316,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (canvasRatio > imgRatio) {
                     drawWidth = canvas.width;
                     drawHeight = canvas.width / imgRatio;
+                    offsetX = 0;
+                    offsetY = (canvas.height - drawHeight) / 2;
                 } else {
                     drawWidth = canvas.height * imgRatio;
                     drawHeight = canvas.height;
+                    offsetX = (canvas.width - drawWidth) / 2;
+                    offsetY = 0;
                 }
 
-                // 3D Spatial Zoom Effect: Scale up to 1.5x as user scrolls down
-                const zoomScale = 1 + (currentProgress * 0.5);
-                const scaledWidth = drawWidth * zoomScale;
-                const scaledHeight = drawHeight * zoomScale;
-
-                // Center the scaled image
-                offsetX = (canvas.width - scaledWidth) / 2;
-                offsetY = (canvas.height - scaledHeight) / 2;
-
-                ctx.drawImage(images[currentFrame], offsetX, offsetY, scaledWidth, scaledHeight);
+                ctx.drawImage(images[currentFrame], offsetX, offsetY, drawWidth, drawHeight);
             }
         };
 
@@ -413,16 +408,29 @@ document.addEventListener("DOMContentLoaded", () => {
             runTextAnimation(t2, progress, 0.35, 0.75);
             runTextAnimation(t3, progress, 0.65, 1.00);
 
-            // Animate SQL Joke at the end
+            // Animate 3D Spatial "Fly-Through" SQL Joke at the end
             const jokeEl = document.getElementById('scroll-joke');
             if (jokeEl) {
-                if (progress > 0.8) {
-                    const localP = (progress - 0.8) / 0.2; // 0 to 1
-                    jokeEl.style.opacity = Math.min(1, localP * 2).toFixed(3);
-                    jokeEl.style.transform = `translateY(-50%) translateX(${(1 - localP) * 20}px)`;
+                if (progress > 0.75) {
+                    const localP = (progress - 0.75) / 0.25; // 0 to 1
+
+                    let opacity = 0;
+                    if (localP < 0.3) {
+                        opacity = localP / 0.3; // fade in
+                    } else if (localP < 0.7) {
+                        opacity = 1; // hold opacity
+                    } else {
+                        opacity = 1 - ((localP - 0.7) / 0.3); // fade out at the very end
+                    }
+
+                    // Scale from 0.5x to 15x to simulate flying past the text
+                    let scaleValue = 0.5 * Math.pow(30, localP);
+
+                    jokeEl.style.opacity = Math.max(0, Math.min(1, opacity)).toFixed(3);
+                    jokeEl.style.transform = `translate(-50%, -50%) scale(${scaleValue.toFixed(3)})`;
                 } else {
                     jokeEl.style.opacity = 0;
-                    jokeEl.style.transform = `translateY(-50%) translateX(20px)`;
+                    jokeEl.style.transform = `translate(-50%, -50%) scale(0.5)`;
                 }
             }
 

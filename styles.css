@@ -578,17 +578,17 @@ ul {
 .hero-scroll-joke {
     position: absolute;
     top: 50%;
-    right: 10%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
-    text-align: right;
+    text-align: center;
     color: var(--text-muted);
-    font-size: clamp(16px, 2vw, 24px);
+    font-size: clamp(20px, 4vw, 36px);
     line-height: 1.5;
-    z-index: 5;
+    z-index: 6;
     pointer-events: none;
     text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-    max-width: 400px;
+    max-width: 600px;
     will-change: transform, opacity;
 }
 
