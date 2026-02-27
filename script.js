@@ -380,20 +380,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (canvasRatio > imgRatio) {
                     drawWidth = canvas.width;
                     drawHeight = canvas.width / imgRatio;
+                    offsetX = 0;
+                    offsetY = (canvas.height - drawHeight) / 2;
                 } else {
                     drawWidth = canvas.height * imgRatio;
                     drawHeight = canvas.height;
+                    offsetX = (canvas.width - drawWidth) / 2;
+                    offsetY = 0;
                 }
 
-                // Cinematic Letterbox Scale Down
-                const BASE_SCALE = 0.85;
-                const finalWidth = drawWidth * BASE_SCALE;
-                const finalHeight = drawHeight * BASE_SCALE;
-
-                offsetX = (canvas.width - finalWidth) / 2;
-                offsetY = (canvas.height - finalHeight) / 2;
-
-                ctx.drawImage(images[currentFrame], offsetX, offsetY, finalWidth, finalHeight);
+                ctx.drawImage(images[currentFrame], offsetX, offsetY, drawWidth, drawHeight);
             }
         };
 

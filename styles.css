@@ -460,15 +460,15 @@ ul {
 }
 
 .splash-screen.bg-philosophy {
-    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 70%);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/philoshophy/img1.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .splash-screen.bg-analytical {
-    background: linear-gradient(135deg, #0d1117 0%, #000000 100%);
-    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
-    background-color: #0d1117;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/analytics/img1.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
 .splash-screen.fade-out {
