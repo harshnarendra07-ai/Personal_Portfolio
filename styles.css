@@ -582,7 +582,7 @@ ul {
 .sci::before {
     content: 'Connect';
     position: absolute;
-    color: var(--bg-dark);
+    color: var(--text-cream);
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 2px;
@@ -610,19 +610,19 @@ ul {
 }
 
 .sci a {
-    color: var(--bg-dark);
+    color: var(--text-cream);
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
     padding: 8px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     transition: all 0.3s;
 }
 
 .sci a:hover {
-    background: var(--bg-dark);
-    color: var(--text-cream);
+    background: var(--text-cream);
+    color: var(--bg-dark);
 }
 
 /* Splash Screen Toggle & Quote */
