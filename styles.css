@@ -386,7 +386,8 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(22px, 4vw, 52px);
+    font-size: clamp(20px, 3vw, 42px);
+    /* Scaled down further */
     font-weight: 300;
     letter-spacing: -1px;
     margin-bottom: var(--space-3);
@@ -455,7 +456,19 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out, background 0.8s ease;
+}
+
+.splash-screen.bg-philosophy {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000000 70%);
+}
+
+.splash-screen.bg-analytical {
+    background: linear-gradient(135deg, #0d1117 0%, #000000 100%);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: #0d1117;
 }
 
 .splash-screen.fade-out {
@@ -503,48 +516,68 @@ ul {
     transform: translateY(0);
 }
 
-.splash-toggle {
-    appearance: none;
-    -webkit-appearance: none;
+.splash-toggle-track {
+    position: relative;
+    width: 140px;
+    height: 36px;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 40px;
-    width: 70px;
-    height: 36px;
-    padding: 4px;
-    cursor: pointer;
-    position: relative;
     display: flex;
-    align-items: center;
-    transition: border-color 0.3s ease;
+    overflow: hidden;
+    padding: 2px;
 }
 
-.splash-toggle:hover {
-    border-color: rgba(255, 255, 255, 0.6);
+.toggle-zone {
+    flex: 1;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    outline: none;
 }
 
 .toggle-hole {
-    display: block;
+    position: absolute;
+    top: 3px;
     width: 26px;
     height: 26px;
     border-radius: 50%;
     border: 2px solid var(--text-cream);
     background: transparent;
-    transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), width 0.2s ease-in-out;
+    transition: left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), width 0.2s ease, border-color 0.4s ease;
+    left: calc(50% - 13px);
+    z-index: 5;
+}
+
+/* Position States applied via JS */
+.splash-toggle-track.pos-left .toggle-hole {
+    left: 4px;
+    border-color: var(--accent-gold);
+}
+
+.splash-toggle-track.pos-center .toggle-hole {
+    left: calc(50% - 13px);
+    border-color: var(--text-cream);
+}
+
+.splash-toggle-track.pos-right .toggle-hole {
+    left: calc(100% - 30px);
+    border-color: var(--accent-gold);
+}
+
+/* Stretching Animation */
+.splash-toggle-track.is-stretching-right .toggle-hole {
+    width: 45px;
     transform-origin: left center;
 }
 
-/* Stretching Animation: On Active */
-.splash-toggle.is-active .toggle-hole {
-    transform: translateX(34px);
-    border-color: var(--accent-gold);
-    transform-origin: right center;
-}
-
-/* The stretch effect occurs temporarily via JS class or trick */
-.splash-toggle.is-stretching .toggle-hole {
-    width: 40px;
-    /* Stretch out horizontally */
+.splash-toggle-track.is-stretching-left .toggle-hole {
+    width: 45px;
+    transform: translateX(-19px);
 }
 
 .splash-text-display {
@@ -1043,7 +1076,8 @@ ul {
     }
 
     .hero-title {
-        font-size: clamp(20px, 7vw, 34px);
+        font-size: clamp(20px, 6vw, 30px);
+        /* Further scaled down on mobile */
     }
 
     .presentation-container {

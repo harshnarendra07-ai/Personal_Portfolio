@@ -40,11 +40,13 @@
         </div>
 
         <div class="splash-quote-container fade-up is-visible">
-            <button class="splash-toggle" id="splash-quote-toggle" aria-label="Toggle quote style">
-                <span class="toggle-hole"></span>
-            </button>
-            <p class="splash-text-display" id="splash-text-display">"The unexamined life is not worth living." —
-                Socrates</p>
+            <div class="splash-toggle-track pos-center" id="splash-quote-toggle">
+                <span class="toggle-hole" id="toggle-hole"></span>
+                <button class="toggle-zone" data-target="left" aria-label="Philosophy Quote"></button>
+                <button class="toggle-zone" data-target="center" aria-label="Clear Quote"></button>
+                <button class="toggle-zone" data-target="right" aria-label="Analytics Joke"></button>
+            </div>
+            <p class="splash-text-display" id="splash-text-display"></p>
         </div>
 
         <div class="scroll-indicator fade-up is-visible">Scroll to Enter</div>

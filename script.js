@@ -21,42 +21,66 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLogo = document.getElementById("nav-logo");
 
     // --- Splash Screen Quote Toggle ---
-    const splashToggle = document.getElementById('splash-quote-toggle');
+    const splashToggleTrack = document.getElementById('splash-quote-toggle');
     const splashDisplay = document.getElementById('splash-text-display');
 
-    if (splashToggle && splashDisplay) {
+    if (splashToggleTrack && splashDisplay) {
         const quotePhilosophy = '"The unexamined life is not worth living." — Socrates';
         const quoteAnalytics = '"Why do data analysts prefer dark mode? Because light attracts bugs!"';
 
-        // Prevent click from bubbling up and triggering the scroll-to-enter logic if any
-        splashToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
+        const zones = splashToggleTrack.querySelectorAll('.toggle-zone');
+        let currentPos = 'center';
 
-            // 1. Trigger the stretching animation class
-            splashToggle.classList.add('is-stretching');
+        zones.forEach(zone => {
+            zone.addEventListener('click', (e) => {
+                e.stopPropagation(); // prevent early scroll-to-enter trigger
 
-            // 2. Determine state and flip the active class
-            const isCurrentlyActive = splashToggle.classList.contains('is-active');
+                const targetPos = zone.getAttribute('data-target');
+                if (targetPos === currentPos) return; // already there
 
-            // Fade out current text
-            splashDisplay.classList.add('fading');
-
-            // 3. Wait halfway through the transition to swap text and snap the hole
-            setTimeout(() => {
-                if (isCurrentlyActive) {
-                    splashToggle.classList.remove('is-active');
-                    splashDisplay.textContent = quotePhilosophy;
+                // Determine stretch direction
+                let stretchClass = '';
+                if (
+                    (currentPos === 'left' && (targetPos === 'center' || targetPos === 'right')) ||
+                    (currentPos === 'center' && targetPos === 'right')
+                ) {
+                    stretchClass = 'is-stretching-right';
                 } else {
-                    splashToggle.classList.add('is-active');
-                    splashDisplay.textContent = quoteAnalytics;
+                    stretchClass = 'is-stretching-left';
                 }
 
-                // Remove stretching class so it snaps back into a perfect circle on the other side
-                splashToggle.classList.remove('is-stretching');
+                // Trigger stretch animation
+                splashToggleTrack.classList.add(stretchClass);
 
-                // Fade text back in
-                splashDisplay.classList.remove('fading');
-            }, 200); // 200ms is halfway through the 400ms transform defined in CSS
+                // Update position classes immediately
+                splashToggleTrack.classList.remove('pos-left', 'pos-center', 'pos-right');
+                splashToggleTrack.classList.add(`pos-${targetPos}`);
+
+                // Fade out current text
+                splashDisplay.classList.add('fading');
+
+                // After halfway point, swap content and background
+                setTimeout(() => {
+                    if (targetPos === 'left') {
+                        splashDisplay.textContent = quotePhilosophy;
+                        splashScreen.className = 'splash-screen bg-philosophy';
+                    } else if (targetPos === 'right') {
+                        splashDisplay.textContent = quoteAnalytics;
+                        splashScreen.className = 'splash-screen bg-analytical';
+                    } else {
+                        splashDisplay.textContent = '';
+                        splashScreen.className = 'splash-screen';
+                    }
+
+                    // Remove stretching to snap hole back
+                    splashToggleTrack.classList.remove(stretchClass);
+
+                    // Fade text back in
+                    splashDisplay.classList.remove('fading');
+
+                    currentPos = targetPos;
+                }, 200); // 200ms matches halfway through 400ms CSS transition
+            });
         });
     }
 
@@ -356,16 +380,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (canvasRatio > imgRatio) {
                     drawWidth = canvas.width;
                     drawHeight = canvas.width / imgRatio;
-                    offsetX = 0;
-                    offsetY = (canvas.height - drawHeight) / 2;
                 } else {
                     drawWidth = canvas.height * imgRatio;
                     drawHeight = canvas.height;
-                    offsetX = (canvas.width - drawWidth) / 2;
-                    offsetY = 0;
                 }
 
-                ctx.drawImage(images[currentFrame], offsetX, offsetY, drawWidth, drawHeight);
+                // Cinematic Letterbox Scale Down
+                const BASE_SCALE = 0.85;
+                const finalWidth = drawWidth * BASE_SCALE;
+                const finalHeight = drawHeight * BASE_SCALE;
+
+                offsetX = (canvas.width - finalWidth) / 2;
+                offsetY = (canvas.height - finalHeight) / 2;
+
+                ctx.drawImage(images[currentFrame], offsetX, offsetY, finalWidth, finalHeight);
             }
         };
 
