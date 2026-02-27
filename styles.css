@@ -386,7 +386,7 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(20px, 3vw, 42px);
+    font-size: clamp(18px, 2.5vw, 36px);
     /* Scaled down further */
     font-weight: 300;
     letter-spacing: -1px;
@@ -1076,7 +1076,7 @@ ul {
     }
 
     .hero-title {
-        font-size: clamp(20px, 6vw, 30px);
+        font-size: clamp(16px, 5vw, 24px);
         /* Further scaled down on mobile */
     }
 
