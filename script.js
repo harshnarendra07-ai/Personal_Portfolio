@@ -20,6 +20,46 @@ document.addEventListener("DOMContentLoaded", () => {
     const splashScreen = document.getElementById("splash-screen");
     const navLogo = document.getElementById("nav-logo");
 
+    // --- Splash Screen Quote Toggle ---
+    const splashToggle = document.getElementById('splash-quote-toggle');
+    const splashDisplay = document.getElementById('splash-text-display');
+
+    if (splashToggle && splashDisplay) {
+        const quotePhilosophy = '"The unexamined life is not worth living." — Socrates';
+        const quoteAnalytics = '"Why do data analysts prefer dark mode? Because light attracts bugs!"';
+
+        // Prevent click from bubbling up and triggering the scroll-to-enter logic if any
+        splashToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+
+            // 1. Trigger the stretching animation class
+            splashToggle.classList.add('is-stretching');
+
+            // 2. Determine state and flip the active class
+            const isCurrentlyActive = splashToggle.classList.contains('is-active');
+
+            // Fade out current text
+            splashDisplay.classList.add('fading');
+
+            // 3. Wait halfway through the transition to swap text and snap the hole
+            setTimeout(() => {
+                if (isCurrentlyActive) {
+                    splashToggle.classList.remove('is-active');
+                    splashDisplay.textContent = quotePhilosophy;
+                } else {
+                    splashToggle.classList.add('is-active');
+                    splashDisplay.textContent = quoteAnalytics;
+                }
+
+                // Remove stretching class so it snaps back into a perfect circle on the other side
+                splashToggle.classList.remove('is-stretching');
+
+                // Fade text back in
+                splashDisplay.classList.remove('fading');
+            }, 200); // 200ms is halfway through the 400ms transform defined in CSS
+        });
+    }
+
     // Only run splash logic if we are on a page with a splash screen (i.e., index.html)
     if (splashScreen) {
         // Force scroll to top on reload so the intro works
