@@ -530,43 +530,48 @@ ul {
 }
 
 .flip-container> :first-child {
-    animation: splashFlip 12s infinite cubic-bezier(0.23, 1, 0.32, 1);
+    animation: splashFlip 14s infinite cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes splashFlip {
 
     0%,
-    14% {
+    12% {
         margin-top: 0;
     }
 
-    16%,
-    30% {
+    14%,
+    26% {
         margin-top: -42px;
     }
 
-    33%,
-    47% {
+    28%,
+    40% {
         margin-top: -84px;
     }
 
-    50%,
-    64% {
+    42%,
+    55% {
         margin-top: -126px;
     }
 
-    66%,
-    80% {
+    57%,
+    70% {
         margin-top: -168px;
     }
 
-    83%,
-    97% {
+    72%,
+    84% {
         margin-top: -210px;
     }
 
+    86%,
+    98% {
+        margin-top: -252px;
+    }
+
     100% {
-        margin-top: -210px;
+        margin-top: -252px;
     }
 }
 
