@@ -401,9 +401,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             };
 
-            runTextAnimation(t1, progress, 0.15, 0.40);
-            runTextAnimation(t2, progress, 0.40, 0.65);
-            runTextAnimation(t3, progress, 0.65, 0.90);
+            // Slowed down and overlapped for smoother transitions alongside the main hero text
+            runTextAnimation(t1, progress, 0.05, 0.45);
+            runTextAnimation(t2, progress, 0.35, 0.75);
+            runTextAnimation(t3, progress, 0.65, 1.00);
 
             requestAnimationFrame(renderFrame);
         };
