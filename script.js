@@ -30,7 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
             '"I think, therefore I am." — René Descartes',
             '"We are what we repeatedly do. Excellence, then, is not an act, but a habit." — Aristotle',
             '"He who has a why to live can bear almost any how." — Friedrich Nietzsche',
-            '"Happiness is not an ideal of reason, but of imagination." — Immanuel Kant'
+            '"Happiness is not an ideal of reason, but of imagination." — Immanuel Kant',
+            '"It is not that we have a short time to live, but that we waste a lot of it." — Seneca',
+            '"We are more often frightened than hurt; and we suffer more from imagination than from reality." — Seneca',
+            '"The only true wisdom is in knowing you know nothing." — Socrates',
+            '"Out of your vulnerabilities will come your strength." — Sigmund Freud',
+            '"Man is condemned to be free; because once thrown into the world, he is responsible for everything he does." — Jean-Paul Sartre'
         ];
 
         const quotesAnalytics = [
@@ -38,7 +43,12 @@ document.addEventListener("DOMContentLoaded", () => {
             '"A SQL query walks into a bar, walks up to two tables, and asks... \'Can I join you?\'"',
             '"There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors."',
             '"To err is human, but to really foul things up you need a computer."',
-            '"I have a joke about UDP, but you might not get it."'
+            '"I have a joke about UDP, but you might not get it."',
+            '"Why do programmers prefer iOS? Because it\'s a closed ecosystem with less fragmentation... wait, that\'s true."',
+            '"A regular expression walks into a bar... and orders a matching drink."',
+            '"In God we trust. All others must bring data." — W. Edwards Deming',
+            '"99% of statistics only tell 49% of the story." — Ron DeLegge II',
+            '"Errors using inadequate data are much less than those using no data at all." — Charles Babbage'
         ];
 
         const getRandomItem = (arr) => arr[Math.floor(Math.random() * arr.length)];
