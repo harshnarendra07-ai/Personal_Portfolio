@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const images = [];
         let loadedImages = 0;
         let currentFrame = 0;
+        let currentProgress = 0;
 
         // Sizing
         const resizeCanvas = () => {
@@ -315,16 +316,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (canvasRatio > imgRatio) {
                     drawWidth = canvas.width;
                     drawHeight = canvas.width / imgRatio;
-                    offsetX = 0;
-                    offsetY = (canvas.height - drawHeight) / 2;
                 } else {
                     drawWidth = canvas.height * imgRatio;
                     drawHeight = canvas.height;
-                    offsetX = (canvas.width - drawWidth) / 2;
-                    offsetY = 0;
                 }
 
-                ctx.drawImage(images[currentFrame], offsetX, offsetY, drawWidth, drawHeight);
+                // 3D Spatial Zoom Effect: Scale up to 1.5x as user scrolls down
+                const zoomScale = 1 + (currentProgress * 0.5);
+                const scaledWidth = drawWidth * zoomScale;
+                const scaledHeight = drawHeight * zoomScale;
+
+                // Center the scaled image
+                offsetX = (canvas.width - scaledWidth) / 2;
+                offsetY = (canvas.height - scaledHeight) / 2;
+
+                ctx.drawImage(images[currentFrame], offsetX, offsetY, scaledWidth, scaledHeight);
             }
         };
 
@@ -339,6 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Map scroll progress (0 to 1)
             let progress = Math.max(0, Math.min(1, scrolled / scrollDistance));
+            currentProgress = progress;
 
             // Map progress to frame
             currentFrame = Math.floor(progress * (frameCount - 1));
@@ -405,6 +412,19 @@ document.addEventListener("DOMContentLoaded", () => {
             runTextAnimation(t1, progress, 0.05, 0.45);
             runTextAnimation(t2, progress, 0.35, 0.75);
             runTextAnimation(t3, progress, 0.65, 1.00);
+
+            // Animate SQL Joke at the end
+            const jokeEl = document.getElementById('scroll-joke');
+            if (jokeEl) {
+                if (progress > 0.8) {
+                    const localP = (progress - 0.8) / 0.2; // 0 to 1
+                    jokeEl.style.opacity = Math.min(1, localP * 2).toFixed(3);
+                    jokeEl.style.transform = `translateY(-50%) translateX(${(1 - localP) * 20}px)`;
+                } else {
+                    jokeEl.style.opacity = 0;
+                    jokeEl.style.transform = `translateY(-50%) translateX(20px)`;
+                }
+            }
 
             requestAnimationFrame(renderFrame);
         };
