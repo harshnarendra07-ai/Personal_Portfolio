@@ -344,17 +344,40 @@ document.addEventListener("DOMContentLoaded", () => {
             currentFrame = Math.floor(progress * (frameCount - 1));
 
             // --- Scroll Text Animation Logic ---
-            const mainContent = document.querySelector('.hero-content');
+            const dynamicHeroChildren = document.querySelectorAll('#dynamic-hero-content > *');
             const t1 = document.getElementById('scroll-text-1');
             const t2 = document.getElementById('scroll-text-2');
             const t3 = document.getElementById('scroll-text-3');
 
-            // 1. Fade out main hero content quickly
+            // 1. Fade IN and Scale UP main hero content
+            // We want this to happen in the very beginning of the scroll (e.g. 0 to 0.15)
+            // But we actually want it to trigger based on scroll distance immediately
+            // Let's create an entry progress from 0 to 0.15
+            let entryProgress = Math.min(1, progress / 0.15);
+
+            if (dynamicHeroChildren.length > 0) {
+                dynamicHeroChildren.forEach((el, index) => {
+                    // Stagger the animation slightly for each child based on index
+                    let staggerDelay = index * 0.1;
+                    let localProgress = Math.max(0, Math.min(1, (entryProgress - staggerDelay) / (1 - staggerDelay)));
+
+                    // Scale from 0.8 to 1.0
+                    let scaleValue = 0.8 + (localProgress * 0.2);
+                    // Translate from 20px to 0px
+                    let translateYValue = 20 - (localProgress * 20);
+
+                    el.style.opacity = localProgress;
+                    el.style.transform = `scale(${scaleValue}) translateY(${translateYValue}px)`;
+                });
+            }
+
+            // 1b. Fade out the entire hero content box quickly as we scroll further
+            const mainContent = document.querySelector('.hero-content');
             if (mainContent) {
-                let mainOpacity = Math.max(0, 1 - (progress / 0.15));
+                let fadeOutProgress = Math.max(0, (progress - 0.15) / 0.15); // Starts fading out after 0.15
+                let mainOpacity = Math.max(0, 1 - fadeOutProgress);
                 mainContent.style.opacity = mainOpacity;
-                mainContent.style.transform = `translateY(${progress * -100}px)`;
-                // Disable pointer events when faded out
+                mainContent.style.transform = `translateY(${fadeOutProgress * -100}px)`;
                 mainContent.style.pointerEvents = mainOpacity === 0 ? 'none' : 'auto';
             }
 
