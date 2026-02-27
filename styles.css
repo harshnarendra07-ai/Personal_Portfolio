@@ -254,22 +254,34 @@ ul {
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: calc(var(--space-1) * -1);
+    bottom: -4px;
     left: 0;
     width: 0;
     height: 1px;
-    background: var(--accent-rb-blue);
-    transition: width var(--transition-fast), background var(--transition-fast);
+    background: var(--accent-gold);
+    transition: width var(--transition-base);
 }
 
 .nav-links a:hover::after {
     width: 100%;
-    background: var(--accent-gold);
 }
 
-/* Theme Toggle Button */
-.theme-btn {
+.menu-toggle {
+    display: none;
     background: transparent;
+    border: none;
+    color: var(--text-cream);
+    cursor: pointer;
+    padding: var(--space-2);
+    z-index: 101;
+}
+
+.nav-links.active {
+    transform: translateX(0);
+}
+
+.theme-btn {
+    background: rgba(255, 255, 255, 0.05);
     border: none;
     color: var(--text-offwhite);
     cursor: pointer;
@@ -883,8 +895,45 @@ ul {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-links {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(7, 7, 7, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        padding: var(--space-6) var(--space-4);
+        border-bottom: 1px solid var(--surface-border);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+        z-index: 99;
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--space-4);
+    }
+
+    .nav-links a {
+        font-size: 20px;
+        padding: var(--space-2);
+        display: inline-block;
     }
 
     .hero-actions {
@@ -893,5 +942,17 @@ ul {
 
     .hero-actions .btn {
         width: 100%;
+    }
+
+    .section-padding {
+        padding: var(--space-8) 0;
+    }
+
+    .hero-title {
+        font-size: clamp(32px, 10vw, 48px);
+    }
+
+    .presentation-container {
+        padding: var(--space-3);
     }
 }

@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // --- Mobile Navigation Menu ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link (useful for anchor links on the same page)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
     // --- Splash Screen & Nav Logo Assembly ---
     const splashScreen = document.getElementById("splash-screen");
     const navLogo = document.getElementById("nav-logo");
