@@ -489,10 +489,11 @@ ul {
     padding: var(--space-4) var(--space-5);
     background: #ffffff;
     /* User requested white background for the rectangle */
-    display: inline-flex;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .dark-text {
@@ -501,9 +502,8 @@ ul {
 
 /* Flip Container for Spash Screen */
 .intro-heading {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
     font-size: 28px;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
@@ -513,7 +513,7 @@ ul {
 .flip-container {
     height: 42px;
     overflow: hidden;
-    display: inline-block;
+    display: inline-flex;
     vertical-align: top;
     padding-left: 10px;
     text-align: left;
@@ -530,48 +530,39 @@ ul {
 }
 
 .flip-container> :first-child {
-    animation: splashFlip 14s infinite cubic-bezier(0.23, 1, 0.32, 1);
+    animation: splashFlip 12s forwards cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 @keyframes splashFlip {
 
     0%,
-    12% {
+    14% {
         margin-top: 0;
     }
 
-    14%,
-    26% {
+    16%,
+    30% {
         margin-top: -42px;
     }
 
-    28%,
-    40% {
+    33%,
+    47% {
         margin-top: -84px;
     }
 
-    42%,
-    55% {
+    50%,
+    64% {
         margin-top: -126px;
     }
 
-    57%,
-    70% {
+    66%,
+    80% {
         margin-top: -168px;
     }
 
-    72%,
-    84% {
-        margin-top: -210px;
-    }
-
-    86%,
-    98% {
-        margin-top: -252px;
-    }
-
+    83%,
     100% {
-        margin-top: -252px;
+        margin-top: -210px;
     }
 }
 
