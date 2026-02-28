@@ -175,14 +175,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Dynamic Backend Fetching ---
+    
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const backendUrl = isLocal ? 'http://localhost:3000' : 'https://your-production-backend.com'; // CHANGE THIS when backend is deployed
 
     // Fetch Projects
     const fetchProjects = async () => {
         const grid = document.querySelector('.features-grid'); // projects wrapper
-        if (!grid || window.location.pathname.indexOf('projects.html') === -1) return;
+        if (!grid || !window.location.pathname.includes('projects')) return;
 
         try {
-            const res = await fetch('http://localhost:3000/api/projects');
+            const res = await fetch(`${backendUrl}/api/projects`);
             if (res.ok) {
                 const projects = await res.json();
                 if (projects.length > 0) {
@@ -209,10 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch Experiences
     const fetchExperiences = async () => {
         const timeline = document.getElementById('experience-timeline');
-        if (!timeline || window.location.pathname.indexOf('experiences.html') === -1) return;
+        if (!timeline || !window.location.pathname.includes('experiences')) return;
 
         try {
-            const res = await fetch('http://localhost:3000/api/experiences');
+            const res = await fetch(`${backendUrl}/api/experiences`);
             if (res.ok) {
                 const experiences = await res.json();
                 if (experiences.length > 0) {
