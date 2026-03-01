@@ -99,6 +99,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.8s ease, color 0.8s ease;
 }
 
 h1,
@@ -217,6 +218,12 @@ ul {
     background: rgba(7, 7, 7, 0.8);
     border-bottom: 1px solid var(--surface-border);
     transition: background var(--transition-base);
+}
+
+[data-theme="light"] .site-header {
+    background: rgba(249, 246, 240, 0.85);
+    /* Matches light theme bg-dark */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .nav-container {
@@ -344,6 +351,8 @@ ul {
     position: sticky;
     top: 0;
     overflow: hidden;
+    z-index: 0;
+    /* Creates stacking context so -2 canvas doesn't fall behind wrapper */
 }
 
 .hero-canvas {
@@ -1219,4 +1228,228 @@ ul {
     .presentation-container {
         padding: var(--space-3);
     }
+}
+
+/* ==========================================================================
+   Detailed Landing Profile Section
+   ========================================================================== */
+.landing-profile-section {
+    position: relative;
+    background: var(--bg-dark);
+    z-index: 10;
+}
+
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+}
+
+.profile-content {
+    max-width: 600px;
+}
+
+.profile-visual {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+    .landing-profile-section .container {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .profile-content {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-highlights {
+        grid-template-columns: 1fr !important;
+        text-align: left;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+}
+
+/* ==========================================================================
+   Blog Feed Section
+   ========================================================================== */
+.blog-section {
+    background: var(--bg-dark);
+    position: relative;
+    z-index: 10;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.blog-card {
+    background: var(--surface-dark);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] .blog-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.blog-card-content {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.blog-category {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: var(--space-2);
+}
+
+.blog-title {
+    font-size: 20px;
+    color: var(--text-cream);
+    margin-bottom: var(--space-2);
+    line-height: 1.3;
+}
+
+.blog-excerpt {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: var(--space-4);
+    flex-grow: 1;
+}
+
+.blog-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   Lenis Smooth Scrolling Globals
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+
+/* ==========================================================================
+   Premium Hover Architecture
+   ========================================================================== */
+.premium-hover {
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+    will-change: transform, box-shadow;
+}
+
+.premium-hover:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .premium-hover:hover {
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   Project Accordion
+   ========================================================================== */
+.project-accordion-card {
+    background: var(--surface-dark);
+    border: 1px solid var(--surface-border);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-6);
+    overflow: hidden;
+}
+
+.project-accordion-header {
+    padding: var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.project-accordion-header:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.project-card-title {
+    font-size: clamp(20px, 3vw, 28px);
+    font-family: var(--font-heading);
+    color: var(--text-cream);
+    margin: 0;
+}
+
+.project-accordion-icon {
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--accent-gold);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+}
+
+.project-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 var(--space-6);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, transform 0.6s ease, padding 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-accordion-card.expanded .project-accordion-content {
+    max-height: 2500px;
+    /* high enough to fit inner content */
+    padding: 0 var(--space-6) var(--space-6) var(--space-6);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-accordion-card.expanded .project-accordion-icon {
+    transform: rotate(45deg);
 }

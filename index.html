@@ -45,12 +45,12 @@
             </div>
         </div>
 
-        <p class="splash-hint fade-up"
+        <p class="splash-hint scroll-zoom"
             style="color: var(--text-muted); font-size: 15px; margin-top: var(--space-4); letter-spacing: 0.5px; opacity: 0; animation: fadeInHint 1s forwards 7.5s;">
             And
             last but not least, take your quote or joke of the day.</p>
 
-        <div class="splash-quote-container fade-up is-visible">
+        <div class="splash-quote-container scroll-zoom is-visible">
             <div class="splash-toggle-track pos-center" id="splash-quote-toggle">
                 <span class="toggle-hole" id="toggle-hole"></span>
                 <button class="toggle-zone" data-target="left" aria-label="Philosophy Quote"></button>
@@ -60,7 +60,13 @@
             <p class="splash-text-display" id="splash-text-display"></p>
         </div>
 
-        <div class="scroll-indicator fade-up is-visible">Scroll to Enter</div>
+        <div class="scroll-indicator scroll-zoom is-visible">Scroll to Enter</div>
+    </div>
+
+    <!-- Intro Sequence (Asset 1) -->
+    <div id="intro-sequence-wrapper" class="intro-sequence-wrapper"
+        style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: transparent; z-index: 9000; display: none; transition: opacity 1.5s ease; overflow: hidden;">
+        <canvas id="intro-canvas" class="fullscreen-canvas"></canvas>
     </div>
 
     <header class="site-header">
@@ -69,9 +75,10 @@
             <a href="#" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra
                     Portfolio</span><span>.</span></a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
@@ -103,74 +110,113 @@
     </header>
 
     <main>
-        <!-- Hero Scroll Wrapper -->
-        <div id="hero-scroll-wrapper" class="hero-scroll-wrapper">
-            <!-- Hero Section (Sticky) -->
-            <section id="hero" class="hero-section">
-                <canvas id="hero-canvas" class="hero-canvas"></canvas>
-                <div class="hero-overlay"></div>
-                <div class="container hero-content" id="dynamic-hero-content">
+        <!-- Hero Section (Asset 2) -->
+        <section id="hero" class="hero-section scroll-zoom" style="transform-origin: center center;">
+            <canvas id="hero-bg-canvas" class="hero-canvas"></canvas>
+            <div class="hero-overlay"></div>
+            <div class="container hero-content" id="dynamic-hero-content">
+                <p class="hero-subtitle scroll-zoom delay-1">Premium Digital Experience</p>
+                <h1 class="hero-title"><span class="typewriter-text cursor">Decoding the Noise.<br>Securing the
+                        Perimeter.</span>
+                </h1>
+            </div>
+        </section>
+
+        <!-- Detailed Landing Profile Section -->
+        <section id="landing-profile" class="landing-profile-section section-padding scroll-zoom"
+            style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 10;">
+            <div class="container"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center;">
+                <div class="profile-content scroll-zoom delay-1">
                     <p class="hero-subtitle">BSc Computer Science Student</p>
-                    <h1 class="hero-title"><span class="typewriter-text cursor">Data Enthusiast<br>& Aspiring Security
-                            Professional</span></h1>
-                    <p class="hero-description">
+                    <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: var(--space-4);">
+                        Data Analytics &<br><span style="color: var(--accent-gold);">Cyber Security</span>
+                    </h1>
+                    <p class="profile-description"
+                        style="color: var(--text-offwhite); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-6);">
                         I am a proactive student at the University of Westminster, actively seeking internships and
-                        graduate opportunities. I am deeply passionate about Data Analytics and System Security,
-                        bridging
-                        analytical insights with secure computing frameworks.
+                        graduate opportunities. My expertise bridges the gap between uncovering hidden
+                        insights and building resilient, secure computing frameworks as a prospective SOC Analyst.
                     </p>
-                    <div class="hero-actions">
-                        <a href="#cta" class="btn btn-primary">Connect with me</a>
-                        <a href="#features" class="btn btn-primary">Explore my work</a>
-                        <a href="resume.pdf" target="_blank" class="btn btn-primary">Download CV</a>
+
+                    <div class="profile-highlights"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                        <div class="highlight-item premium-hover"
+                            style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
+                            <h4
+                                style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
+                                Data Analytics</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Python, Pandas,
+                                SQL<br>Tableau, PowerBI</p>
+                        </div>
+                        <div class="highlight-item premium-hover"
+                            style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
+                            <h4
+                                style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
+                                Cyber Security (SOC)</h4>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Wireshark, Kali
+                                Linux<br>Threat Analysis & Monitoring</p>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions scroll-zoom"
+                        style="display: flex; gap: var(--space-3); flex-wrap: nowrap; justify-content: flex-start; align-items: center; margin-top: var(--space-4);">
+                        <a href="#cta" class="btn btn-primary premium-hover"
+                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Connect
+                            me</a>
+                        <a href="resume.pdf" class="btn btn-primary premium-hover" target="_blank"
+                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Download
+                            Resume</a>
+                        <a href="projects.html" class="btn btn-primary premium-hover"
+                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">View
+                            Projects</a>
                     </div>
                 </div>
-        </div>
 
-        <!-- Dynamic Scroll Text Overlays -->
-        <div class="hero-scroll-text" id="scroll-text-1">Uncovering<br><span
-                style="color: var(--accent-gold);">Insights</span></div>
-        <div class="hero-scroll-text" id="scroll-text-2">Securing<br><span
-                style="color: var(--accent-gold);">Systems</span></div>
-        <div class="hero-scroll-text" id="scroll-text-3">Engineering<br><span
-                style="color: var(--accent-gold);">Excellence.</span></div>
-
-        <!-- SQL Joke Overlay -->
-        <div class="hero-scroll-joke" id="scroll-joke">
-            A SQL query walks into a bar, walks up to two tables, and asks... <br>
-            <span style="color: var(--accent-gold);">"Can I join you?"</span>
-        </div>
+                <div class="profile-visual scroll-zoom delay-2" style="position: relative;">
+                    <img src="images/harsh.png" alt="Harshkumar Narendra"
+                        style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); object-fit: cover; border: 1px solid var(--surface-border); display: block; margin: 0 auto; transform: rotate(-90deg);">
+                </div>
+            </div>
         </section>
-        </div>
 
-        <!-- Features Section -->
-        <section id="features" class="features-section section-padding">
-            <div class="container">
-                <header class="section-header fade-up">
-                    <h2 class="section-title">The Craftsmanship</h2>
-                    <p class="section-subtitle">Precision engineered, beautifully designed.</p>
+        <!-- Interests Section (Structured & Stunning - No Canvas) -->
+        <section id="interests" class="interests-section section-padding scroll-zoom"
+            style="position: relative; overflow: hidden; min-height: 60vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--bg-dark) 0%, var(--surface-dark) 100%);">
+
+            <div class="container" style="position: relative; z-index: 2; width: 100%;">
+
+                <header class="section-header scroll-zoom" style="text-align: center; margin-bottom: var(--space-8);">
+                    <h2 class="section-title">Interests & Craftsmanship</h2>
+                    <p class="section-subtitle" style="margin: 0 auto; max-width: 600px;">Beyond the code, I find
+                        inspiration in the richness of experiences.</p>
                 </header>
 
-                <div class="features-grid">
-                    <article class="feature-card fade-up">
-                        <div class="feature-icon icon-computing"></div>
-                        <h3 class="feature-title">Analytical Precision</h3>
-                        <p class="feature-desc">Advanced data analytics and statistical modeling for deep insights.
-                            Discover my full background on <a href="https://www.linkedin.com/in/harshnarendra"
-                                target="_blank"
-                                style="color: var(--accent-gold); text-decoration: underline;">LinkedIn</a>.</p>
+                <div class="features-grid"
+                    style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
+                    <article class="feature-card premium-hover scroll-zoom delay-1"
+                        style="text-align: center; padding: var(--space-6);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏏</div>
+                        <h3 class="feature-title">Cricket</h3>
+                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">A passion for strategy,
+                            teamwork, and resilience on the field. The
+                            analytical aspects of the sport closely mirror my professional data-driven mindset.</p>
                     </article>
-                    <article class="feature-card fade-up delay-1">
-                        <div class="feature-icon icon-design"></div>
-                        <h3 class="feature-title">Premium Aesthetics</h3>
-                        <p class="feature-desc">User interfaces designed with a calm, minimal layout inspired by
-                            industry-leading luxury standards.</p>
+                    <article class="feature-card premium-hover scroll-zoom delay-2"
+                        style="text-align: center; padding: var(--space-6);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">✈️</div>
+                        <h3 class="feature-title">Travel</h3>
+                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">Exploring diverse cultures
+                            and landscapes to broaden perspectives
+                            and fuel creativity in digital design.</p>
                     </article>
-                    <article class="feature-card fade-up delay-2">
-                        <div class="feature-icon icon-detail"></div>
-                        <h3 class="feature-title">System Security</h3>
-                        <p class="feature-desc">Rigorous implementation of defense strategies to ensure resilient and
-                            secure computing infrastructure.</p>
+                    <article class="feature-card premium-hover scroll-zoom delay-3"
+                        style="text-align: center; padding: var(--space-6);">
+                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🥘</div>
+                        <h3 class="feature-title">Food</h3>
+                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">Appreciating the
+                            craftsmanship of culinary arts, finding joy in
+                            flavor profiles and the shared experience of dining.</p>
                     </article>
                 </div>
             </div>
@@ -179,13 +225,13 @@
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials-section section-padding">
             <div class="container">
-                <header class="section-header fade-up">
+                <header class="section-header scroll-zoom">
                     <h2 class="section-title">Trusted</h2>
                     <p class="section-subtitle">A reputation built on reliability and teamwork.</p>
                 </header>
 
                 <div class="testimonials-grid">
-                    <article class="testimonial-card fade-up">
+                    <article class="testimonial-card scroll-zoom">
                         <p class="testimonial-text">"Harshkumar transformed workplace with his presence. The attention
                             to
                             detail is truly unparalleled. It felt like watching an artist at work."</p>
@@ -194,7 +240,7 @@
                             <span>KYLU Franchise Owner</span>
                         </footer>
                     </article>
-                    <article class="testimonial-card fade-up delay-1">
+                    <article class="testimonial-card scroll-zoom delay-1">
                         <p class="testimonial-text">"He brings a rare combination of robust computing fundamentals and
                             an incredible eye for high-end design aesthetics."</p>
                         <footer class="testimonial-author">
@@ -208,7 +254,7 @@
 
         <!-- CTA Section -->
         <section id="cta" class="cta-section section-padding">
-            <div class="container cta-container fade-up"
+            <div class="container cta-container scroll-zoom"
                 style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start; text-align: left;">
                 <div class="cta-content">
                     <h2 class="cta-title" style="margin-bottom: var(--space-4);">Looking for an Analytical Mind?</h2>
@@ -258,8 +304,9 @@
                 <span class="logo">Harshkumar Narendra Portfolio<span>.</span></span>
                 <p>Digital Portfolio</p>
             </div>
-            <div class="footer-links" style="display: flex; flex-direction: column; align-items: flex-end;">
-                <ul class="sci" style="margin-top: 0; height: 40px; justify-content: flex-end;">
+            <div class="footer-links scroll-zoom" style="display: flex; flex-direction: column; align-items: flex-end;">
+                <ul class="sci"
+                    style="margin-top: 0; min-height: 40px; display: flex; justify-content: flex-end; gap: var(--space-4); align-items: center;">
                     <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra"
                             target="_blank">LinkedIn</a></li>
                     <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai"
@@ -275,6 +322,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 

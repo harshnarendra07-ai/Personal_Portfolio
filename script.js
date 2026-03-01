@@ -122,8 +122,20 @@ document.addEventListener("DOMContentLoaded", () => {
             // Fade out the splash screen
             splashScreen.classList.add("fade-out");
 
-            // Allow normal scrolling again
-            document.body.style.overflow = "";
+            // Allow normal scrolling again ONLY if there is no intro sequence
+            const introWrapper = document.getElementById('intro-sequence-wrapper');
+            if (!introWrapper) {
+                document.body.style.overflow = "";
+            } else {
+                // We have an intro sequence! Coordinate the intro wrapper display
+                introWrapper.style.display = 'block';
+                introWrapper.style.opacity = '1';
+
+                // Signal to the introPlayer to start playing after a short delay
+                setTimeout(() => {
+                    window.dispatchEvent(new Event('startIntroSequence'));
+                }, 500);
+            }
 
             // Wait for splash fade (1.5s as defined in CSS), then assemble the nav logo
             setTimeout(() => {
@@ -175,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Dynamic Backend Fetching ---
-    
+
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const backendUrl = isLocal ? 'http://localhost:3000' : 'https://your-production-backend.com'; // CHANGE THIS when backend is deployed
 
@@ -328,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    const elementsToAnimate = document.querySelectorAll('.fade-up');
+    const elementsToAnimate = document.querySelectorAll('.fade-up, .scroll-zoom');
 
     elementsToAnimate.forEach(el => {
         if (prefersReducedMotion) {
@@ -343,7 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // In case IntersectionObserver fails (e.g., on Vercel deployment edge cases),
     // we use a scroll event listener and a timeout to ensure content is always revealed.
     const revealElementsFallback = () => {
-        document.querySelectorAll('.fade-up:not(.is-visible)').forEach(el => {
+        document.querySelectorAll('.fade-up:not(.is-visible), .scroll-zoom:not(.is-visible)').forEach(el => {
             const rect = el.getBoundingClientRect();
             // If element is within viewport
             if (rect.top <= window.innerHeight) {
@@ -495,10 +507,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             };
 
-            // Slowed down and overlapped for smoother transitions alongside the main hero text
-            runTextAnimation(t1, progress, 0.05, 0.45);
-            runTextAnimation(t2, progress, 0.35, 0.75);
-            runTextAnimation(t3, progress, 0.65, 1.00);
+            // Sequenced for smooth transitions without overlapping text
+            runTextAnimation(t1, progress, 0.05, 0.34);
+            runTextAnimation(t2, progress, 0.35, 0.64);
+            runTextAnimation(t3, progress, 0.65, 0.94);
 
             // Animate 3D Spatial "Fly-Through" SQL Joke at the end
             const jokeEl = document.getElementById('scroll-joke');
@@ -663,3 +675,270 @@ window.changeSlide = function (direction) {
         slideCounter.textContent = currentSlideIndex + 1;
     }
 };
+
+/* ==========================================================================
+   Project Accordion Logic
+   ========================================================================== */
+window.toggleProject = function (headerElement) {
+    const card = headerElement.parentElement;
+
+    // Check if it's already expanded
+    if (card.classList.contains('expanded')) {
+        card.classList.remove('expanded');
+    } else {
+        // Collapse all others first for a clean accordion effect
+        document.querySelectorAll('.project-accordion-card.expanded').forEach(expandedCard => {
+            expandedCard.classList.remove('expanded');
+        });
+
+        // Expand this one
+        card.classList.add('expanded');
+
+        // Optional: Scroll neatly into view after a short delay to account for the transition
+        setTimeout(() => {
+            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+    }
+};
+
+/* ==========================================================================
+   Lenis Smooth Scrolling Integration
+   ========================================================================== */
+// Initialize Lenis exactly as requested
+const lenis = new window.Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
+    infinite: false,
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+/* ==========================================================================
+   Canvas Sequence Player Logic
+   ========================================================================== */
+class CanvasSequencePlayer {
+    constructor(canvasId, assetFolder, frameCount, options = {}) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) return;
+
+        this.ctx = this.canvas.getContext('2d');
+        this.assetFolder = assetFolder;
+        this.frameCount = frameCount;
+        this.images = [];
+        this.loadedImages = 0;
+        this.currentFrame = 0;
+        this.isLooping = options.loop !== false; // Loop by default
+        this.onComplete = options.onComplete || null;
+        this.autoStart = options.autoStart !== false;
+        this.fps = options.fps || 24;
+
+        this.isPlaying = false;
+
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+
+        this.loadImages();
+    }
+
+    resize() {
+        if (!this.canvas) return;
+        // Using getBoundingClientRect if canvas is inside a specific container, else window bounds for full screen
+        const rect = this.canvas.parentElement.getBoundingClientRect();
+        this.canvas.width = rect.width;
+        this.canvas.height = rect.height;
+        if (this.images[this.currentFrame]) {
+            this.renderFrame();
+        }
+    }
+
+    loadImages() {
+        for (let i = 1; i <= this.frameCount; i++) {
+            const img = new Image();
+            if (this.assetFolder === 'heroanimation') {
+                const frameIndex = (i - 1).toString().padStart(3, '0');
+                img.src = `images/${this.assetFolder}/Make_this_cinematic_extended_9d076d2d50_${frameIndex}.jpg`;
+            } else {
+                const frameIndex = i.toString().padStart(3, '0');
+                img.src = `images/${this.assetFolder}/ezgif-frame-${frameIndex}.jpg`;
+            }
+            img.onload = () => {
+                this.loadedImages++;
+                // Draw first frame right away to prevent empty gap
+                if (i === 1) this.renderFrame();
+
+                // If all loaded and allowed to auto start, play
+                if (this.loadedImages === this.frameCount && this.autoStart) {
+                    this.play();
+                }
+            };
+            this.images.push(img);
+        }
+    }
+
+    play() {
+        if (this.isPlaying) return;
+        this.isPlaying = true;
+
+        // Use a simple timeout loop instead of requestAnimationFrame for consistent speed independent of monitor refresh rate
+        const frameDelay = 1000 / this.fps;
+
+        const nextFrame = () => {
+            if (!this.isPlaying) return;
+
+            this.renderFrame();
+            this.currentFrame++;
+
+            if (this.currentFrame >= this.frameCount) {
+                if (this.isLooping) {
+                    this.currentFrame = 0;
+                } else {
+                    this.isPlaying = false;
+                    if (this.onComplete) this.onComplete();
+                    return;
+                }
+            }
+            setTimeout(nextFrame, frameDelay);
+        };
+
+        nextFrame();
+    }
+
+    renderFrame() {
+        if (!this.images[this.currentFrame] || !this.images[this.currentFrame].complete) return;
+
+        const img = this.images[this.currentFrame];
+        const canvasRatio = this.canvas.width / this.canvas.height;
+        const imgRatio = img.width / img.height;
+        let drawWidth, drawHeight, offsetX, offsetY;
+
+        if (canvasRatio > imgRatio) {
+            drawWidth = this.canvas.width;
+            drawHeight = this.canvas.width / imgRatio;
+            offsetX = 0;
+            offsetY = (this.canvas.height - drawHeight) / 2;
+        } else {
+            drawWidth = this.canvas.height * imgRatio;
+            drawHeight = this.canvas.height;
+            offsetX = (this.canvas.width - drawWidth) / 2;
+            offsetY = 0;
+        }
+
+        this.ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    }
+}
+
+// Initializing the Sequences dynamically if elements are present on the current DOM
+document.addEventListener("DOMContentLoaded", () => {
+    // Check if we prefer reduced motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // We will just let them sit on frame 1 by default since autoStart handles the looping restriction.
+        // For simplicity, we override the class behaviour entirely.
+        const wrapper = document.getElementById("intro-sequence-wrapper");
+        if (wrapper) wrapper.style.display = 'none';
+        return;
+    }
+
+    // Initialize the looped backgrounds
+    new CanvasSequencePlayer('hero-bg-canvas', 'asset2', 51, { loop: true });
+    new CanvasSequencePlayer('projects-bg-canvas', 'asset3', 61, { loop: true, fps: 15 });
+
+    // Handle Asset 1 Interstitial (Scroll Scrubbed)
+    const introWrapper = document.getElementById('intro-sequence-wrapper');
+    const splashScreen = document.getElementById("splash-screen");
+
+    if (introWrapper) {
+        const introPlayer = new CanvasSequencePlayer('intro-canvas', 'asset1', 51, {
+            loop: false,
+            autoStart: false
+        });
+
+        let virtualScroll = 0;
+        const totalScrollDistance = 3000; // pixels to scrub
+        let isFading = false;
+
+        let startY = 0;
+        const handleTouchStart = (e) => {
+            startY = e.touches[0].clientY;
+        };
+
+        const handleVirtualTouchMove = (e) => {
+            e.preventDefault(); // Always prevent scrolling during this sequence
+            if (isFading) return;
+            const currentY = e.touches[0].clientY;
+            const deltaY = startY - currentY;
+            startY = currentY;
+
+            virtualScroll += deltaY * 2;
+            virtualScroll = Math.max(0, virtualScroll);
+
+            updateVirtualProgress();
+        };
+
+        const updateVirtualProgress = () => {
+            let progress = virtualScroll / totalScrollDistance;
+
+            if (progress >= 1 && !isFading) {
+                progress = 1;
+                isFading = true; // Lock further scrubbing
+
+                // Fade it out
+                introWrapper.style.opacity = '0';
+                setTimeout(() => {
+                    introWrapper.style.display = 'none';
+                    document.body.style.overflow = ""; // Enable real scroll
+                    if (typeof lenis !== 'undefined') lenis.start();
+
+                    // Safely remove listeners ONLY when fade is fully complete
+                    window.removeEventListener('wheel', handleVirtualScroll);
+                    window.removeEventListener('touchstart', handleTouchStart);
+                    window.removeEventListener('touchmove', handleVirtualTouchMove);
+                }, 1500); // Wait for CSS transition
+            }
+
+            if (!isFading) {
+                introPlayer.currentFrame = Math.floor(progress * (introPlayer.frameCount - 1));
+                introPlayer.renderFrame();
+            }
+        };
+
+        const handleVirtualScroll = (e) => {
+            e.preventDefault(); // Always prevent scrolling during this sequence
+            if (isFading) return;
+            virtualScroll += e.deltaY;
+            virtualScroll = Math.max(0, virtualScroll);
+            updateVirtualProgress();
+        };
+
+        // Hook into the custom event fired by the splash screen listener
+        if (splashScreen) {
+            window.addEventListener('startIntroSequence', () => {
+                introPlayer.resize(); // Must resize now that display is block!
+                document.body.style.overflow = "hidden"; // Keep document locked
+                if (typeof lenis !== 'undefined') lenis.stop();
+                window.addEventListener('wheel', handleVirtualScroll, { passive: false });
+                window.addEventListener('touchstart', handleTouchStart, { passive: false });
+                window.addEventListener('touchmove', handleVirtualTouchMove, { passive: false });
+            });
+        } else {
+            // No splash? Allow scrubbing immediately on page load
+            introWrapper.style.display = 'block';
+            document.body.style.overflow = "hidden"; // Lock document
+            if (typeof lenis !== 'undefined') lenis.stop();
+            window.addEventListener('wheel', handleVirtualScroll, { passive: false });
+            window.addEventListener('touchstart', handleTouchStart, { passive: false });
+            window.addEventListener('touchmove', handleVirtualTouchMove, { passive: false });
+            virtualScroll = 0;
+            introPlayer.renderFrame();
+        }
+    }
+});

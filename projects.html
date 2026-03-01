@@ -40,6 +40,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html" style="color: var(--text-cream);">Projects</a></li>
                 <li><a href="experiences.html">Experiences</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
@@ -71,66 +72,84 @@
     </header>
 
     <main>
-        <section class="section-padding"
-            style="padding-top: calc(var(--space-16) + var(--space-8)); background: var(--bg-dark); min-height: 100vh;">
-            <div class="container">
-                <header class="section-header fade-up">
+        <section class="section-padding scroll-zoom"
+            style="padding-top: calc(var(--space-16) + var(--space-8)); position: relative; min-height: 100vh;">
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;">
+                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%;">
+                    <canvas id="projects-bg-canvas" class="hero-canvas"
+                        style="position: absolute; left: 0; width: 100%; height: 100%;"></canvas>
+                    <div class="hero-overlay"
+                        style="position: absolute; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(7,7,7,1), rgba(7,7,7,0.4), rgba(7,7,7,1));">
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <header class="section-header scroll-zoom">
                     <h1 class="section-title">Selected Projects</h1>
                     <p class="section-subtitle">A showcase of data analytics, system security implementations, and
                         academic pursuits.</p>
                 </header>
 
                 <!-- Featured Case Study: Excel & PPT Integration -->
-                <div class="featured-project fade-up delay-1"
-                    style="background: var(--surface-dark); border: 1px solid var(--surface-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-8); margin-bottom: var(--space-8);">
-                    <h2 class="section-title" style="font-size: clamp(24px, 3vw, 36px); margin-bottom: var(--space-2);">
-                        Data Model: Specialty Cheese Importation</h2>
-                    <p class="section-subtitle"
-                        style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">
-                        This data model is designed for a UK company that imports specialty cheeses from France and the
-                        Netherlands to supply local restaurants and delicatessens. It specifically accounts for the
-                        business's main operational challenges: Euro/GBP exchange rate fluctuations and the heavy
-                        reliance of their premium cheese sales on strong UK economic growth.
-                    </p>
+                <div class="project-accordion-card premium-hover scroll-zoom delay-1">
+                    <div class="project-accordion-header" onclick="toggleProject(this)">
+                        <h2 class="project-card-title">Data Model: Specialty Cheese Importation</h2>
+                        <span class="project-accordion-icon">+</span>
+                    </div>
+                    <div class="project-accordion-content">
+                        <p class="section-subtitle"
+                            style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">
+                            This data model is designed for a UK company that imports specialty cheeses from France and
+                            the
+                            Netherlands to supply local restaurants and delicatessens. It specifically accounts for the
+                            business's main operational challenges: Euro/GBP exchange rate fluctuations and the heavy
+                            reliance of their premium cheese sales on strong UK economic growth.
+                        </p>
 
-                    <div
-                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
-                        <!-- Excel Dashboard -->
-                        <div style="width: 100%; display: flex; flex-direction: column;">
-                            <h3
-                                style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                1. Interactive Data Model</h3>
-                            <div
-                                style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                    frameborder="0" scrolling="no"
-                                    src="https://1drv.ms/x/c/d13601dfe1b270ff/IQQZ2lr77D4eQ4ljfM1nfgQMAYKdJExOeNsIdS6_SA6qCRQ?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
+                            <!-- Excel Dashboard -->
+                            <div style="width: 100%; display: flex; flex-direction: column;">
+                                <h3
+                                    style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                    1. Interactive Data Model</h3>
+                                <div
+                                    style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                        frameborder="0" scrolling="no"
+                                        src="https://1drv.ms/x/c/d13601dfe1b270ff/IQQZ2lr77D4eQ4ljfM1nfgQMAYKdJExOeNsIdS6_SA6qCRQ?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- PPT Presentation -->
-                        <div style="width: 100%; display: flex; flex-direction: column;">
-                            <h3
-                                style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                2. Project Documentation</h3>
-                            <div
-                                style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                    src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"
-                                    frameborder="0"></iframe>
+                            <!-- PPT Presentation -->
+                            <div style="width: 100%; display: flex; flex-direction: column;">
+                                <h3
+                                    style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                    2. Project Documentation</h3>
+                                <div
+                                    style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                                    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                        src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"
+                                        frameborder="0"></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="features-grid" style="margin-top: var(--space-8); grid-template-columns: 1fr;">
-                    <article class="feature-card fade-up"
-                        style="display: flex; flex-direction: column; gap: var(--space-4);">
-                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                <div class="project-accordion-card premium-hover scroll-zoom delay-2">
+                    <div class="project-accordion-header" onclick="toggleProject(this)">
+                        <h2 class="project-card-title">AI Driven Deployed Portfolio</h2>
+                        <span class="project-accordion-icon">+</span>
+                    </div>
+                    <div class="project-accordion-content">
+                        <div
+                            style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
                             <div class="feature-icon icon-computing"></div>
-                            <h3 class="feature-title" style="margin-bottom: 0;">AI Driven Deployed Portfolio</h3>
+                            <h3 style="margin-bottom: 0;">Overview</h3>
                         </div>
-                        <p class="feature-desc">A premium, cinematic personal portfolio architected with AI-assisted
+                        <p class="feature-desc" style="margin-bottom: var(--space-6);">A premium, cinematic personal
+                            portfolio architected with AI-assisted
                             workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic
                             typewriter aesthetics.</p>
 
@@ -163,7 +182,7 @@
                                 <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -192,6 +211,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 
