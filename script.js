@@ -833,6 +833,13 @@ class CanvasSequencePlayer {
             offsetY = 0;
         }
 
+        // Fix Glitches: Clear the entire frame first so no artifacts stay behind
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Fix Clarity: Force High-Quality Image Smoothing for sharp stretches
+        this.ctx.imageSmoothingEnabled = true;
+        this.ctx.imageSmoothingQuality = 'high';
+
         this.ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 }
@@ -891,18 +898,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 progress = 1;
                 isFading = true; // Lock further scrubbing
 
-                // Fade it out
+                // Fade it out slowly without moving it for a seamless continuation
                 introWrapper.style.opacity = '0';
+                introWrapper.style.pointerEvents = 'none'; // Ensure clicks pass through immediately
+
+                // Trigger the main hero content glide-in
+                const heroContent = document.getElementById('dynamic-hero-content');
+                if (heroContent) {
+                    heroContent.classList.remove('hero-entering');
+                    heroContent.classList.add('hero-entered');
+                }
+
+                // Force scroll to top so the main page starts explicitly from the beginning
+                window.scrollTo(0, 0);
+
+                // Unlock the real scroll instantly so the user doesn't hit a friction "glitch"
+                document.body.style.overflow = "";
+                if (typeof lenis !== 'undefined') lenis.start();
+
+                // Safely remove event interceptors immediately
+                window.removeEventListener('wheel', handleVirtualScroll);
+                window.removeEventListener('touchstart', handleTouchStart);
+                window.removeEventListener('touchmove', handleVirtualTouchMove);
+
+                // Wait for the opacity transition to finish before destroying the DOM node
                 setTimeout(() => {
                     introWrapper.style.display = 'none';
-                    document.body.style.overflow = ""; // Enable real scroll
-                    if (typeof lenis !== 'undefined') lenis.start();
-
-                    // Safely remove listeners ONLY when fade is fully complete
-                    window.removeEventListener('wheel', handleVirtualScroll);
-                    window.removeEventListener('touchstart', handleTouchStart);
-                    window.removeEventListener('touchmove', handleVirtualTouchMove);
-                }, 1500); // Wait for CSS transition
+                }, 2500);
             }
 
             if (!isFading) {
@@ -924,6 +946,11 @@ document.addEventListener("DOMContentLoaded", () => {
             window.addEventListener('startIntroSequence', () => {
                 introPlayer.resize(); // Must resize now that display is block!
                 document.body.style.overflow = "hidden"; // Keep document locked
+
+                // Pre-hide the hero content for the eventual reveal transition
+                const heroContent = document.getElementById('dynamic-hero-content');
+                if (heroContent) heroContent.classList.add('hero-entering');
+
                 if (typeof lenis !== 'undefined') lenis.stop();
                 window.addEventListener('wheel', handleVirtualScroll, { passive: false });
                 window.addEventListener('touchstart', handleTouchStart, { passive: false });
@@ -933,6 +960,10 @@ document.addEventListener("DOMContentLoaded", () => {
             // No splash? Allow scrubbing immediately on page load
             introWrapper.style.display = 'block';
             document.body.style.overflow = "hidden"; // Lock document
+
+            const heroContent = document.getElementById('dynamic-hero-content');
+            if (heroContent) heroContent.classList.add('hero-entering');
+
             if (typeof lenis !== 'undefined') lenis.stop();
             window.addEventListener('wheel', handleVirtualScroll, { passive: false });
             window.addEventListener('touchstart', handleTouchStart, { passive: false });

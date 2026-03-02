@@ -355,7 +355,8 @@ ul {
     /* Creates stacking context so -2 canvas doesn't fall behind wrapper */
 }
 
-.hero-canvas {
+.hero-canvas,
+.fullscreen-canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -366,6 +367,10 @@ ul {
     background: var(--bg-dark);
     /* fallback */
     display: block;
+
+    /* Clarity hints for stretched images */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .hero-overlay {
@@ -454,6 +459,27 @@ ul {
     animation:
         typewriter 2.0s steps(30, end) forwards,
         blinkingCursor 0.75s step-end infinite;
+}
+
+/* --- Hero Transition States --- */
+.hero-entering {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: none !important;
+    /* Disable any existing transitions while hidden */
+}
+
+.hero-entered {
+    opacity: 1;
+    transform: translateY(0);
+    /* Majestic glide upwards while the canvas is crossfading */
+    transition: opacity 2s ease 1s,
+        transform 3s cubic-bezier(0.1, 1, 0.4, 1) 0.5s;
+}
+
+/* Seamless cross-fade wrapper */
+.intro-sequence-wrapper {
+    transition: opacity 2.5s ease-in-out !important;
 }
 
 /* ==========================================================================
