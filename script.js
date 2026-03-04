@@ -109,52 +109,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Only run splash logic if we are on a page with a splash screen (i.e., index.html)
-    if (splashScreen) {
-        // Force scroll to top on reload so the intro works
-        window.scrollTo(0, 0);
-        document.body.style.overflow = "hidden"; // Prevent scrolling initially
-
-        const handleFirstScroll = (e) => {
-            // Prevent default scroll behavior initially
-            e.preventDefault();
-
-            // Fade out the splash screen
-            splashScreen.classList.add("fade-out");
-
-            // Allow normal scrolling again ONLY if there is no intro sequence
-            const introWrapper = document.getElementById('intro-sequence-wrapper');
-            if (!introWrapper) {
-                document.body.style.overflow = "";
-            } else {
-                // We have an intro sequence! Coordinate the intro wrapper display
-                introWrapper.style.display = 'block';
-                introWrapper.style.opacity = '1';
-
-                // Signal to the introPlayer to start playing after a short delay
-                setTimeout(() => {
-                    window.dispatchEvent(new Event('startIntroSequence'));
-                }, 500);
+    // Nav Logo Typwriting
+    const siteHeader = document.querySelector(".site-header");
+    if (navLogo && siteHeader) {
+        const obs = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                navLogo.classList.add("animate-typing");
+                obs.disconnect(); // Only animate once
             }
-
-            // Wait for splash fade (1.5s as defined in CSS), then assemble the nav logo
-            setTimeout(() => {
-                if (navLogo) {
-                    navLogo.classList.add("animate-typing");
-                }
-            }, 1000); // Trigger slightly before splash is completely gone for fluidity
-
-            // Remove the listeners since splash is gone
-            window.removeEventListener("wheel", handleFirstScroll);
-            window.removeEventListener("touchmove", handleFirstScroll);
-        };
-
-        // Listen for the first scroll attempt (mouse wheel or touch swipe)
-        window.addEventListener("wheel", handleFirstScroll, { passive: false });
-        window.addEventListener("touchmove", handleFirstScroll, { passive: false });
-    } else if (navLogo) {
-        // If on another page (no splash screen), just assemble immediately
-        navLogo.classList.add("animate-typing");
+        });
+        obs.observe(siteHeader);
     }
 
     // Current year for footer
@@ -859,117 +823,81 @@ document.addEventListener("DOMContentLoaded", () => {
     new CanvasSequencePlayer('hero-bg-canvas', 'asset2', 51, { loop: true });
     new CanvasSequencePlayer('projects-bg-canvas', 'asset3', 61, { loop: true, fps: 15 });
 
-    // Handle Asset 1 Interstitial (Scroll Scrubbed)
+    // Handle Asset 1 and Zoom Mask (Scroll Scrubbed via native scroll)
+    const zoomWrapper = document.getElementById('zoom-scroll-wrapper');
     const introWrapper = document.getElementById('intro-sequence-wrapper');
     const splashScreen = document.getElementById("splash-screen");
+    const zoomMaskContainer = document.getElementById("zoom-mask-container");
 
-    if (introWrapper) {
+    if (zoomWrapper && introWrapper && splashScreen) {
         const introPlayer = new CanvasSequencePlayer('intro-canvas', 'asset1', 51, {
             loop: false,
             autoStart: false
         });
 
-        let virtualScroll = 0;
-        const totalScrollDistance = 3000; // pixels to scrub
-        let isFading = false;
+        // Ensure display is block and bypass old css hiding
+        introWrapper.style.display = 'block';
+        splashScreen.classList.remove('fade-out');
 
-        let startY = 0;
-        const handleTouchStart = (e) => {
-            startY = e.touches[0].clientY;
-        };
+        const updateScrollProgress = () => {
+            const rect = zoomWrapper.getBoundingClientRect();
+            // rect.top goes from 0 to negative height as we scroll down the wrapper
+            const scrollRange = zoomWrapper.offsetHeight - window.innerHeight;
+            let progress = -rect.top / scrollRange;
 
-        const handleVirtualTouchMove = (e) => {
-            e.preventDefault(); // Always prevent scrolling during this sequence
-            if (isFading) return;
-            const currentY = e.touches[0].clientY;
-            const deltaY = startY - currentY;
-            startY = currentY;
+            progress = Math.max(0, Math.min(1, progress));
 
-            virtualScroll += deltaY * 2;
-            virtualScroll = Math.max(0, virtualScroll);
-
-            updateVirtualProgress();
-        };
-
-        const updateVirtualProgress = () => {
-            let progress = virtualScroll / totalScrollDistance;
-
-            if (progress >= 1 && !isFading) {
-                progress = 1;
-                isFading = true; // Lock further scrubbing
-
-                // Fade it out slowly without moving it for a seamless continuation
-                introWrapper.style.opacity = '0';
-                introWrapper.style.pointerEvents = 'none'; // Ensure clicks pass through immediately
-
-                // Trigger the main hero content glide-in
-                const heroContent = document.getElementById('dynamic-hero-content');
-                if (heroContent) {
-                    heroContent.classList.remove('hero-entering');
-                    heroContent.classList.add('hero-entered');
-                }
-
-                // Force scroll to top so the main page starts explicitly from the beginning
-                window.scrollTo(0, 0);
-
-                // Unlock the real scroll instantly so the user doesn't hit a friction "glitch"
-                document.body.style.overflow = "";
-                if (typeof lenis !== 'undefined') lenis.start();
-
-                // Safely remove event interceptors immediately
-                window.removeEventListener('wheel', handleVirtualScroll);
-                window.removeEventListener('touchstart', handleTouchStart);
-                window.removeEventListener('touchmove', handleVirtualTouchMove);
-
-                // Wait for the opacity transition to finish before destroying the DOM node
-                setTimeout(() => {
-                    introWrapper.style.display = 'none';
-                }, 2500);
+            if (zoomMaskContainer) {
+                // Apply a cubic easing to the scale for that cinematic rush at the very end
+                const easeProgress = Math.pow(progress, 3);
+                // Lower max scale to 60. 250x causes GPU dimension limit clipping (>8192px), leaving parts black and chopped on scroll up.
+                const easeScale = 1 + (easeProgress * 60);
+                zoomMaskContainer.style.transform = `scale(${easeScale})`;
             }
 
-            if (!isFading) {
-                introPlayer.currentFrame = Math.floor(progress * (introPlayer.frameCount - 1));
+            // Map progress to Asset 1 frame
+            if (introPlayer && introPlayer.images.length > 0) {
+                // Ensure canvas animation finishes comfortably before the end
+                const frameProgress = Math.min(1, progress / 0.85);
+                introPlayer.currentFrame = Math.floor(frameProgress * (introPlayer.frameCount - 1));
                 introPlayer.renderFrame();
             }
-        };
 
-        const handleVirtualScroll = (e) => {
-            e.preventDefault(); // Always prevent scrolling during this sequence
-            if (isFading) return;
-            virtualScroll += e.deltaY;
-            virtualScroll = Math.max(0, virtualScroll);
-            updateVirtualProgress();
-        };
+            // Step 1: Fade out the Mask layer between 0.6 and 0.85 so the user doesn't see clipped GPU edges.
+            if (progress > 0.6) {
+                const maskAlpha = 1 - Math.min(1, (progress - 0.6) * 4); // 0.6->0.85 is roughly 1.0->0.0
+                splashScreen.style.opacity = maskAlpha.toString();
+                splashScreen.style.pointerEvents = 'none';
+            } else {
+                splashScreen.style.opacity = '1';
+                splashScreen.style.pointerEvents = 'auto'; // allow interaction with splash
+            }
 
-        // Hook into the custom event fired by the splash screen listener
-        if (splashScreen) {
-            window.addEventListener('startIntroSequence', () => {
-                introPlayer.resize(); // Must resize now that display is block!
-                document.body.style.overflow = "hidden"; // Keep document locked
+            // Step 2: Fade out the Intro Canvas near the very end (at 85% scroll completion) to transition to main content smoothly
+            if (progress > 0.85) {
+                const fadeAlpha = 1 - Math.min(1, (progress - 0.85) * (1 / 0.15)); // 0.85->1.0 is 1.0->0.0
+                introWrapper.style.opacity = fadeAlpha.toString();
+                introWrapper.style.pointerEvents = 'none';
+            } else {
+                introWrapper.style.opacity = '1';
+                introWrapper.style.pointerEvents = 'none';
+            }
 
-                // Pre-hide the hero content for the eventual reveal transition
-                const heroContent = document.getElementById('dynamic-hero-content');
-                if (heroContent) heroContent.classList.add('hero-entering');
-
-                if (typeof lenis !== 'undefined') lenis.stop();
-                window.addEventListener('wheel', handleVirtualScroll, { passive: false });
-                window.addEventListener('touchstart', handleTouchStart, { passive: false });
-                window.addEventListener('touchmove', handleVirtualTouchMove, { passive: false });
-            });
-        } else {
-            // No splash? Allow scrubbing immediately on page load
-            introWrapper.style.display = 'block';
-            document.body.style.overflow = "hidden"; // Lock document
-
+            // At exact 1.0, reveal Hero content majestic glide if it hasn't
             const heroContent = document.getElementById('dynamic-hero-content');
-            if (heroContent) heroContent.classList.add('hero-entering');
+            if (heroContent) {
+                if (progress >= 1) {
+                    heroContent.classList.remove('hero-entering');
+                    heroContent.classList.add('hero-entered');
+                } else {
+                    heroContent.classList.remove('hero-entered');
+                    heroContent.classList.add('hero-entering');
+                }
+            }
+        };
 
-            if (typeof lenis !== 'undefined') lenis.stop();
-            window.addEventListener('wheel', handleVirtualScroll, { passive: false });
-            window.addEventListener('touchstart', handleTouchStart, { passive: false });
-            window.addEventListener('touchmove', handleVirtualTouchMove, { passive: false });
-            virtualScroll = 0;
-            introPlayer.renderFrame();
-        }
+        window.addEventListener('scroll', updateScrollProgress, { passive: true });
+        // Request initial recalculation once loaded
+        window.requestAnimationFrame(updateScrollProgress);
     }
 });
