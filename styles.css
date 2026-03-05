@@ -574,12 +574,8 @@ ul {
 }
 
 .splash-box {
-    padding: var(--space-4) var(--space-5);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
+    display: inline-block;
+    /* Changed from flex row to inline-block to wrap the glowing box */
     /* Removed background/blur/border to ensure clean mix-blend-mode text masking */
     background: transparent;
     border: none;
@@ -594,6 +590,51 @@ ul {
 
 .dark-text {
     color: var(--text-cream) !important;
+}
+
+/* Glowing Border Box for Intro Text */
+.glowing-border-box {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    background: transparent;
+    padding: var(--space-4) var(--space-5);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+[data-theme="light"] .glowing-border-box {
+    border-color: rgba(7, 7, 7, 0.3);
+}
+
+.glowing-border-box::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ff007f, #7f00ff, #00ffff, #00ff7f);
+    background-size: 400%;
+    border-radius: 24px;
+    /* Slightly larger than box to account for offset */
+    filter: blur(8px);
+    opacity: 0.4;
+    /* Base visibility for the "always glowing" effect */
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: animateGlow 20s linear infinite;
+    pointer-events: none;
+    /* Make sure it doesn't block clicks */
+}
+
+.glowing-border-box:hover::before {
+    opacity: 0.8;
+    /* Intensify on hover */
 }
 
 /* Flip Container for Spash Screen */
