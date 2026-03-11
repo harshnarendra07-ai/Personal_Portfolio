@@ -35,14 +35,13 @@
 <body>
     <!-- Zoom Mask Scroll Wrapper -->
     <div id="zoom-scroll-wrapper"
-        style="position: relative; height: 300vh; width: 100vw; z-index: 9000; background: #000;">
+        style="position: relative; height: 300vh; width: 100vw; z-index: 9000; background: transparent;">
         <div id="zoom-sticky-container"
             style="position: sticky; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden;">
 
-            <!-- Intro Sequence (Asset 1) - Plays in background -->
+            <!-- Intro Sequence (Asset 1) - Canvas removed, wrapper kept for scroll effects -->
             <div id="intro-sequence-wrapper" class="intro-sequence-wrapper"
                 style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; overflow: hidden; pointer-events: none;">
-                <canvas id="intro-canvas" class="fullscreen-canvas"></canvas>
             </div>
 
             <!-- Entrance Animation Splash Screen (Mask) -->
@@ -53,18 +52,18 @@
                 <div class="zoom-mask-container" id="zoom-mask-container">
                     <div class="splash-box">
                         <div class="glowing-border-box">
-                            <div class="intro-heading" style="color: #fff;">Hi, I'm Harsh. I am a</div>
+                            <div class="intro-heading" style="color: #000;">Hi, I'm Harsh. I am a</div>
                             <div class="flip-container">
-                                <div class="flip-text" style="color: #fff;">Innovator.</div>
-                                <div class="flip-text" style="color: #fff;">Creator.</div>
-                                <div class="flip-text" style="color: #fff;">Developer.</div>
-                                <div class="flip-text" style="color: #fff;">Dreamer.</div>
+                                <div class="flip-text" style="color: #000;">Innovator.</div>
+                                <div class="flip-text" style="color: #000;">Creator.</div>
+                                <div class="flip-text" style="color: #000;">Developer.</div>
+                                <div class="flip-text" style="color: #000;">Dreamer.</div>
                             </div>
                         </div>
                     </div>
 
                     <p class="splash-hint scroll-zoom"
-                        style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); font-size: 15px; margin-top: var(--space-4); letter-spacing: 0.5px; opacity: 0; animation: fadeInHint 1s forwards 7.5s; text-align: center; max-width: 600px; z-index: 10;">
+                        style="color: #000; text-shadow: none; font-size: 15px; margin-top: var(--space-4); letter-spacing: 0.5px; opacity: 0; animation: fadeInHint 1s forwards 7.5s; text-align: center; max-width: 600px; z-index: 10;">
                         Slide left for wisdom, right for a laugh.</p>
 
                     <div class="splash-quote-container scroll-zoom is-visible">
@@ -75,10 +74,10 @@
                             <button class="toggle-zone" data-target="right" aria-label="Analytics Joke"></button>
                         </div>
                         <p class="splash-text-display" id="splash-text-display"
-                            style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.9); z-index: 10;"></p>
+                            style="color: #000; text-shadow: none; z-index: 10;"></p>
                     </div>
 
-                    <div class="scroll-indicator scroll-zoom is-visible" style="color: #fff; border-color: #fff;">Scroll
+                    <div class="scroll-indicator scroll-zoom is-visible" style="color: #000; border-color: #000;">Scroll
                         to View</div>
                 </div>
             </div>
@@ -127,7 +126,7 @@
 
     <main>
         <!-- Hero Section (Asset 2) -->
-        <section id="hero" class="hero-section scroll-zoom" style="transform-origin: center center;">
+        <section id="hero" class="hero-section scroll-zoom" style="transform-origin: center center; background: transparent;">
             <canvas id="hero-bg-canvas" class="hero-canvas"></canvas>
             <div class="hero-overlay"></div>
             <div class="container hero-content" id="dynamic-hero-content">

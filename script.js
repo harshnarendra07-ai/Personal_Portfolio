@@ -88,13 +88,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     if (targetPos === 'left') {
                         splashDisplay.textContent = getRandomItem(quotesPhilosophy);
-                        splashScreen.className = 'splash-screen bg-philosophy';
+                        splashScreen.className = 'splash-screen bg-philosophy dark-mode-active';
+                        splashDisplay.style.color = ''; // Reset any manual color
                     } else if (targetPos === 'right') {
                         splashDisplay.textContent = getRandomItem(quotesAnalytics);
-                        splashScreen.className = 'splash-screen bg-analytical';
+                        splashScreen.className = 'splash-screen bg-analytical dark-mode-active';
+                        splashDisplay.style.color = ''; // Reset any manual color
                     } else {
                         splashDisplay.textContent = '';
                         splashScreen.className = 'splash-screen';
+                        splashDisplay.style.color = ''; // Reset any manual color
                     }
 
                     // Remove stretching to snap hole back
@@ -830,11 +833,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const zoomMaskContainer = document.getElementById("zoom-mask-container");
 
     if (zoomWrapper && introWrapper && splashScreen) {
-        const introPlayer = new CanvasSequencePlayer('intro-canvas', 'asset1', 51, {
-            loop: false,
-            autoStart: false
-        });
-
         // Ensure display is block and bypass old css hiding
         introWrapper.style.display = 'block';
         splashScreen.classList.remove('fade-out');
@@ -853,14 +851,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Lower max scale to 60. 250x causes GPU dimension limit clipping (>8192px), leaving parts black and chopped on scroll up.
                 const easeScale = 1 + (easeProgress * 60);
                 zoomMaskContainer.style.transform = `scale(${easeScale})`;
-            }
-
-            // Map progress to Asset 1 frame
-            if (introPlayer && introPlayer.images.length > 0) {
-                // Ensure canvas animation finishes comfortably before the end
-                const frameProgress = Math.min(1, progress / 0.85);
-                introPlayer.currentFrame = Math.floor(frameProgress * (introPlayer.frameCount - 1));
-                introPlayer.renderFrame();
             }
 
             // Step 1: Fade out the Mask layer between 0.6 and 0.85 so the user doesn't see clipped GPU edges.
