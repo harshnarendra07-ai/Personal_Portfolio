@@ -288,7 +288,9 @@
 
                 <div class="cta-form-wrapper"
                     style="background: var(--surface-dark); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--surface-border);">
-                    <form id="contact-form" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                    <form id="contact-form" action="https://formspree.io/f/mzdaowaa" method="POST" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                        <!-- Honeypot Field -->
+                        <input type="text" name="_gotcha" style="display:none" />
                         <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
                             <label for="name"
                                 style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Full

@@ -825,7 +825,7 @@ ul {
     width: 140px;
     height: 36px;
     background: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.3); /* Changed to dark border for white bg */
+    border: 1px solid transparent;
     border-radius: 40px;
     display: flex;
     padding: 2px;
@@ -871,7 +871,7 @@ ul {
     width: 26px;
     height: 26px;
     border-radius: 50%;
-    border: 2px solid var(--bg-dark); /* Changed from text-cream to bg-dark for white bg */
+    border: 2px solid var(--bg-dark);
     background: transparent;
     transition: left 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1), width 0.2s ease, border-color 0.4s ease, background 0.3s ease, border-color 0.3s ease;
     left: calc(50% - 13px);
@@ -906,7 +906,7 @@ ul {
 
 .splash-toggle-track.pos-center .toggle-hole {
     left: calc(50% - 13px);
-    border-color: var(--bg-dark); /* Changed from text-cream */
+    border-color: var(--bg-dark);
 }
 
 .splash-toggle-track.pos-right .toggle-hole {
