@@ -50,7 +50,7 @@
                 <!-- This container holds the text and will be scaled up via Javascript -->
                 <!-- The multiply blend mode makes the white text transparent against the black background, showing the underlying canvas -->
                 <div class="zoom-mask-container" id="zoom-mask-container">
-                    <div class="splash-box">
+                    <div class="splash-box liquid-glass-card generic-glass-card" style="padding: var(--space-6); width: fit-content; max-width: 90vw; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
                         <div class="glowing-border-box">
                             <div class="intro-heading" style="color: #000;">Hi, I'm Harsh. I am a</div>
                             <div class="flip-container">
@@ -60,13 +60,9 @@
                                 <div class="flip-text" style="color: #000;">Dreamer.</div>
                             </div>
                         </div>
-                    </div>
 
-                    <p class="splash-hint scroll-zoom"
-                        style="color: #000; text-shadow: none; font-size: 15px; margin-top: var(--space-4); letter-spacing: 0.5px; opacity: 0; animation: fadeInHint 1s forwards 7.5s; text-align: center; max-width: 600px; z-index: 10;">
-                        Slide left for wisdom, right for a laugh.</p>
-
-                    <div class="splash-quote-container scroll-zoom is-visible">
+                        <!-- Swipe Track -->
+                        <p class="splash-hint" style="color: #000; font-size: 14px; margin-top: var(--space-4); margin-bottom: var(--space-2); opacity: 0.8;">Slide left for wisdom, right for a laugh.</p>
                         <div class="splash-toggle-track pos-center" id="splash-quote-toggle">
                             <span class="toggle-hole" id="toggle-hole"></span>
                             <button class="toggle-zone" data-target="left" aria-label="Philosophy Quote"></button>
@@ -76,6 +72,8 @@
                         <p class="splash-text-display" id="splash-text-display"
                             style="color: #000; text-shadow: none; z-index: 10;"></p>
                     </div>
+
+                    <!-- Removed duplicate toggle blocks here -->
 
                     <div class="scroll-indicator scroll-zoom is-visible" style="color: #000; border-color: #000;">Scroll
                         to View</div>
@@ -137,78 +135,90 @@
         </section>
 
         <!-- Detailed Landing Profile Section -->
-        <section id="landing-profile" class="landing-profile-section section-padding scroll-zoom"
-            style="min-height: 100vh; display: flex; align-items: center; position: relative; z-index: 10;">
-            <div class="container"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: center;">
-                <div class="profile-content scroll-zoom delay-1">
-                    <p class="hero-subtitle">BSc Computer Science Student</p>
-                    <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: var(--space-4);">
-                        Data Analytics &<br><span style="color: var(--accent-gold);">Cyber Security</span>
-                    </h1>
-                    <p class="profile-description"
-                        style="color: var(--text-offwhite); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-6);">
-                        I am a proactive student at the University of Westminster, actively seeking internships and
-                        graduate opportunities. My expertise bridges the gap between uncovering hidden
-                        insights and building resilient, secure computing frameworks as a prospective SOC Analyst.
-                    </p>
-
-                    <div class="profile-highlights"
-                        style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
-                        <div class="highlight-item premium-hover"
-                            style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
-                            <h4
-                                style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
-                                Data Analytics</h4>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Python, Pandas,
-                                SQL<br>Tableau, PowerBI</p>
-                        </div>
-                        <div class="highlight-item premium-hover"
-                            style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
-                            <h4
-                                style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
-                                Cyber Security (SOC)</h4>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Wireshark, Kali
-                                Linux<br>Threat Analysis & Monitoring</p>
-                        </div>
-                    </div>
-
-                    <div class="hero-actions scroll-zoom"
-                        style="display: flex; gap: var(--space-3); flex-wrap: nowrap; justify-content: flex-start; align-items: center; margin-top: var(--space-4);">
-                        <a href="#cta" class="btn btn-primary premium-hover"
-                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Connect
-                            me</a>
-                        <a href="resume.pdf" class="btn btn-primary premium-hover" target="_blank"
-                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Download
-                            Resume</a>
-                        <a href="projects.html" class="btn btn-primary premium-hover"
-                            style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">View
-                            Projects</a>
-                    </div>
-
-                    <!-- GitHub Contribution Chart -->
-                    <div class="scroll-zoom delay-3"
-                        style="background: rgba(255,255,255,0.02); padding: var(--space-2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-top: var(--space-6); width: 100%; max-width: 500px;">
-                        <h4
-                            style="color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-2); text-transform: uppercase; letter-spacing: 1px;">
-                            Github Contribution</h4>
-                        <img src="https://ghchart.rshah.org/d4af37/harshnarendra07-ai"
-                            alt="Github chart for harshnarendra07-ai" style="width: 100%; display: block;" />
-                    </div>
+        <section id="landing-profile" class="landing-profile-section scroll-zoom" style="position: relative; z-index: 10;">
+            <div class="liquid-glass-container">
+                <div class="liquid-glass-background">
+                    <div class="liquid-blob liquid-blob-1"></div>
+                    <div class="liquid-blob liquid-blob-2"></div>
+                    <div class="liquid-blob liquid-blob-3"></div>
                 </div>
+                
+                <div class="liquid-glass-card bio-glass-card container">
+                    <div class="profile-content scroll-zoom delay-1">
+                        <p class="hero-subtitle">BSc Computer Science Student</p>
+                        <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: var(--space-4);">
+                            Data Analytics &<br><span style="color: var(--accent-gold);">Cyber Security</span>
+                        </h1>
+                        <p class="profile-description"
+                            style="color: var(--text-offwhite); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-6);">
+                            I am a proactive student at the University of Westminster, actively seeking internships and
+                            graduate opportunities. My expertise bridges the gap between uncovering hidden
+                            insights and building resilient, secure computing frameworks as a prospective SOC Analyst.
+                        </p>
 
-                <div class="profile-visual scroll-zoom delay-2" style="position: relative;">
-                    <img src="images/harsh.png" alt="Harshkumar Narendra"
-                        style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); object-fit: cover; border: 1px solid var(--surface-border); display: block; margin: 0 auto; transform: rotate(-90deg);">
+                        <div class="profile-highlights"
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
+                            <div class="highlight-item premium-hover"
+                                style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
+                                <h4
+                                    style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
+                                    Data Analytics</h4>
+                                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Python, Pandas,
+                                    SQL<br>Tableau, PowerBI</p>
+                            </div>
+                            <div class="highlight-item premium-hover"
+                                style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
+                                <h4
+                                    style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
+                                    Cyber Security (SOC)</h4>
+                                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Wireshark, Kali
+                                    Linux<br>Threat Analysis & Monitoring</p>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions scroll-zoom"
+                            style="display: flex; gap: var(--space-3); flex-wrap: nowrap; justify-content: flex-start; align-items: center; margin-top: var(--space-4);">
+                            <a href="#cta" class="btn btn-primary premium-hover"
+                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Connect
+                                me</a>
+                            <a href="resume.pdf" class="btn btn-primary premium-hover" target="_blank"
+                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Download
+                                Resume</a>
+                            <a href="projects.html" class="btn btn-primary premium-hover"
+                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">View
+                                Projects</a>
+                        </div>
+
+                        <!-- GitHub Contribution Chart -->
+                        <div class="scroll-zoom delay-3"
+                            style="background: rgba(255,255,255,0.02); padding: var(--space-2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-top: var(--space-6); width: 100%; max-width: 500px;">
+                            <h4
+                                style="color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-2); text-transform: uppercase; letter-spacing: 1px;">
+                                Github Contribution</h4>
+                            <img src="https://ghchart.rshah.org/d4af37/harshnarendra07-ai"
+                                alt="Github chart for harshnarendra07-ai" style="width: 100%; display: block;" />
+                        </div>
+                    </div>
+
+                    <div class="profile-visual scroll-zoom delay-2" style="position: relative;">
+                        <img src="images/harsh.png" alt="Harshkumar Narendra"
+                            style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); object-fit: cover; border: 1px solid var(--surface-border); display: block; margin: 0 auto; transform: rotate(-90deg);">
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Interests Section (Structured & Stunning - No Canvas) -->
         <section id="interests" class="interests-section section-padding scroll-zoom"
-            style="position: relative; overflow: hidden; min-height: 60vh; display: flex; align-items: center; background: linear-gradient(135deg, var(--bg-dark) 0%, var(--surface-dark) 100%);">
+            style="position: relative; overflow: hidden; min-height: 60vh; display: flex; align-items: center;">
+            <div class="liquid-glass-container" style="padding: 0;">
+                <div class="liquid-glass-background">
+                    <div class="liquid-blob liquid-blob-1"></div>
+                    <div class="liquid-blob liquid-blob-2"></div>
+                    <div class="liquid-blob liquid-blob-3"></div>
+                </div>
 
-            <div class="container" style="position: relative; z-index: 2; width: 100%;">
+            <div class="liquid-glass-card generic-glass-card container" style="position: relative; z-index: 2; width: 100%;">
 
                 <header class="section-header scroll-zoom" style="text-align: center; margin-bottom: var(--space-8);">
                     <h2 class="section-title">Interests & Craftsmanship</h2>
@@ -243,12 +253,20 @@
                             flavor profiles and the shared experience of dining.</p>
                     </article>
                 </div>
+                </div>
             </div>
         </section>
 
         <!-- Testimonials Section -->
         <section id="testimonials" class="testimonials-section section-padding">
-            <div class="container">
+            <div class="liquid-glass-container" style="padding: 0;">
+                <div class="liquid-glass-background">
+                    <div class="liquid-blob liquid-blob-1"></div>
+                    <div class="liquid-blob liquid-blob-2"></div>
+                    <div class="liquid-blob liquid-blob-3"></div>
+                </div>
+
+            <div class="liquid-glass-card generic-glass-card container">
                 <header class="section-header scroll-zoom">
                     <h2 class="section-title">Trusted</h2>
                     <p class="section-subtitle">A reputation built on reliability and teamwork.</p>
@@ -273,13 +291,20 @@
                         </footer>
                     </article>
                 </div>
+                </div>
             </div>
         </section>
 
         <!-- CTA Section -->
         <section id="cta" class="cta-section section-padding">
-            <div class="container cta-container scroll-zoom"
-                style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start; text-align: left;">
+            <div class="liquid-glass-container" style="padding: 0;">
+                <div class="liquid-glass-background">
+                    <div class="liquid-blob liquid-blob-1"></div>
+                    <div class="liquid-blob liquid-blob-2"></div>
+                    <div class="liquid-blob liquid-blob-3"></div>
+                </div>
+            <div class="liquid-glass-card generic-glass-card container cta-container scroll-zoom cta-grid-layout"
+                style="background: transparent; border: none; box-shadow: none;">
                 <div class="cta-content">
                     <h2 class="cta-title" style="margin-bottom: var(--space-4);">Looking for an Analytical Mind?</h2>
                     <p class="cta-desc" style="max-width: 100%; margin-bottom: var(--space-6);">I am currently open for
@@ -320,6 +345,7 @@
                         <p id="form-status" style="margin-top: var(--space-2); font-size: 14px; display: none;"></p>
                     </form>
                 </div>
+            </div>
             </div>
         </section>
     </main>

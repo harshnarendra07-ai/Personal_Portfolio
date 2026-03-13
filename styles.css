@@ -590,17 +590,6 @@ ul {
 
 .splash-box {
     display: inline-block;
-    /* Changed from flex row to inline-block to wrap the glowing box */
-    /* Removed background/blur/border to ensure clean mix-blend-mode text masking */
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-[data-theme="light"] .splash-box {
-    background: transparent;
-    border: none;
-    box-shadow: none;
 }
 
 .dark-text {
@@ -1434,7 +1423,6 @@ ul {
    ========================================================================== */
 .landing-profile-section {
     position: relative;
-    background: var(--bg-dark);
     z-index: 10;
 }
 
@@ -1482,7 +1470,6 @@ ul {
    Blog Feed Section
    ========================================================================== */
 .blog-section {
-    background: var(--bg-dark);
     position: relative;
     z-index: 10;
 }
@@ -1651,4 +1638,157 @@ html.lenis body {
 
 .project-accordion-card.expanded .project-accordion-icon {
     transform: rotate(45deg);
+}
+
+/* ==========================================================================
+   Liquid Glass Bio Section Variables & Styles
+   ========================================================================== */
+.liquid-glass-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) 0;
+}
+
+.liquid-glass-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background: transparent; /* Allow underlying canvas to show through */
+}
+
+.liquid-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.liquid-blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: var(--accent-gold-dim);
+    animation: moveBlob1 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: rgba(230, 0, 43, 0.15); /* using var(--accent-rb-red) with opacity */
+    animation: moveBlob2 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.liquid-blob-3 {
+    top: 40%;
+    left: 40%;
+    width: 40vw;
+    height: 40vw;
+    background: rgba(0, 26, 51, 0.3); /* using var(--accent-rb-blue) with opacity */
+    animation: moveBlob3 22s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes moveBlob1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(20%, 20%) scale(1.1); }
+}
+
+@keyframes moveBlob2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-20%, -20%) scale(1.2); }
+}
+
+@keyframes moveBlob3 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(10%, -10%) scale(0.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .liquid-blob {
+        animation: none !important;
+        opacity: 0.3; /* static fallback */
+    }
+}
+
+/* Light mode blob tuning */
+[data-theme="light"] .liquid-blob-1 { background: rgba(179, 139, 31, 0.15); }
+[data-theme="light"] .liquid-blob-2 { background: rgba(230, 0, 43, 0.08); }
+[data-theme="light"] .liquid-blob-3 { background: rgba(0, 26, 51, 0.1); }
+
+.liquid-glass-card {
+    position: relative;
+    z-index: 10;
+    background: rgba(30, 30, 30, 0.25); /* More translucent for better glass feel */
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-top-color: rgba(255, 255, 255, 0.15); /* Stronger directional reflection */
+    border-left-color: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+[data-theme="light"] .liquid-glass-card {
+    background: rgba(255, 255, 255, 0.35); /* Soft white glass */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top-color: rgba(255, 255, 255, 0.8);
+    border-left-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.liquid-glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .liquid-glass-card:hover {
+     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.bio-glass-card {
+    max-width: 1200px;
+    padding: var(--space-8);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: center;
+}
+
+.generic-glass-card {
+    padding: var(--space-8);
+}
+
+.cta-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: start;
+    text-align: left;
+}
+
+@media (max-width: 900px) {
+    .bio-glass-card {
+        grid-template-columns: 1fr;
+        padding: var(--space-4);
+    }
+    
+    .generic-glass-card {
+        padding: var(--space-4);
+    }
+
+    .cta-grid-layout {
+        grid-template-columns: 1fr; /* Prevents overlapping on mobile */
+    }
 }
