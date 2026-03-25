@@ -214,6 +214,21 @@
             window.StringTuneContext = stringTune;
             stringTune.use(StringTune.StringMagnetic);
             stringTune.start(0);
+
+            // Bypass StringTune click interception with robust pointer math
+            let startX, startY;
+            document.querySelectorAll('.magnetic-figure').forEach((fig) => {
+                fig.addEventListener('pointerdown', (e) => {
+                    startX = e.clientX;
+                    startY = e.clientY;
+                });
+                fig.addEventListener('pointerup', (e) => {
+                    if (Math.abs(e.clientX - startX) < 10 && Math.abs(e.clientY - startY) < 10) {
+                        const modalId = fig.classList.contains('magnetic-image-1') ? 'modal-cheese' : 'modal-ai';
+                        openModal(modalId);
+                    }
+                });
+            });
         });
 
         // Project Modal Mechanics
