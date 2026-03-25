@@ -101,7 +101,8 @@
                 </header>
 
                 <div class="magnetic-w">
-                    <figure class="magnetic-figure magnetic-image-1 premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1" onclick="openModal('modal-cheese')">
+                    <figure class="magnetic-figure magnetic-image-1 premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1">
+                        <div onclick="openModal('modal-cheese');" style="position: absolute; inset: 0; z-index: 9999; cursor: pointer;"></div>
                         <img src="images/projects/cheese_data_dashboard.png" alt="Specialty Cheese Data Model" loading="lazy" />
                         <div class="project-overlay">
                             <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Data Analytics</span>
@@ -110,7 +111,8 @@
                         </div>
                     </figure>
 
-                    <figure class="magnetic-figure magnetic-image-2 premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1" onclick="openModal('modal-ai')">
+                    <figure class="magnetic-figure magnetic-image-2 premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1">
+                        <div onclick="openModal('modal-ai');" style="position: absolute; inset: 0; z-index: 9999; cursor: pointer;"></div>
                         <img src="images/projects/ai_portfolio.png" alt="AI Driven Deployed Portfolio" loading="lazy" />
                         <div class="project-overlay">
                             <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Web Architecture</span>
@@ -214,21 +216,6 @@
             window.StringTuneContext = stringTune;
             stringTune.use(StringTune.StringMagnetic);
             stringTune.start(0);
-
-            // Bypass StringTune click interception with robust pointer math
-            let startX, startY;
-            document.querySelectorAll('.magnetic-figure').forEach((fig) => {
-                fig.addEventListener('pointerdown', (e) => {
-                    startX = e.clientX;
-                    startY = e.clientY;
-                });
-                fig.addEventListener('pointerup', (e) => {
-                    if (Math.abs(e.clientX - startX) < 10 && Math.abs(e.clientY - startY) < 10) {
-                        const modalId = fig.classList.contains('magnetic-image-1') ? 'modal-cheese' : 'modal-ai';
-                        openModal(modalId);
-                    }
-                });
-            });
         });
 
         // Project Modal Mechanics
