@@ -101,7 +101,7 @@
                 </header>
 
                 <div class="magnetic-w">
-                    <figure class="magnetic-figure magnetic-image-1 premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1">
+                    <figure class="magnetic-figure magnetic-image-1 premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1" onclick="openModal('modal-cheese')">
                         <img src="images/projects/cheese_data_dashboard.png" alt="Specialty Cheese Data Model" loading="lazy" />
                         <div class="project-overlay">
                             <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Data Analytics</span>
@@ -110,7 +110,7 @@
                         </div>
                     </figure>
 
-                    <figure class="magnetic-figure magnetic-image-2 premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1">
+                    <figure class="magnetic-figure magnetic-image-2 premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1" onclick="openModal('modal-ai')">
                         <img src="images/projects/ai_portfolio.png" alt="AI Driven Deployed Portfolio" loading="lazy" />
                         <div class="project-overlay">
                             <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Web Architecture</span>
@@ -123,6 +123,62 @@
                 </div>
             </div>
         </section>
+
+        <!-- Project Interaction Modals -->
+        <div id="modal-cheese" class="project-modal">
+            <div class="modal-backdrop" onclick="closeModal('modal-cheese')"></div>
+            <div class="modal-content liquid-glass-card">
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal('modal-cheese')">&times;</button>
+                <h2 class="project-card-title" style="margin-bottom: var(--space-4); margin-top:0;">Data Model: Specialty Cheese Importation</h2>
+                <p class="section-subtitle" style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">This data model is designed for a UK company that imports specialty cheeses from France and the Netherlands. It specifically accounts for the business's main operational challenges: Euro/GBP exchange rate fluctuations and the heavy reliance of their premium cheese sales on strong UK economic growth.</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
+                    <div style="width: 100%; display: flex; flex-direction: column;">
+                        <h3 style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">1. Interactive Data Model</h3>
+                        <div style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+                        </div>
+                    </div>
+                    <div style="width: 100%; display: flex; flex-direction: column;">
+                        <h3 style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">2. Project Documentation</h3>
+                        <div style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-ai" class="project-modal">
+            <div class="modal-backdrop" onclick="closeModal('modal-ai')"></div>
+            <div class="modal-content liquid-glass-card">
+                <button class="modal-close" aria-label="Close modal" onclick="closeModal('modal-ai')">&times;</button>
+                <h2 class="project-card-title" style="margin-bottom: var(--space-4); margin-top:0;">AI Driven Deployed Portfolio</h2>
+                <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                    <div class="feature-icon icon-computing"></div>
+                    <h3 style="margin-bottom: 0;">Overview</h3>
+                </div>
+                <p class="feature-desc" style="margin-bottom: var(--space-6);">A premium, cinematic personal portfolio architected with AI-assisted workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic typewriter aesthetics.</p>
+                <div class="presentation-container" id="portfolio-presentation">
+                    <div class="presentation-slide active">
+                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">1. Inspiration & Concept</h4>
+                        <p style="line-height: 1.6; color: var(--text-offwhite);">The vision was to create a luxury, "award-winning agency" feel. Moving away from generic templates, the site utilizes a stark dark theme, perfectly contrasted with pure white entrance typography and cinematic Canvas API particle layers.</p>
+                    </div>
+                    <div class="presentation-slide">
+                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">2. Key Design Principles</h4>
+                        <p style="line-height: 1.6; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid systems map visually to analytical precision.<br><br><strong>Accessibility:</strong> Semantic HTML5 and ARIA labels ensure the interactive dashboards and custom controls remain navigable for all users.</p>
+                    </div>
+                    <div class="presentation-slide">
+                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">3. Custom Web Effects</h4>
+                        <p style="line-height: 1.6; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, displaying a sequence of CSS `@keyframes` manipulating `max-width` to create an authentic typewriter and blinking cursor effect before revealing the main layout.</p>
+                    </div>
+                    <div class="presentation-controls" style="margin-top: var(--space-6); display: flex; justify-content: space-between; align-items: center;">
+                        <button class="prev-slide btn btn-primary" onclick="changeSlide(-1)" style="border: 1px solid var(--surface-border); border-radius:4px; padding: 8px 16px;">Previous</button>
+                        <span class="slide-counter" style="color: var(--text-muted);"><span id="current-slide">1</span> / 3</span>
+                        <button class="next-slide btn btn-primary" onclick="changeSlide(1)" style="border: 1px solid var(--surface-border); border-radius:4px; padding: 8px 16px;">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="site-footer">
@@ -152,7 +208,6 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 
-    <!-- Initialize StringTune Magnetic Effect -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const stringTune = StringTune.StringTune.getInstance();
@@ -160,6 +215,35 @@
             stringTune.use(StringTune.StringMagnetic);
             stringTune.start(0);
         });
+
+        // Project Modal Mechanics
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (window.lenis) window.lenis.stop();
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+            if (window.lenis) window.lenis.start();
+        }
+
+        // Native Presentation Slider Mechanics
+        let currentSlideIndex = 0;
+        function changeSlide(direction) {
+            const slides = document.querySelectorAll('.presentation-slide');
+            const counter = document.getElementById('current-slide');
+            if (slides.length === 0) return;
+
+            slides[currentSlideIndex].classList.remove('active');
+            currentSlideIndex += direction;
+
+            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
+            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
+
+            slides[currentSlideIndex].classList.add('active');
+            counter.innerText = currentSlideIndex + 1;
+        }
     </script>
 </body>
 
