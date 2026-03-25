@@ -1794,20 +1794,107 @@ html.lenis body {
 }
 
 /* ========================================= */
-/* Magnetic StringTune Interaction           */
+/* Magnetic Interlocking Image Grid          */
 /* ========================================= */
+
+.magnetic-w {
+    display: grid;
+    grid-template-columns: repeat(28, 1fr);
+    align-items: center;
+    column-gap: var(--space-2);
+    perspective: 80rem;
+    width: 100%;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-4);
+}
+
+.magnetic-figure {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--surface-dark);
+}
+
+.magnetic-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+.magnetic-figure .project-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--space-5);
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 10%, rgba(0,0,0,0.7) 60%, transparent);
+    color: var(--text-cream);
+    z-index: 2;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+/* Default Mobile Layout (Stacked Vertical) */
+.magnetic-image-1, .magnetic-image-2 {
+    grid-column: 1 / -1;
+    margin-bottom: var(--space-6);
+}
+
+/* High-End Overlap Hover Tracking Interaction for Desktop */
 @media (min-width: 1024px) {
-    .project-accordion-card.is-visible[string="magnetic"] {
-        transform: translate(calc(var(--magnetic-x, 0) * 0.2%), calc(var(--magnetic-y, 0) * 0.2%))
-                   scale(1)
-                   rotateX(calc(var(--magnetic-y, 0) * -0.2deg))
-                   rotateY(calc(var(--magnetic-x, 0) * 0.2deg)) !important;
-        transition: transform 0.6s cubic-bezier(0.86, 0, 0.31, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    .magnetic-image-1 {
+        grid-column: 2 / 16;
+        translate: 0 -5%;
+        rotate: -3deg;
+        margin-bottom: 0;
+    }
+    .magnetic-image-2 {
+        grid-column: 14 / 28;
+        z-index: 20;
+        translate: 0 5%;
+        rotate: 3deg;
+        margin-bottom: 0;
     }
 
-    .project-accordion-card.is-visible[string="magnetic"]:hover {
-        transition: transform 0.15s cubic-bezier(0.35, 0.35, 0, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    .magnetic-figure.is-visible[string="magnetic"] {
+        transform: translate(calc(var(--magnetic-x, 0) * 0.1%), calc(var(--magnetic-y, 0) * 0.1%))
+                   scale(1)
+                   rotateX(calc(var(--magnetic-y, 0) * -0.1deg))
+                   rotateY(calc(var(--magnetic-x, 0) * 0.1deg)) !important;
+        transition: transform 0.6s cubic-bezier(0.86, 0, 0.31, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.6s ease !important;
+    }
+
+    /* Has() Hover Interaction (Target the container, push away non-hovered components) */
+    .magnetic-w:has(.magnetic-figure:hover) .magnetic-image-1 {
+        translate: -2% 5%;
+        rotate: -1deg;
+    }
+    .magnetic-w:has(.magnetic-figure:hover) .magnetic-image-2 {
+        translate: 2% -5%;
+        rotate: 1deg;
+    }
+    .magnetic-w:has(.magnetic-figure:hover) .magnetic-figure {
+        scale: 0.9;
+        transition: scale 0.5s cubic-bezier(0.35, 0.35, 0, 1), rotate 0.5s cubic-bezier(0.35, 0.35, 0, 1), translate 0.5s cubic-bezier(0.35, 0.35, 0, 1);
         z-index: 10;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        filter: brightness(0.5);
+    }
+    
+    .magnetic-w:has(.magnetic-figure:hover) .magnetic-figure:hover {
+        scale: 1.05;
+        z-index: 30;
+        filter: brightness(1);
+    }
+
+    .magnetic-figure.is-visible[string="magnetic"]:hover {
+        transition: transform 0.15s cubic-bezier(0.35, 0.35, 0, 1), box-shadow 0.3s ease !important;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
     }
 }
