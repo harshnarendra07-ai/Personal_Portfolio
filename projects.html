@@ -30,6 +30,9 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- StringTune Magnetic Effect Library -->
+    <script src="https://unpkg.com/@fiddle-digital/string-tune@1.1.50/dist/index.js"></script>
 </head>
 
 <body>
@@ -98,7 +101,7 @@
                 </header>
 
                 <!-- Featured Case Study: Excel & PPT Integration -->
-                <div class="project-accordion-card premium-hover scroll-zoom delay-1">
+                <div class="project-accordion-card premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1">
                     <div class="project-accordion-header" onclick="toggleProject(this)">
                         <h2 class="project-card-title">Data Model: Specialty Cheese Importation</h2>
                         <span class="project-accordion-icon">+</span>
@@ -144,7 +147,7 @@
                     </div>
                 </div>
 
-                <div class="project-accordion-card premium-hover scroll-zoom delay-2">
+                <div class="project-accordion-card premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1">
                     <div class="project-accordion-header" onclick="toggleProject(this)">
                         <h2 class="project-card-title">AI Driven Deployed Portfolio</h2>
                         <span class="project-accordion-icon">+</span>
@@ -223,6 +226,16 @@
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Initialize StringTune Magnetic Effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const stringTune = StringTune.StringTune.getInstance();
+            window.StringTuneContext = stringTune;
+            stringTune.use(StringTune.StringMagnetic);
+            stringTune.start(0);
+        });
+    </script>
 </body>
 
 </html>

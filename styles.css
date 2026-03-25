@@ -1792,3 +1792,22 @@ html.lenis body {
         grid-template-columns: 1fr; /* Prevents overlapping on mobile */
     }
 }
+
+/* ========================================= */
+/* Magnetic StringTune Interaction           */
+/* ========================================= */
+@media (min-width: 1024px) {
+    .project-accordion-card.is-visible[string="magnetic"] {
+        transform: translate(calc(var(--magnetic-x, 0) * 0.2%), calc(var(--magnetic-y, 0) * 0.2%))
+                   scale(1)
+                   rotateX(calc(var(--magnetic-y, 0) * -0.2deg))
+                   rotateY(calc(var(--magnetic-x, 0) * 0.2deg)) !important;
+        transition: transform 0.6s cubic-bezier(0.86, 0, 0.31, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    .project-accordion-card.is-visible[string="magnetic"]:hover {
+        transition: transform 0.15s cubic-bezier(0.35, 0.35, 0, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+        z-index: 10;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+}
