@@ -764,6 +764,7 @@ ul {
 
 .sci li {
     position: absolute;
+    right: 0; /* Anchor to the right edge */
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     transform: translateX(0) scale(0.5);
@@ -772,7 +773,8 @@ ul {
 
 .sci:hover li {
     opacity: 1;
-    transform: translateX(calc(((var(--index) - var(--count)) + 1) * 110px)) scale(1);
+    /* Index 3 is at 0px. Index 2 at -125px. Index 1 at -250px. Index 0 at -375px. 125px offset for 110px buttons = exactly 15px equal gap */
+    transform: translateX(calc(((var(--index) - var(--count)) + 1) * 125px)) scale(1);
 }
 
 .sci a {
@@ -780,7 +782,11 @@ ul {
     text-decoration: none;
     font-weight: 600;
     font-size: 14px;
-    padding: 8px 12px;
+    padding: 8px 0; /* Vertical padding only to perfectly center fixed-width text */
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 6px;
     transition: all 0.3s;

@@ -202,29 +202,63 @@
             </div>
             </div>
         </section>
+        <!-- Connect Section -->
+        <section class="section-padding scroll-zoom" style="position: relative; z-index: 10; padding-top: var(--space-8); padding-bottom: var(--space-8);">
+            <div class="liquid-glass-container" style="padding: 0;">
+                <div class="liquid-glass-background">
+                    <div class="liquid-blob liquid-blob-1"></div>
+                    <div class="liquid-blob liquid-blob-2"></div>
+                    <div class="liquid-blob liquid-blob-3"></div>
+                </div>
+                <div class="liquid-glass-card generic-glass-card container cta-container scroll-zoom cta-grid-layout"
+                    style="background: transparent; border: none; box-shadow: none;">
+                    <div class="cta-content">
+                        <h2 class="cta-title" style="margin-bottom: var(--space-4);">Looking for an Analytical Mind?</h2>
+                        <p class="cta-desc" style="max-width: 100%; margin-bottom: var(--space-6);">I am currently open for
+                            Data Analytics and System Security internships. Let's connect.</p>
+                        
+                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+                            <li><a href="https://www.linkedin.com/in/harshnarendra" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">LinkedIn</a></li>
+                            <li><a href="https://github.com/harshnarendra07-ai" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">GitHub</a></li>
+                            <li><a href="mailto:harshnarendra07@gmail.com" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">Email</a></li>
+                            <li><a href="https://instagram.com/harshnarendra" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">Instagram</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="cta-form-wrapper"
+                        style="background: var(--surface-dark); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--surface-border);">
+                        <form id="contact-form" action="https://formspree.io/f/mzdaowaa" method="POST" style="display: flex; flex-direction: column; gap: var(--space-4);">
+                            <input type="text" name="_gotcha" style="display:none" />
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                <label for="name" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Full Name</label>
+                                <input type="text" id="name" name="name" required style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);" placeholder="John Doe">
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                <label for="email" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Email Address</label>
+                                <input type="email" id="email" name="email" required style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);" placeholder="john@example.com">
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
+                                <label for="message" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Message</label>
+                                <textarea id="message" name="message" required rows="4" style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main); resize: vertical;" placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: var(--space-2); width: 100%; justify-content: center;">Send Message</button>
+                            <p id="form-status" style="margin-top: var(--space-2); font-size: 14px; display: none;"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <span class="logo">Harshkumar Narendra Portfolio<span>.</span></span>
-                <p>Digital Portfolio</p>
-            </div>
-            <div class="footer-links scroll-zoom" style="display: flex; flex-direction: column; align-items: flex-end;">
-                <ul class="sci"
-                    style="margin-top: 0; min-height: 40px; display: flex; justify-content: flex-end; gap: var(--space-4); align-items: center;">
-                    <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra"
-                            target="_blank">LinkedIn</a></li>
-                    <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai"
-                            target="_blank">GitHub</a></li>
-                    <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                    <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra"
-                            target="_blank">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Harshkumar Narendra. All rights reserved.</p>
+    <footer style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: var(--space-6) 0; margin-top: var(--space-12); background: transparent;">
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);">
+            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px;">Digital Portfolio</span>
+            <ul class="sci" style="margin: 0; min-height: 40px; display: flex; justify-content: flex-end; align-items: center;">
+                <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra" target="_blank">LinkedIn</a></li>
+                <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai" target="_blank">GitHub</a></li>
+                <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
+                <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra" target="_blank">Instagram</a></li>
+            </ul>
         </div>
     </footer>
 

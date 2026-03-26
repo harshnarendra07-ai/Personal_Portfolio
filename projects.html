@@ -30,9 +30,6 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- StringTune Magnetic Effect Library -->
-    <script src="https://unpkg.com/@fiddle-digital/string-tune@1.1.50/dist/index.js"></script>
 </head>
 
 <body>
@@ -94,159 +91,203 @@
                         <div class="liquid-blob liquid-blob-3"></div>
                     </div>
                     <div class="liquid-glass-card generic-glass-card" style="width: 100%;">
-                <header class="section-header scroll-zoom">
-                    <h1 class="section-title">Selected Projects</h1>
-                    <p class="section-subtitle">A showcase of data analytics, system security implementations, and
-                        academic pursuits.</p>
-                </header>
+                        <header class="section-header scroll-zoom">
+                            <h1 class="section-title">Selected Projects</h1>
+                            <p class="section-subtitle">A showcase of data analytics, system security implementations,
+                                and
+                                academic pursuits.</p>
+                        </header>
 
-                <div class="magnetic-w">
-                    <figure class="magnetic-figure magnetic-image-1 premium-hover scroll-zoom delay-1" string="magnetic" string-radius="800" string-strength="0.1">
-                        <div onclick="openModal('modal-cheese');" style="position: absolute; inset: 0; z-index: 9999; cursor: pointer;"></div>
-                        <img src="images/projects/cheese_data_dashboard.png" alt="Specialty Cheese Data Model" loading="lazy" />
-                        <div class="project-overlay">
-                            <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Data Analytics</span>
-                            <h3 class="project-card-title" style="margin: var(--space-1) 0; font-size: max(18px, 1.5vw); color: var(--text-cream);">Specialty Cheese Data Model</h3>
-                            <p style="color: var(--text-offwhite); font-size: max(12px, 0.85vw); line-height: 1.5; margin: 0; max-width: 90%;">An interactive financial model managing Euro/GBP fluctuations and UK culinary import economics.</p>
-                        </div>
-                    </figure>
+                        <!-- Featured Case Study: Excel & PPT Integration -->
+                        <div class="project-accordion-card premium-hover scroll-zoom delay-1">
+                            <div class="project-accordion-header" onclick="toggleProject(this)">
+                                <h2 class="project-card-title">Data Model: Specialty Cheese Importation</h2>
+                                <span class="project-accordion-icon">+</span>
+                            </div>
+                            <div class="project-accordion-content">
+                                <p class="section-subtitle"
+                                    style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">
+                                    This data model is designed for a UK company that imports specialty cheeses from
+                                    France and
+                                    the
+                                    Netherlands to supply local restaurants and delicatessens. It specifically accounts
+                                    for the
+                                    business's main operational challenges: Euro/GBP exchange rate fluctuations and the
+                                    heavy
+                                    reliance of their premium cheese sales on strong UK economic growth.
+                                </p>
 
-                    <figure class="magnetic-figure magnetic-image-2 premium-hover scroll-zoom delay-2" string="magnetic" string-radius="800" string-strength="0.1">
-                        <div onclick="openModal('modal-ai');" style="position: absolute; inset: 0; z-index: 9999; cursor: pointer;"></div>
-                        <img src="images/projects/ai_portfolio.png" alt="AI Driven Deployed Portfolio" loading="lazy" />
-                        <div class="project-overlay">
-                            <span class="project-category" style="color: var(--accent-gold); font-size: max(10px, 0.7vw); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Web Architecture</span>
-                            <h3 class="project-card-title" style="margin: var(--space-1) 0; font-size: max(18px, 1.5vw); color: var(--text-cream);">AI Driven Deployed Portfolio</h3>
-                            <p style="color: var(--text-offwhite); font-size: max(12px, 0.85vw); line-height: 1.5; margin: 0; max-width: 90%;">A cinematic, strict 8px grid personal portfolio engineered with sophisticated scroll-intercepts and generative UI assets.</p>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
+                                    <!-- Excel Dashboard -->
+                                    <div style="width: 100%; display: flex; flex-direction: column;">
+                                        <h3
+                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                            1. Interactive Data Model</h3>
+                                        <div
+                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                                            <iframe
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                                frameborder="0" scrolling="no"
+                                                src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+                                        </div>
+                                    </div>
+
+                                    <!-- PPT Presentation -->
+                                    <div style="width: 100%; display: flex; flex-direction: column;">
+                                        <h3
+                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                            2. Project Documentation</h3>
+                                        <div
+                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                                            <iframe
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                                src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"
+                                                frameborder="0"></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </figure>
-                </div>
+
+                        <div class="project-accordion-card premium-hover scroll-zoom delay-2">
+                            <div class="project-accordion-header" onclick="toggleProject(this)">
+                                <h2 class="project-card-title">AI Driven Deployed Portfolio</h2>
+                                <span class="project-accordion-icon">+</span>
+                            </div>
+                            <div class="project-accordion-content">
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                                    <div class="feature-icon icon-computing"></div>
+                                    <h3 style="margin-bottom: 0;">Overview</h3>
+                                </div>
+                                <p class="feature-desc" style="margin-bottom: var(--space-6);">A premium, cinematic
+                                    personal
+                                    portfolio architected with AI-assisted
+                                    workflows. Emphasizes modern design principles, scroll-intercepting animations, and
+                                    dynamic
+                                    typewriter aesthetics.</p>
+
+                                <!-- Native Web Presentation Slider -->
+                                <div class="presentation-container" id="portfolio-presentation">
+                                    <div class="presentation-slide active">
+                                        <h4>1. Inspiration & Concept</h4>
+                                        <p>The vision was to create a luxury, "award-winning agency" feel. Moving away
+                                            from
+                                            generic templates, the site utilizes a stark dark theme, perfectly
+                                            contrasted with
+                                            pure white entrance typography and cinematic Canvas API particle layers.</p>
+                                    </div>
+                                    <div class="presentation-slide">
+                                        <h4>2. Key Design Principles</h4>
+                                        <p><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid
+                                            systems map
+                                            visually to analytical precision.<br><strong>Accessibility:</strong>
+                                            Semantic HTML5
+                                            and ARIA labels ensure the interactive dashboards and custom controls remain
+                                            navigable for all users.</p>
+                                    </div>
+                                    <div class="presentation-slide">
+                                        <h4>3. Custom Web Effects</h4>
+                                        <p>Features a custom JavaScript scroll-interceptor that locks the viewport upon
+                                            entry,
+                                            displaying a sequence of CSS `@keyframes` manipulating `max-width` to create
+                                            an
+                                            authentic typewriter and blinking cursor effect before revealing the main
+                                            layout.
+                                        </p>
+                                    </div>
+
+                                    <div class="presentation-controls">
+                                        <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
+                                        <span class="slide-counter"><span id="current-slide">1</span> / 3</span>
+                                        <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Case Study: Dashboard & Report -->
+                        <div class="project-accordion-card premium-hover scroll-zoom delay-3">
+                            <div class="project-accordion-header" onclick="toggleProject(this)">
+                                <h2 class="project-card-title">Analytics Dashboard & Report</h2>
+                                <span class="project-accordion-icon">+</span>
+                            </div>
+                            <div class="project-accordion-content">
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
+                                    <!-- Interactive Dashboard -->
+                                    <div style="width: 100%; display: flex; flex-direction: column;">
+                                        <h3
+                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                            1. Interactive Dashboard</h3>
+                                        <div
+                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border); background: rgba(255, 255, 255, 0.02);">
+                                            <div
+                                                style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-6);">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                                    style="color: var(--accent-gold); margin-bottom: var(--space-4);">
+                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                                </svg>
+                                                <h4
+                                                    style="color: var(--text-cream); margin-bottom: var(--space-2); font-size: 18px;">
+                                                    Customer Behaviour Dashboard</h4>
+                                                <p
+                                                    style="color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-6); max-width: 250px; line-height: 1.5;">
+                                                    This interactive Power BI dashboard (.pbix) requires Power BI
+                                                    Desktop to run. Download to explore the file locally.
+                                                </p>
+                                                <a href="https://1drv.ms/u/c/d13601dfe1b270ff/IQTe0o_hCLhxTbGRlRDvDA1JAVWQyZDhoQi6uGiPtGJZ9mM"
+                                                    target="_blank" class="btn btn-primary premium-hover"
+                                                    style="text-decoration: none; padding: 10px 24px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
+                                                    Download .pbix File
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Detailed Report -->
+                                    <div style="width: 100%; display: flex; flex-direction: column;">
+                                        <h3
+                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
+                                            2. Detailed Report</h3>
+                                        <div
+                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
+                                            <iframe
+                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+                                                src="https://1drv.ms/p/c/d13601dfe1b270ff/IQSTqu4QUmf5RIac2jD5tnujAaiIwICgRmqqYuUdmcNguMU?wdAr=1.7777777777777777"
+                                                frameborder="0" title="PowerPoint Viewer">This is an embedded <a
+                                                    target="_blank" href="https://office.com">Microsoft Office</a>
+                                                presentation, powered by <a target="_blank"
+                                                    href="https://office.com/webapps">Office</a>.</iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Project Interaction Modals -->
-        <div id="modal-cheese" class="project-modal">
-            <div class="modal-backdrop" onclick="closeModal('modal-cheese')"></div>
-            <div class="modal-content liquid-glass-card">
-                <button class="modal-close" aria-label="Close modal" onclick="closeModal('modal-cheese')">&times;</button>
-                <h2 class="project-card-title" style="margin-bottom: var(--space-4); margin-top:0;">Data Model: Specialty Cheese Importation</h2>
-                <p class="section-subtitle" style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">This data model is designed for a UK company that imports specialty cheeses from France and the Netherlands. It specifically accounts for the business's main operational challenges: Euro/GBP exchange rate fluctuations and the heavy reliance of their premium cheese sales on strong UK economic growth.</p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
-                    <div style="width: 100%; display: flex; flex-direction: column;">
-                        <h3 style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">1. Interactive Data Model</h3>
-                        <div style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" scrolling="no" src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
-                        </div>
-                    </div>
-                    <div style="width: 100%; display: flex; flex-direction: column;">
-                        <h3 style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">2. Project Documentation</h3>
-                        <div style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777" frameborder="0"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="modal-ai" class="project-modal">
-            <div class="modal-backdrop" onclick="closeModal('modal-ai')"></div>
-            <div class="modal-content liquid-glass-card">
-                <button class="modal-close" aria-label="Close modal" onclick="closeModal('modal-ai')">&times;</button>
-                <h2 class="project-card-title" style="margin-bottom: var(--space-4); margin-top:0;">AI Driven Deployed Portfolio</h2>
-                <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                    <div class="feature-icon icon-computing"></div>
-                    <h3 style="margin-bottom: 0;">Overview</h3>
-                </div>
-                <p class="feature-desc" style="margin-bottom: var(--space-6);">A premium, cinematic personal portfolio architected with AI-assisted workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic typewriter aesthetics.</p>
-                <div class="presentation-container" id="portfolio-presentation">
-                    <div class="presentation-slide active">
-                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">1. Inspiration & Concept</h4>
-                        <p style="line-height: 1.6; color: var(--text-offwhite);">The vision was to create a luxury, "award-winning agency" feel. Moving away from generic templates, the site utilizes a stark dark theme, perfectly contrasted with pure white entrance typography and cinematic Canvas API particle layers.</p>
-                    </div>
-                    <div class="presentation-slide">
-                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">2. Key Design Principles</h4>
-                        <p style="line-height: 1.6; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid systems map visually to analytical precision.<br><br><strong>Accessibility:</strong> Semantic HTML5 and ARIA labels ensure the interactive dashboards and custom controls remain navigable for all users.</p>
-                    </div>
-                    <div class="presentation-slide">
-                        <h4 style="margin-bottom: var(--space-2); color: var(--accent-gold);">3. Custom Web Effects</h4>
-                        <p style="line-height: 1.6; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, displaying a sequence of CSS `@keyframes` manipulating `max-width` to create an authentic typewriter and blinking cursor effect before revealing the main layout.</p>
-                    </div>
-                    <div class="presentation-controls" style="margin-top: var(--space-6); display: flex; justify-content: space-between; align-items: center;">
-                        <button class="prev-slide btn btn-primary" onclick="changeSlide(-1)" style="border: 1px solid var(--surface-border); border-radius:4px; padding: 8px 16px;">Previous</button>
-                        <span class="slide-counter" style="color: var(--text-muted);"><span id="current-slide">1</span> / 3</span>
-                        <button class="next-slide btn btn-primary" onclick="changeSlide(1)" style="border: 1px solid var(--surface-border); border-radius:4px; padding: 8px 16px;">Next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <span class="logo">Harshkumar Narendra Portfolio<span>.</span></span>
-                <p>Digital Portfolio</p>
-            </div>
-            <div class="footer-links scroll-zoom" style="display: flex; flex-direction: column; align-items: flex-end;">
-                <ul class="sci"
-                    style="margin-top: 0; min-height: 40px; display: flex; justify-content: flex-end; gap: var(--space-4); align-items: center;">
-                    <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra"
-                            target="_blank">LinkedIn</a></li>
-                    <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai"
-                            target="_blank">GitHub</a></li>
-                    <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                    <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra"
-                            target="_blank">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Harshkumar Narendra. All rights reserved.</p>
+    <footer style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: var(--space-6) 0; margin-top: var(--space-12); background: transparent;">
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);">
+            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px;">Digital Portfolio</span>
+            <ul class="sci" style="margin: 0; min-height: 40px; display: flex; justify-content: flex-end; align-items: center;">
+                <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra" target="_blank">LinkedIn</a></li>
+                <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai" target="_blank">GitHub</a></li>
+                <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
+                <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra" target="_blank">Instagram</a></li>
+            </ul>
         </div>
     </footer>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="script.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const stringTune = StringTune.StringTune.getInstance();
-            window.StringTuneContext = stringTune;
-            stringTune.use(StringTune.StringMagnetic);
-            stringTune.start(0);
-        });
-
-        // Project Modal Mechanics
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (window.lenis) window.lenis.stop();
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            document.body.style.overflow = '';
-            if (window.lenis) window.lenis.start();
-        }
-
-        // Native Presentation Slider Mechanics
-        let currentSlideIndex = 0;
-        function changeSlide(direction) {
-            const slides = document.querySelectorAll('.presentation-slide');
-            const counter = document.getElementById('current-slide');
-            if (slides.length === 0) return;
-
-            slides[currentSlideIndex].classList.remove('active');
-            currentSlideIndex += direction;
-
-            if (currentSlideIndex >= slides.length) currentSlideIndex = 0;
-            if (currentSlideIndex < 0) currentSlideIndex = slides.length - 1;
-
-            slides[currentSlideIndex].classList.add('active');
-            counter.innerText = currentSlideIndex + 1;
-        }
-    </script>
 </body>
 
 </html>
