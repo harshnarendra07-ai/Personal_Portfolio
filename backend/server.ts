@@ -48,7 +48,29 @@ app.get('/api/projects', async (req: Request, res: Response) => {
     }
 });
 
-
+// 3. Contact Form Proxy
+app.post('/api/contact', async (req: Request, res: Response) => {
+    try {
+        // Native fetch is available in Node 18+
+        const fetchResponse = await fetch('https://formspree.io/f/mzdaowaa', {
+            method: 'POST',
+            body: JSON.stringify(req.body),
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }
+        });
+        const result = await fetchResponse.json();
+        if (fetchResponse.ok) {
+            res.status(200).json(result);
+        } else {
+            res.status(fetchResponse.status).json(result);
+        }
+    } catch (error) {
+        console.error('Error proxying contact form:', error);
+        res.status(500).json({ error: 'Failed to send message' });
+    }
+});
 
 // === Start Server ===
 app.listen(PORT, () => {

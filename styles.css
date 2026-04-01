@@ -1961,3 +1961,381 @@ html.lenis body {
     color: var(--accent-gold);
     transform: scale(1.1);
 }
+
+/* ========================================= */
+/* 3D Glassmorphic Project Stack             */
+/* ========================================= */
+.projects-stack-container {
+    perspective: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    transform-style: preserve-3d;
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-12);
+    pointer-events: none; /* Let clicks pass through the z=0 bounding box */
+}
+
+.stack-card {
+    position: absolute;
+    width: 340px;
+    height: 240px;
+    background: linear-gradient(135deg, rgba(130, 80, 230, 0.4), rgba(80, 40, 180, 0.2));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    /* Diagonal cascade: bottom-left (01) to top-right (05), matching reference */
+    transform: rotateY(-18deg) rotateX(8deg) translateZ(calc(var(--i) * -60px)) translateY(calc(var(--i) * -70px + 140px)) translateX(calc(var(--i) * 140px - 260px));
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    overflow: hidden;
+    z-index: calc(10 - var(--i));
+    pointer-events: auto; /* Re-enable pointer events on the actual 3D planes */
+}
+
+[data-theme="light"] .stack-card {
+    background: linear-gradient(135deg, rgba(160, 100, 255, 0.6), rgba(80, 40, 180, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.stack-card:hover {
+    transform: rotateY(-14deg) rotateX(5deg) translateZ(calc(var(--i) * -60px + 30px)) translateY(calc(var(--i) * -70px + 130px)) translateX(calc(var(--i) * 140px - 260px));
+    filter: brightness(1.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    z-index: 50; /* Bring hovered card to the absolute front so it is clickable */
+}
+
+.stack-card.active-modal {
+    position: fixed;
+    top: 5vh;
+    left: 2.5vw;
+    width: 95vw;
+    height: 90vh;
+    transform: none !important; 
+    z-index: 100000 !important; /* Total priority */
+    cursor: default;
+    background: linear-gradient(135deg, rgba(20, 0, 60, 0.9), rgba(10, 0, 30, 0.85));
+    box-shadow: 0 50px 150px rgba(0,0,0,1);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    overflow: hidden;
+    padding: 0;
+}
+
+.stack-card.active-modal::-webkit-scrollbar {
+    width: 8px;
+}
+.stack-card.active-modal::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+[data-theme="light"] .stack-card.active-modal {
+    background: linear-gradient(135deg, rgba(80, 20, 150, 0.95), rgba(40, 0, 80, 0.9));
+}
+
+.card-content-preview {
+    padding: var(--space-8); /* Increased padding to prevent edge clipping */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.stack-card.active-modal .card-content-preview {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.card-number {
+    position: absolute;
+    bottom: var(--space-6);
+    right: var(--space-6);
+    font-size: 72px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(255,255,255,0.9);
+}
+
+.card-cat-title {
+    font-size: 32px;
+    font-family: inherit;
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--text-cream);
+    margin-bottom: var(--space-2);
+}
+
+.card-content-preview p {
+    color: var(--text-offwhite);
+    font-size: 13px;
+    letter-spacing: 0px;
+    text-transform: none;
+    max-width: 60%;
+}
+
+.card-content-detailed {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+    transition: opacity 0.5s ease;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Use internal dashboard scroll instead */
+}
+
+/* Modal Dashboard Layout */
+.modal-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    color: var(--text-base);
+    padding-top: 0; /* Reset top padding if using fixed top 5vh */
+}
+
+.modal-dashboard-header {
+    flex-shrink: 0;
+    padding: var(--space-4) var(--space-8);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+
+.modal-header-left h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    font-family: var(--font-heading);
+    color: var(--text-cream);
+}
+
+.modal-header-left p {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    margin: 4px 0 0 0;
+}
+
+.modal-dashboard-body {
+    flex-grow: 1;
+    display: flex;
+    overflow: hidden; /* Outer container doesn't scroll */
+}
+
+.modal-sidebar-area {
+    width: 320px;
+    flex-shrink: 0;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: var(--space-8);
+    overflow-y: auto;
+    background: rgba(255,255,255,0.02);
+}
+
+.modal-main-content-area {
+    flex-grow: 1;
+    padding: var(--space-6);
+    overflow-y: auto;
+    background: rgba(0,0,0,0.1);
+}
+
+.sidebar-section {
+    margin-bottom: var(--space-8);
+}
+
+.sidebar-section h3 {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sidebar-section h3::before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background: var(--accent-gold);
+}
+
+.sidebar-section p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-offwhite);
+}
+
+.viewer-frame-container {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    height: calc(90vh - 120px);
+    width: 100%;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.viewer-frame-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 1100px) {
+    .modal-dashboard-body {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .modal-sidebar-area {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+}
+
+.back-to-stack-btn {
+    position: relative;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    margin: 0 0 var(--space-8) 0;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid var(--text-cream);
+    background: transparent;
+    color: var(--text-cream);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    z-index: 5;
+}
+
+.back-to-stack-btn::before,
+.back-to-stack-btn::after {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px; bottom: -1px;
+    border-radius: 100px;
+    border: 1px solid var(--accent-gold);
+    opacity: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.back-to-stack-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+.back-to-stack-btn:hover::before {
+    animation: neonPulse 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+.back-to-stack-btn:hover::after {
+    animation: neonPulse 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) infinite 0.75s;
+}
+
+
+.stack-card.active-modal .card-content-detailed {
+    display: block;
+    animation: fadeInDetailed 0.6s 0.4s forwards;
+}
+
+@keyframes fadeInDetailed {
+    to {
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.close-card-btn {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-6);
+    background: none;
+    border: none;
+    color: var(--text-offwhite);
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+}
+
+.close-card-btn:hover {
+    color: var(--accent-gold);
+    transform: scale(1.1) rotate(90deg);
+}
+
+.card-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 9998; /* Just below the modal (9999) */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+.card-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Mobile responsive for stack */
+@media (max-width: 900px) {
+    .projects-stack-container {
+        perspective: none;
+        flex-direction: column;
+        gap: var(--space-6);
+        min-height: auto;
+    }
+    
+    .stack-card {
+        position: relative;
+        transform: none !important;
+        width: 100%;
+        height: auto;
+        min-height: 250px;
+        z-index: 1 !important;
+    }
+    
+    .stack-card:hover {
+        transform: translateY(-5px) !important;
+    }
+    
+    .stack-card.active-modal {
+        position: fixed;
+        top: 5vh; left: 5vw;
+        width: 90vw;
+        height: 90vh;
+        transform: none !important;
+        z-index: 100 !important;
+    }
+}

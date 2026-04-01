@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: *; connect-src 'self' http://localhost:3000 https://your-production-backend.com; frame-src *;">
     <title>Projects | Harshkumar Narendra</title>
     <meta name="description"
         content="Selected projects by Harshkumar Narendra, specializing in Data Analytics and System Security.">
@@ -35,7 +36,7 @@
 <body>
     <header class="site-header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">Harshkumar Narendra Portfolio<span>.</span></a>
+            <a href="index.html" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra Portfolio</span><span>.</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html" style="color: var(--text-cream);">Projects</a></li>
@@ -75,196 +76,251 @@
         <section class="section-padding scroll-zoom"
             style="padding-top: calc(var(--space-16) + var(--space-8)); position: relative; min-height: 100vh;">
             <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;">
-                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%;">
-                    <canvas id="projects-bg-canvas" class="hero-canvas"
-                        style="position: absolute; left: 0; width: 100%; height: 100%;"></canvas>
-                    <div class="hero-overlay"
-                        style="position: absolute; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(7,7,7,1), rgba(7,7,7,0.4), rgba(7,7,7,1));">
-                    </div>
+                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%; background: #070707;">
                 </div>
             </div>
             <div class="container" style="position: relative; z-index: 2;">
-                <div class="liquid-glass-container" style="padding: 0;">
-                    <div class="liquid-glass-background" style="background: transparent;">
-                        <div class="liquid-blob liquid-blob-1"></div>
-                        <div class="liquid-blob liquid-blob-2"></div>
-                        <div class="liquid-blob liquid-blob-3"></div>
+                <div class="projects-stack-container" id="projects-stack">
+                    <div class="card-modal-overlay" id="modal-overlay" onclick="closeProjectModal()"></div>
+
+                    <!-- Project 1 -->
+                    <div class="stack-card" style="--i: 0;" data-index="0" onclick="openProjectModal(this)">
+                        <div class="card-content-preview">
+                            <div class="card-number">01</div>
+                            <h2 class="card-cat-title">Data Analytics</h2>
+                            <p>Specialty Cheese Importation</p>
+                        </div>
+                        <div class="card-content-detailed">
+                            <div class="modal-dashboard-container">
+                                <header class="modal-dashboard-header">
+                                    <div class="modal-header-left">
+                                        <h2>Data Analytics Project</h2>
+                                        <p>Interactive Data Insights & Strategy</p>
+                                    </div>
+                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
+                                </header>
+                                <div class="modal-dashboard-body">
+                                    <aside class="modal-sidebar-area">
+                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                            Go Back to Stack
+                                        </button>
+                                        <div class="sidebar-section">
+                                            <h3>Project Overview</h3>
+                                            <p>This comprehensive data model represents a strategic supply chain analysis for a UK boutique cheese importer. The project maps financial risks and operational logistics across European borders.</p>
+                                        </div>
+                                        <div class="sidebar-section">
+                                            <h3>Analytical Tools</h3>
+                                            <p>• Microsoft Excel (Power Query)<br>• Advanced DAX Modeling<br>• Dynamic FX Rate Tracking<br>• Supply Chain Logistics API</p>
+                                        </div>
+                                    </aside>
+                                    <main class="modal-main-content-area">
+                                        <div style="margin-bottom: var(--space-8);">
+                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 1px;">01. Live Interactive Data Model</h3>
+                                            <div class="viewer-frame-container">
+                                                <iframe src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 1px;">02. Strategy Presentation</h3>
+                                            <div class="viewer-frame-container">
+                                                <iframe src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"></iframe>
+                                            </div>
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="liquid-glass-card generic-glass-card" style="width: 100%;">
-                        <header class="section-header scroll-zoom">
-                            <h1 class="section-title">Selected Projects</h1>
-                            <p class="section-subtitle">A showcase of data analytics, system security implementations,
-                                and
-                                academic pursuits.</p>
-                        </header>
 
-                        <!-- Featured Case Study: Excel & PPT Integration -->
-                        <div class="project-accordion-card premium-hover scroll-zoom delay-1">
-                            <div class="project-accordion-header" onclick="toggleProject(this)">
-                                <h2 class="project-card-title">Data Model: Specialty Cheese Importation</h2>
-                                <span class="project-accordion-icon">+</span>
-                            </div>
-                            <div class="project-accordion-content">
-                                <p class="section-subtitle"
-                                    style="margin-bottom: var(--space-6); color: var(--text-offwhite); max-width: 100%; line-height: 1.6;">
-                                    This data model is designed for a UK company that imports specialty cheeses from
-                                    France and
-                                    the
-                                    Netherlands to supply local restaurants and delicatessens. It specifically accounts
-                                    for the
-                                    business's main operational challenges: Euro/GBP exchange rate fluctuations and the
-                                    heavy
-                                    reliance of their premium cheese sales on strong UK economic growth.
-                                </p>
-
-                                <div
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
-                                    <!-- Excel Dashboard -->
-                                    <div style="width: 100%; display: flex; flex-direction: column;">
-                                        <h3
-                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                            1. Interactive Data Model</h3>
-                                        <div
-                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                                            <iframe
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                                frameborder="0" scrolling="no"
-                                                src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
-                                        </div>
+                    <!-- Project 2 -->
+                    <div class="stack-card" style="--i: 1;" data-index="1" onclick="openProjectModal(this)">
+                        <div class="card-content-preview">
+                            <div class="card-number">02</div>
+                            <h2 class="card-cat-title">Web Engineering</h2>
+                            <p>AI Driven Portfolio</p>
+                        </div>
+                        <div class="card-content-detailed">
+                            <div class="modal-dashboard-container">
+                                <header class="modal-dashboard-header">
+                                    <div class="modal-header-left">
+                                        <h2>AI Driven Web Portfolio</h2>
+                                        <p>Cinematic Experience & Architecture</p>
                                     </div>
-
-                                    <!-- PPT Presentation -->
-                                    <div style="width: 100%; display: flex; flex-direction: column;">
-                                        <h3
-                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                            2. Project Documentation</h3>
-                                        <div
-                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                                            <iframe
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                                src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"
-                                                frameborder="0"></iframe>
+                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
+                                </header>
+                                <div class="modal-dashboard-body">
+                                    <aside class="modal-sidebar-area">
+                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                            Go Back to Stack
+                                        </button>
+                                        <div class="sidebar-section">
+                                            <h3>Project Overview</h3>
+                                            <p>A premium, cinematic personal portfolio architected with AI-assisted workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic typewriter aesthetics.</p>
                                         </div>
-                                    </div>
+                                        <div class="sidebar-section">
+                                            <h3>Core Stack</h3>
+                                            <p>• HTML5 / CSS3 / Vanilla JS<br>• Lenis (Smooth Scroll)<br>• Canvas API Particles<br>• Node.js & Express Backend</p>
+                                        </div>
+                                    </aside>
+                                    <main class="modal-main-content-area">
+                                        <div class="presentation-container" id="portfolio-presentation" style="background: rgba(255,255,255,0.03); padding: var(--space-8); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                                            <div class="presentation-slide active">
+                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">1. Inspiration & Concept</h3>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">The vision was to create a luxury, "award-winning agency" feel. Moving away from generic templates, the site utilizes a stark dark theme, perfectly contrasted with pure white entrance typography and cinematic Canvas API particle layers.</p>
+                                            </div>
+                                            <div class="presentation-slide">
+                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">2. Key Design Principles</h3>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid systems map visually to analytical precision.<br><strong>Accessibility:</strong> Semantic HTML5 and ARIA labels ensure the interactive dashboards and custom controls remain navigable for all users.</p>
+                                            </div>
+                                            <div class="presentation-slide">
+                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">3. Custom Web Effects</h3>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, displaying a sequence of CSS `@keyframes` manipulating `max-width` to create an authentic typewriter and blinking cursor effect before revealing the main layout.</p>
+                                            </div>
+                                            <div class="presentation-controls" style="margin-top: var(--space-8); border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-6);">
+                                                <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
+                                                <span class="slide-counter"><span id="current-slide">1</span> / 3</span>
+                                                <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
+                                            </div>
+                                        </div>
+                                    </main>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="project-accordion-card premium-hover scroll-zoom delay-2">
-                            <div class="project-accordion-header" onclick="toggleProject(this)">
-                                <h2 class="project-card-title">AI Driven Deployed Portfolio</h2>
-                                <span class="project-accordion-icon">+</span>
-                            </div>
-                            <div class="project-accordion-content">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-                                    <div class="feature-icon icon-computing"></div>
-                                    <h3 style="margin-bottom: 0;">Overview</h3>
-                                </div>
-                                <p class="feature-desc" style="margin-bottom: var(--space-6);">A premium, cinematic
-                                    personal
-                                    portfolio architected with AI-assisted
-                                    workflows. Emphasizes modern design principles, scroll-intercepting animations, and
-                                    dynamic
-                                    typewriter aesthetics.</p>
-
-                                <!-- Native Web Presentation Slider -->
-                                <div class="presentation-container" id="portfolio-presentation">
-                                    <div class="presentation-slide active">
-                                        <h4>1. Inspiration & Concept</h4>
-                                        <p>The vision was to create a luxury, "award-winning agency" feel. Moving away
-                                            from
-                                            generic templates, the site utilizes a stark dark theme, perfectly
-                                            contrasted with
-                                            pure white entrance typography and cinematic Canvas API particle layers.</p>
-                                    </div>
-                                    <div class="presentation-slide">
-                                        <h4>2. Key Design Principles</h4>
-                                        <p><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid
-                                            systems map
-                                            visually to analytical precision.<br><strong>Accessibility:</strong>
-                                            Semantic HTML5
-                                            and ARIA labels ensure the interactive dashboards and custom controls remain
-                                            navigable for all users.</p>
-                                    </div>
-                                    <div class="presentation-slide">
-                                        <h4>3. Custom Web Effects</h4>
-                                        <p>Features a custom JavaScript scroll-interceptor that locks the viewport upon
-                                            entry,
-                                            displaying a sequence of CSS `@keyframes` manipulating `max-width` to create
-                                            an
-                                            authentic typewriter and blinking cursor effect before revealing the main
-                                            layout.
-                                        </p>
-                                    </div>
-
-                                    <div class="presentation-controls">
-                                        <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
-                                        <span class="slide-counter"><span id="current-slide">1</span> / 3</span>
-                                        <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Project 3 -->
+                    <div class="stack-card" style="--i: 2;" data-index="2" onclick="openProjectModal(this)">
+                        <div class="card-content-preview">
+                            <div class="card-number">03</div>
+                            <h2 class="card-cat-title">System Insights</h2>
+                            <p>Analytics Dashboard</p>
                         </div>
-
-                        <!-- Featured Case Study: Dashboard & Report -->
-                        <div class="project-accordion-card premium-hover scroll-zoom delay-3">
-                            <div class="project-accordion-header" onclick="toggleProject(this)">
-                                <h2 class="project-card-title">Analytics Dashboard & Report</h2>
-                                <span class="project-accordion-icon">+</span>
-                            </div>
-                            <div class="project-accordion-content">
-                                <div
-                                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6); align-items: start;">
-                                    <!-- Interactive Dashboard -->
-                                    <div style="width: 100%; display: flex; flex-direction: column;">
-                                        <h3
-                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                            1. Interactive Dashboard</h3>
-                                        <div
-                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border); background: rgba(255, 255, 255, 0.02);">
-                                            <div
-                                                style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-6);">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                                                    style="color: var(--accent-gold); margin-bottom: var(--space-4);">
+                        <div class="card-content-detailed">
+                            <div class="modal-dashboard-container">
+                                <header class="modal-dashboard-header">
+                                    <div class="modal-header-left">
+                                        <h2>System Insights Dashboard</h2>
+                                        <p>Power BI Analytics & Data Visualisation</p>
+                                    </div>
+                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
+                                                           <div class="modal-dashboard-body">
+                                    <aside class="modal-sidebar-area">
+                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                            Go Back to Stack
+                                        </button>
+                                        <div class="sidebar-section">
+                                            <h3>Project Overview</h3>
+                                            <p>A high-performance Power BI dashboard designed for real-time monitoring of customer behavioral trends and system health metrics.</p>
+                                        </div>
+                                        <div class="sidebar-section">
+                                            <h3>Capabilities</h3>
+                                            <p>• Advanced Data Modeling<br>• Real-time Trend Analysis<br>• Automated ETL Pipelines<br>• Power BI Service Integration</p>
+                                        </div>
+                                        <div class="sidebar-section">
+                                            <h3>Action Required</h3>
+                                            <p>This interactive Power BI dashboard (.pbix) requires Power BI Desktop to run. Download the source file to explore the data locally.</p>
+                                            <a href="https://1drv.ms/u/c/d13601dfe1b270ff/IQTe0o_hCLhxTbGRlRDvDA1JAVWQyZDhoQi6uGiPtGJZ9mM" target="_blank" class="btn btn-primary premium-hover" style="text-decoration: none; padding: 12px 24px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; margin-top: var(--space-4); width: 100%; justify-content: center;">
+                                                Download .pbix
+                                            </a>
+                                        </div>
+                                    </aside>
+                                    <main class="modal-main-content-area">
+                                        <div style="margin-bottom: var(--space-8);">
+                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase;">01. Customer Behaviour Dashboard</h3>
+                                            <div class="viewer-frame-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-10);">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold); margin-bottom: var(--space-4);">
                                                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                                     <polyline points="7 10 12 15 17 10"></polyline>
                                                     <line x1="12" y1="15" x2="12" y2="3"></line>
                                                 </svg>
-                                                <h4
-                                                    style="color: var(--text-cream); margin-bottom: var(--space-2); font-size: 18px;">
-                                                    Customer Behaviour Dashboard</h4>
-                                                <p
-                                                    style="color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-6); max-width: 250px; line-height: 1.5;">
-                                                    This interactive Power BI dashboard (.pbix) requires Power BI
-                                                    Desktop to run. Download to explore the file locally.
-                                                </p>
-                                                <a href="https://1drv.ms/u/c/d13601dfe1b270ff/IQTe0o_hCLhxTbGRlRDvDA1JAVWQyZDhoQi6uGiPtGJZ9mM"
-                                                    target="_blank" class="btn btn-primary premium-hover"
-                                                    style="text-decoration: none; padding: 10px 24px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px;">
-                                                    Download .pbix File
-                                                </a>
+                                                <h4 style="color: var(--text-cream); margin-bottom: var(--space-2); font-size: 24px;">Native Power BI File</h4>
+                                                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: var(--space-6); max-width: 400px; line-height: 1.5;">Direct preview is restricted for .pbix files. Please use the download link in the sidebar.</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- Detailed Report -->
-                                    <div style="width: 100%; display: flex; flex-direction: column;">
-                                        <h3
-                                            style="font-family: var(--font-main); font-weight: 600; margin-bottom: var(--space-3); color: var(--accent-gold); font-size: 16px; letter-spacing: 1px; text-transform: uppercase;">
-                                            2. Detailed Report</h3>
-                                        <div
-                                            style="position: relative; width: 100%; padding-bottom: 75%; overflow: hidden; border-radius: var(--radius-md); border: 1px solid var(--surface-border);">
-                                            <iframe
-                                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-                                                src="https://1drv.ms/p/c/d13601dfe1b270ff/IQSTqu4QUmf5RIac2jD5tnujAaiIwICgRmqqYuUdmcNguMU?wdAr=1.7777777777777777"
-                                                frameborder="0" title="PowerPoint Viewer">This is an embedded <a
-                                                    target="_blank" href="https://office.com">Microsoft Office</a>
-                                                presentation, powered by <a target="_blank"
-                                                    href="https://office.com/webapps">Office</a>.</iframe>
+                                        <div>
+                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase;">02. Detailed Analytics Report</h3>
+                                            <div class="viewer-frame-container">
+                                                <iframe src="https://1drv.ms/p/c/d13601dfe1b270ff/IQSTqu4QUmf5RIac2jD5tnujAaiIwICgRmqqYuUdmcNguMU?wdAr=1.7777777777777777"></iframe>
+                                            </div>
                                         </div>
+                                    </main>
+                                </div>                  </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 (Mock) -->
+                    <div class="stack-card" style="--i: 3;" data-index="3" onclick="openProjectModal(this)">
+                        <div class="card-content-preview">
+                            <div class="card-number">04</div>
+                            <h2 class="card-cat-title">Product<br>Design</h2>
+                            <p>Crafting experiences that inspire every day</p>
+                        </div>
+                        <div class="card-content-detailed">
+                            <div class="modal-dashboard-container">
+                                <header class="modal-dashboard-header">
+                                    <div class="modal-header-left">
+                                        <h2>Product Design Showcase</h2>
+                                        <p>Coming Soon</p>
                                     </div>
+                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
+                                </header>
+                                <div class="modal-dashboard-body">
+                                    <aside class="modal-sidebar-area">
+                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                            Go Back to Stack
+                                        </button>
+                                        <div class="sidebar-section">
+                                            <h3>Status</h3>
+                                            <p>This project dashboard is currently under development. Stay tuned for future insights!</p>
+                                        </div>
+                                    </aside>
+                                    <main class="modal-main-content-area">
+                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
+                                            Module Loading...
+                                        </div>
+                                    </main>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 (Mock) -->
+                    <div class="stack-card" style="--i: 4;" data-index="4" onclick="openProjectModal(this)">
+                        <div class="card-content-preview">
+                            <div class="card-number">05</div>
+                            <h2 class="card-cat-title">Industrial<br>Design</h2>
+                            <p>Where physical engineering meets modern aesthetics</p>
+                        </div>
+                        <div class="card-content-detailed">
+                            <div class="modal-dashboard-container">
+                                <header class="modal-dashboard-header">
+                                    <div class="modal-header-left">
+                                        <h2>Industrial Design Concepts</h2>
+                                        <p>Coming Soon</p>
+                                    </div>
+                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
+                                </header>
+                                <div class="modal-dashboard-body">
+                                    <aside class="modal-sidebar-area">
+                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                                            Go Back to Stack
+                                        </button>
+                                        <div class="sidebar-section">
+                                            <h3>Status</h3>
+                                            <p>This interactive exhibit of my industrial manufacturing techniques will be available shortly.</p>
+                                        </div>
+                                    </aside>
+                                    <main class="modal-main-content-area">
+                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
+                                            CAD Assets Loading...
+                                        </div>
+                                    </main>
                                 </div>
                             </div>
                         </div>

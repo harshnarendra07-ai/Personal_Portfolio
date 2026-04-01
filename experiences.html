@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: *; connect-src 'self' http://localhost:3000 https://your-production-backend.com; frame-src *;">
     <title>Experiences | Harshkumar Narendra</title>
     <meta name="description"
         content="Professional experiences of Harshkumar Narendra in Data Analytics and System Security.">
@@ -35,7 +36,7 @@
 <body>
     <header class="site-header">
         <nav class="nav-container">
-            <a href="index.html" class="logo">Harshkumar Narendra Portfolio<span>.</span></a>
+            <a href="index.html" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra Portfolio</span><span>.</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -210,40 +211,19 @@
                     <div class="liquid-blob liquid-blob-2"></div>
                     <div class="liquid-blob liquid-blob-3"></div>
                 </div>
-                <div class="liquid-glass-card generic-glass-card container cta-container scroll-zoom cta-grid-layout"
-                    style="background: transparent; border: none; box-shadow: none;">
-                    <div class="cta-content">
+                <div class="liquid-glass-card generic-glass-card container cta-container scroll-zoom"
+                    style="background: transparent; border: none; box-shadow: none; display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <div class="cta-content" style="display: flex; flex-direction: column; align-items: center;">
                         <h2 class="cta-title" style="margin-bottom: var(--space-4);">Looking for an Analytical Mind?</h2>
-                        <p class="cta-desc" style="max-width: 100%; margin-bottom: var(--space-6);">I am currently open for
+                        <p class="cta-desc" style="max-width: 600px; margin-bottom: var(--space-6);">I am currently open for
                             Data Analytics and System Security internships. Let's connect.</p>
                         
-                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 32px; align-items: center; flex-wrap: wrap;">
+                        <ul style="margin: 0; padding: 0; list-style: none; display: flex; gap: 32px; align-items: center; flex-wrap: wrap; justify-content: center;">
                             <li><a href="https://www.linkedin.com/in/harshnarendra" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">LinkedIn</a></li>
                             <li><a href="https://github.com/harshnarendra07-ai" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">GitHub</a></li>
                             <li><a href="mailto:harshnarendra07@gmail.com" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">Email</a></li>
                             <li><a href="https://instagram.com/harshnarendra" target="_blank" class="premium-hover" style="font-family: var(--font-main); font-weight: 600; color: var(--text-cream); font-size: 14px; text-transform: uppercase; text-decoration: none; letter-spacing: 1px;">Instagram</a></li>
                         </ul>
-                    </div>
-
-                    <div class="cta-form-wrapper"
-                        style="background: var(--surface-dark); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--surface-border);">
-                        <form id="contact-form" action="https://formspree.io/f/mzdaowaa" method="POST" style="display: flex; flex-direction: column; gap: var(--space-4);">
-                            <input type="text" name="_gotcha" style="display:none" />
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                                <label for="name" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Full Name</label>
-                                <input type="text" id="name" name="name" required style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);" placeholder="John Doe">
-                            </div>
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                                <label for="email" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Email Address</label>
-                                <input type="email" id="email" name="email" required style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);" placeholder="john@example.com">
-                            </div>
-                            <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                                <label for="message" style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Message</label>
-                                <textarea id="message" name="message" required rows="4" style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main); resize: vertical;" placeholder="Tell me about your project..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="margin-top: var(--space-2); width: 100%; justify-content: center;">Send Message</button>
-                            <p id="form-status" style="margin-top: var(--space-2); font-size: 14px; display: none;"></p>
-                        </form>
                     </div>
                 </div>
             </div>

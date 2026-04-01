@@ -169,17 +169,41 @@ document.addEventListener("DOMContentLoaded", () => {
                 const projects = await res.json();
                 if (projects.length > 0) {
                     grid.innerHTML = ''; // clear hardcoded
+                    const fragment = document.createDocumentFragment();
+                    
                     projects.forEach((proj, i) => {
-                        const delayClass = i > 0 ? `delay-${i}` : '';
-                        grid.innerHTML += `
-                            <article class="feature-card fade-up ${delayClass} is-visible">
-                                <div class="feature-icon ${proj.iconClass || 'icon-computing'}"></div>
-                                <h3 class="feature-title">${proj.title}</h3>
-                                <p class="feature-desc" style="margin-bottom: var(--space-3);">${proj.description}</p>
-                                <a href="${proj.link}" target="_blank" style="color: var(--accent-gold); font-size: 14px; text-decoration: underline; font-weight: 500;">View Prototype</a>
-                            </article>
-                        `;
+                        const article = document.createElement('article');
+                        article.className = 'feature-card fade-up is-visible';
+                        if (i > 0) article.classList.add(`delay-${i}`);
+                        
+                        const icon = document.createElement('div');
+                        icon.className = `feature-icon ${proj.iconClass || 'icon-computing'}`;
+                        article.appendChild(icon);
+                        
+                        const title = document.createElement('h3');
+                        title.className = 'feature-title';
+                        title.textContent = proj.title;
+                        article.appendChild(title);
+                        
+                        const desc = document.createElement('p');
+                        desc.className = 'feature-desc';
+                        desc.style.marginBottom = 'var(--space-3)';
+                        desc.textContent = proj.description;
+                        article.appendChild(desc);
+                        
+                        const link = document.createElement('a');
+                        link.href = proj.link;
+                        link.target = '_blank';
+                        link.style.color = 'var(--accent-gold)';
+                        link.style.fontSize = '14px';
+                        link.style.textDecoration = 'underline';
+                        link.style.fontWeight = '500';
+                        link.textContent = 'View Prototype';
+                        article.appendChild(link);
+                        
+                        fragment.appendChild(article);
                     });
+                    grid.appendChild(fragment);
                 }
             }
         } catch (e) {
@@ -198,37 +222,85 @@ document.addEventListener("DOMContentLoaded", () => {
             if (res.ok) {
                 const experiences = await res.json();
                 if (experiences.length > 0) {
-                    // We only want to remove the article tags, keep the lines
                     const articles = timeline.querySelectorAll('article');
                     articles.forEach(a => a.remove());
 
+                    const fragment = document.createDocumentFragment();
+
                     experiences.forEach((exp, i) => {
-                        const delayClass = i > 0 ? `delay-${i}` : '';
+                        const article = document.createElement('article');
+                        article.className = 'timeline-item fade-up is-visible';
+                        if (i > 0) article.classList.add(`delay-${i}`);
+                        article.style.position = 'relative';
+                        article.style.paddingLeft = 'var(--space-6)';
+                        article.style.marginBottom = 'var(--space-8)';
+
+                        const dot = document.createElement('div');
+                        dot.className = 'timeline-dot';
+                        dot.style.position = 'absolute';
+                        dot.style.left = '8px';
+                        dot.style.top = '0';
+                        dot.style.width = '16px';
+                        dot.style.height = '16px';
+                        dot.style.background = 'var(--accent-gold)';
+                        dot.style.borderRadius = '50%';
+                        dot.style.boxShadow = '0 0 0 4px var(--bg-dark)';
+                        dot.style.zIndex = '3';
+                        dot.style.transition = 'background var(--transition-base)';
+                        article.appendChild(dot);
+
                         const endStr = exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present';
                         const startStr = new Date(exp.startDate).getFullYear();
-                        const timeStr = `${startStr} - ${endStr}`;
+                        
+                        const timeSpan = document.createElement('span');
+                        timeSpan.style.display = 'block';
+                        timeSpan.style.color = 'var(--accent-gold)';
+                        timeSpan.style.fontWeight = '600';
+                        timeSpan.style.fontSize = '14px';
+                        timeSpan.style.letterSpacing = '1px';
+                        timeSpan.style.textTransform = 'uppercase';
+                        timeSpan.style.marginBottom = 'var(--space-1)';
+                        timeSpan.textContent = `${startStr} - ${endStr}`;
+                        article.appendChild(timeSpan);
 
-                        let descHtml = '';
+                        const title = document.createElement('h3');
+                        title.style.fontSize = '24px';
+                        title.style.color = 'var(--text-cream)';
+                        title.style.marginBottom = 'var(--space-1)';
+                        title.textContent = exp.title;
+                        article.appendChild(title);
+
+                        const company = document.createElement('p');
+                        company.style.color = 'var(--text-offwhite)';
+                        company.style.fontWeight = '500';
+                        company.style.marginBottom = 'var(--space-2)';
+                        company.textContent = `${exp.company} (${exp.type})`;
+                        article.appendChild(company);
+
                         if (exp.description && exp.description.length > 0) {
-                            descHtml = `<ul style="color: var(--text-muted); line-height: 1.6; list-style-type: disc; padding-left: var(--space-2);">
-                                ${exp.description.map(d => `<li>${d}</li>`).join('')}
-                            </ul>`;
+                            const ul = document.createElement('ul');
+                            ul.style.color = 'var(--text-muted)';
+                            ul.style.lineHeight = '1.6';
+                            ul.style.listStyleType = 'disc';
+                            ul.style.paddingLeft = 'var(--space-2)';
+                            exp.description.forEach(d => {
+                                const li = document.createElement('li');
+                                li.textContent = d;
+                                ul.appendChild(li);
+                            });
+                            article.appendChild(ul);
                         } else {
-                            descHtml = `<p style="color: var(--text-muted); line-height: 1.6;">Role involves core responsibilities inside ${exp.company}.</p>`;
+                            const pDesc = document.createElement('p');
+                            pDesc.style.color = 'var(--text-muted)';
+                            pDesc.style.lineHeight = '1.6';
+                            pDesc.textContent = `Role involves core responsibilities inside ${exp.company}.`;
+                            article.appendChild(pDesc);
                         }
 
-                        // Append new article
-                        const articleHtml = `
-                            <article class="timeline-item fade-up ${delayClass} is-visible" style="position: relative; padding-left: var(--space-6); margin-bottom: var(--space-8);">
-                                <div class="timeline-dot" style="position: absolute; left: 8px; top: 0; width: 16px; height: 16px; background: var(--accent-gold); border-radius: 50%; box-shadow: 0 0 0 4px var(--bg-dark); z-index: 3; transition: background var(--transition-base);"></div>
-                                <span style="display: block; color: var(--accent-gold); font-weight: 600; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: var(--space-1);">${timeStr}</span>
-                                <h3 style="font-size: 24px; color: var(--text-cream); margin-bottom: var(--space-1);">${exp.title}</h3>
-                                <p style="color: var(--text-offwhite); font-weight: 500; margin-bottom: var(--space-2);">${exp.company} (${exp.type})</p>
-                                ${descHtml}
-                            </article>
-                        `;
-                        timeline.insertAdjacentHTML('beforeend', articleHtml);
+                        fragment.appendChild(article);
                     });
+                    
+                    timeline.appendChild(fragment);
                 }
             }
         } catch (e) {
@@ -254,11 +326,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const formData = new FormData(contactForm);
 
                 try {
-                    // Replace YOUR_FORMSPREE_ID with the actual code from Formspree
-                    const response = await fetch('https://formspree.io/f/mzdaowaa', {
+                    // Convert FormData to plain object for JSON proxying
+                    const formObject = Object.fromEntries(formData.entries());
+                    const response = await fetch(`${backendUrl}/api/contact`, {
                         method: 'POST',
-                        body: formData,
+                        body: JSON.stringify(formObject),
                         headers: {
+                            'Content-Type': 'application/json',
                             'Accept': 'application/json'
                         }
                     });
@@ -644,28 +718,41 @@ window.changeSlide = function (direction) {
 };
 
 /* ==========================================================================
-   Project Accordion Logic
+   Project 3D Stack Logic
    ========================================================================== */
-window.toggleProject = function (headerElement) {
-    const card = headerElement.parentElement;
+window.openProjectModal = function(cardElement) {
+    if (cardElement.classList.contains('active-modal')) return;
 
-    // Check if it's already expanded
-    if (card.classList.contains('expanded')) {
-        card.classList.remove('expanded');
-    } else {
-        // Collapse all others first for a clean accordion effect
-        document.querySelectorAll('.project-accordion-card.expanded').forEach(expandedCard => {
-            expandedCard.classList.remove('expanded');
-        });
+    // Reset others
+    document.querySelectorAll('.stack-card.active-modal').forEach(card => {
+        card.classList.remove('active-modal');
+    });
 
-        // Expand this one
-        card.classList.add('expanded');
+    // Make active
+    cardElement.classList.add('active-modal');
 
-        // Optional: Scroll neatly into view after a short delay to account for the transition
-        setTimeout(() => {
-            card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 300);
-    }
+    // Show overlay
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.classList.add('active');
+
+    // Prevent body scroll (and halt Lenis if applicable)
+    document.body.style.overflow = 'hidden';
+    if (window.lenisInstance) window.lenisInstance.stop();
+};
+
+window.closeProjectModal = function(event) {
+    if (event) event.stopPropagation();
+
+    document.querySelectorAll('.stack-card.active-modal').forEach(card => {
+        card.classList.remove('active-modal');
+    });
+
+    const overlay = document.getElementById('modal-overlay');
+    if (overlay) overlay.classList.remove('active');
+
+    // Restore body scroll
+    document.body.style.overflow = '';
+    if (window.lenisInstance) window.lenisInstance.start();
 };
 
 /* ==========================================================================
@@ -683,6 +770,7 @@ const lenis = new window.Lenis({
     touchMultiplier: 2,
     infinite: false,
 });
+window.lenisInstance = lenis;
 
 function raf(time) {
     lenis.raf(time);
