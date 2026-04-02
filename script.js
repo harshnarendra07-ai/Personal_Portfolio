@@ -726,18 +726,32 @@ window.openProjectModal = function(cardElement) {
     // Reset others
     document.querySelectorAll('.stack-card.active-modal').forEach(card => {
         card.classList.remove('active-modal');
+        card.style.top = ''; // Clean up top style
     });
 
     // Make active
     cardElement.classList.add('active-modal');
 
+    // Calculate vertical offset:
+    // Because the parent `.projects-stack-container` uses `perspective`, CSS `position: fixed` 
+    // behaves as `position: absolute` relative to the container, NOT the viewport.
+    // We dynamically calculate where the viewport is relative to the container's top edge
+    // and append our desired 5vh spacing.
+    const containerRect = cardElement.parentElement.getBoundingClientRect();
+    const viewportOffset = -containerRect.top;
+    let desiredTop = viewportOffset + (window.innerHeight * 0.05);
+    
+    // Safety boundary so it doesn't try to burst out above the container boundaries
+    if (desiredTop < 0) desiredTop = 0;
+    
+    cardElement.style.top = `${desiredTop}px`;
+
     // Show overlay
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.classList.add('active');
 
-    // Prevent body scroll (and halt Lenis if applicable)
-    document.body.style.overflow = 'hidden';
-    if (window.lenisInstance) window.lenisInstance.stop();
+    // User requested to be able to scroll the main page even when modal is open,
+    // so we no longer lock the document or stop Lenis here!
 };
 
 window.closeProjectModal = function(event) {
@@ -745,14 +759,11 @@ window.closeProjectModal = function(event) {
 
     document.querySelectorAll('.stack-card.active-modal').forEach(card => {
         card.classList.remove('active-modal');
+        card.style.top = ''; // Make sure to clean up the inline position!
     });
 
     const overlay = document.getElementById('modal-overlay');
     if (overlay) overlay.classList.remove('active');
-
-    // Restore body scroll
-    document.body.style.overflow = '';
-    if (window.lenisInstance) window.lenisInstance.start();
 };
 
 /* ==========================================================================

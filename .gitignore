@@ -3,3 +3,19 @@
 
 # Local MCP Configuration
 @mcp_config.json
+
+# Dependency folders
+backend/node_modules/
+node_modules/
+
+# Local environment variables
+backend/.env
+.env
+.env.local
+
+# Debug and temporary files
+*.txt
+*.log
+diff.txt
+hash.txt
+hash2.txt

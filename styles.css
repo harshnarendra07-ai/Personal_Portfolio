@@ -2014,18 +2014,21 @@ html.lenis body {
 .stack-card.active-modal {
     position: fixed;
     top: 5vh;
-    left: 2.5vw;
-    width: 95vw;
+    left: 50%;
+    width: 90vw;
+    max-width: 1200px;
     height: 90vh;
-    transform: none !important; 
+    transform: translateX(-50%) !important; 
     z-index: 100000 !important; /* Total priority */
     cursor: default;
-    background: linear-gradient(135deg, rgba(20, 0, 60, 0.9), rgba(10, 0, 30, 0.85));
-    box-shadow: 0 50px 150px rgba(0,0,0,1);
+    background: linear-gradient(135deg, rgba(40, 20, 80, 0.8), rgba(20, 10, 40, 0.9));
+    box-shadow: 0 50px 150px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255,255,255,0.1);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    overflow: hidden;
+    border-radius: 24px;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    overflow-y: auto;
+    overflow-x: hidden;
     padding: 0;
 }
 
@@ -2038,7 +2041,9 @@ html.lenis body {
 }
 
 [data-theme="light"] .stack-card.active-modal {
-    background: linear-gradient(135deg, rgba(80, 20, 150, 0.95), rgba(40, 0, 80, 0.9));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(240, 240, 250, 0.3));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 50px 150px rgba(0,0,0,0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 .card-content-preview {
@@ -2090,20 +2095,21 @@ html.lenis body {
     pointer-events: none;
     display: none;
     transition: opacity 0.5s ease;
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     width: 100%;
-    overflow: hidden; /* Use internal dashboard scroll instead */
+    overflow: visible; 
 }
 
 /* Modal Dashboard Layout */
 .modal-dashboard-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     position: relative;
     color: var(--text-base);
-    padding-top: 0; /* Reset top padding if using fixed top 5vh */
+    padding-top: 0; 
 }
 
 .modal-dashboard-header {
@@ -2136,7 +2142,8 @@ html.lenis body {
 .modal-dashboard-body {
     flex-grow: 1;
     display: flex;
-    overflow: hidden; /* Outer container doesn't scroll */
+    overflow: visible; /* Let children stretch to fill */
+    min-height: 0;
 }
 
 .modal-sidebar-area {
@@ -2144,14 +2151,14 @@ html.lenis body {
     flex-shrink: 0;
     border-right: 1px solid rgba(255,255,255,0.05);
     padding: var(--space-8);
-    overflow-y: auto;
+    overflow: visible; 
     background: rgba(255,255,255,0.02);
 }
 
 .modal-main-content-area {
     flex-grow: 1;
-    padding: var(--space-6);
-    overflow-y: auto;
+    padding: var(--space-6) var(--space-8);
+    overflow: visible;
     background: rgba(0,0,0,0.1);
 }
 
@@ -2188,7 +2195,7 @@ html.lenis body {
     background: #000;
     border-radius: 12px;
     overflow: hidden;
-    height: calc(90vh - 120px);
+    height: 600px; /* Fixed height! Unlocks native scrolling */
     width: 100%;
     position: relative;
     border: 1px solid rgba(255,255,255,0.1);
@@ -2216,12 +2223,13 @@ html.lenis body {
 .back-to-stack-btn {
     position: relative;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: var(--space-2) var(--space-4);
     font-weight: 500;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
     margin: 0 0 var(--space-8) 0;
     width: 100%;
     justify-content: center;
@@ -2229,8 +2237,8 @@ html.lenis body {
     background: transparent;
     color: var(--text-cream);
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 4px;
+    transition: all var(--transition-base);
+    border-radius: 100px;
     z-index: 5;
 }
 
@@ -2242,8 +2250,13 @@ html.lenis body {
     border-radius: 100px;
     border: 1px solid var(--accent-gold);
     opacity: 0;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
+}
+
+.back-to-stack-btn:active {
+    background: var(--text-cream);
+    color: var(--bg-dark);
 }
 
 .back-to-stack-btn:hover {
@@ -2332,10 +2345,11 @@ html.lenis body {
     
     .stack-card.active-modal {
         position: fixed;
-        top: 5vh; left: 5vw;
-        width: 90vw;
-        height: 90vh;
-        transform: none !important;
-        z-index: 100 !important;
+        top: 5vh; left: 50%;
+        width: 95vw;
+        height: 92vh;
+        transform: translateX(-50%) !important;
+        z-index: 100000 !important;
+        overflow-y: auto;
     }
 }
