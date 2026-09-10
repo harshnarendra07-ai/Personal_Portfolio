@@ -33,6 +33,10 @@
     /* Typography */
     --font-main: 'IBM Plex Mono', monospace;
     --font-display: 'Ubuntu', sans-serif;
+    --font-heading: 'Ubuntu', sans-serif;
+
+    /* Apple-style unified easing */
+    --ease-apple: cubic-bezier(0.32, 0.72, 0, 1);
 
     /* Border Radius */
     --radius-sm: var(--space-1);
@@ -622,7 +626,7 @@ ul {
     left: -5px;
     right: -5px;
     bottom: -5px;
-    background: linear-gradient(45deg, #ff007f, #7f00ff, #00ffff, #00ff7f);
+    background: linear-gradient(120deg, rgba(212,175,55,0.5), rgba(212,175,55,0.12));
     background-size: 400%;
     border-radius: 24px;
     /* Slightly larger than box to account for offset */
@@ -631,7 +635,7 @@ ul {
     /* Base visibility for the "always glowing" effect */
     transition: opacity 0.3s ease;
     z-index: -1;
-    animation: animateGlow 20s linear infinite;
+    animation: none;
     pointer-events: none;
     /* Make sure it doesn't block clicks */
 }
@@ -667,7 +671,7 @@ ul {
     display: inline-flex;
     align-items: center;
     font-size: 28px;
-    font-family: 'Playfair Display', serif;
+    font-family: var(--font-display);
     font-weight: 600;
     color: var(--text-cream);
 }
@@ -688,7 +692,7 @@ ul {
     color: var(--accent-gold);
     font-weight: 700;
     margin-bottom: 0px;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-display);
     white-space: nowrap;
 }
 
@@ -834,14 +838,14 @@ ul {
     left: -5px;
     right: -5px;
     bottom: -5px;
-    background: linear-gradient(45deg, #ff007f, #7f00ff, #00ffff, #00ff7f);
+    background: linear-gradient(120deg, rgba(212,175,55,0.5), rgba(212,175,55,0.12));
     background-size: 400%;
     border-radius: 40px;
     filter: blur(8px);
     opacity: 0.4; /* Changed from 0 to 0.4 for continuous glow */
     transition: opacity 0.3s ease;
     z-index: -1;
-    animation: animateGlow 20s linear infinite;
+    animation: none;
 }
 
 .splash-toggle-track:hover::before {
@@ -1498,7 +1502,7 @@ ul {
 }
 
 .blog-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.1);
 }
@@ -1575,7 +1579,7 @@ html.lenis body {
 }
 
 .premium-hover:hover {
-    transform: translateY(-12px);
+    transform: translateY(-6px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 10px 20px rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.15);
 }
@@ -1673,7 +1677,7 @@ html.lenis body {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.6;
+    opacity: 0.32;
     z-index: 1;
 }
 
@@ -1683,7 +1687,7 @@ html.lenis body {
     width: 50vw;
     height: 50vw;
     background: var(--accent-gold-dim);
-    animation: moveBlob1 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    animation: none;
 }
 
 .liquid-blob-2 {
@@ -1692,7 +1696,7 @@ html.lenis body {
     width: 60vw;
     height: 60vw;
     background: rgba(230, 0, 43, 0.15); /* using var(--accent-rb-red) with opacity */
-    animation: moveBlob2 25s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    animation: none;
 }
 
 .liquid-blob-3 {
@@ -1701,7 +1705,7 @@ html.lenis body {
     width: 40vw;
     height: 40vw;
     background: rgba(0, 26, 51, 0.3); /* using var(--accent-rb-blue) with opacity */
-    animation: moveBlob3 22s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    animation: none;
 }
 
 @keyframes moveBlob1 {
@@ -1755,7 +1759,7 @@ html.lenis body {
 }
 
 .liquid-glass-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 

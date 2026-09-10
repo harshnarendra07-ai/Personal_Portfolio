@@ -153,161 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Dynamic Backend Fetching ---
-
-    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const backendUrl = isLocal ? 'http://localhost:3000' : 'https://your-production-backend.com'; // CHANGE THIS when backend is deployed
-
-    // Fetch Projects
-    const fetchProjects = async () => {
-        const grid = document.querySelector('.features-grid'); // projects wrapper
-        if (!grid || !window.location.pathname.includes('projects')) return;
-
-        try {
-            const res = await fetch(`${backendUrl}/api/projects`);
-            if (res.ok) {
-                const projects = await res.json();
-                if (projects.length > 0) {
-                    grid.innerHTML = ''; // clear hardcoded
-                    const fragment = document.createDocumentFragment();
-                    
-                    projects.forEach((proj, i) => {
-                        const article = document.createElement('article');
-                        article.className = 'feature-card fade-up is-visible';
-                        if (i > 0) article.classList.add(`delay-${i}`);
-                        
-                        const icon = document.createElement('div');
-                        icon.className = `feature-icon ${proj.iconClass || 'icon-computing'}`;
-                        article.appendChild(icon);
-                        
-                        const title = document.createElement('h3');
-                        title.className = 'feature-title';
-                        title.textContent = proj.title;
-                        article.appendChild(title);
-                        
-                        const desc = document.createElement('p');
-                        desc.className = 'feature-desc';
-                        desc.style.marginBottom = 'var(--space-3)';
-                        desc.textContent = proj.description;
-                        article.appendChild(desc);
-                        
-                        const link = document.createElement('a');
-                        link.href = proj.link;
-                        link.target = '_blank';
-                        link.style.color = 'var(--accent-gold)';
-                        link.style.fontSize = '14px';
-                        link.style.textDecoration = 'underline';
-                        link.style.fontWeight = '500';
-                        link.textContent = 'View Prototype';
-                        article.appendChild(link);
-                        
-                        fragment.appendChild(article);
-                    });
-                    grid.appendChild(fragment);
-                }
-            }
-        } catch (e) {
-            console.log('Backend not available or projects empty, using HTML fallback.');
-        }
-    };
-    fetchProjects();
-
-    // Fetch Experiences
-    const fetchExperiences = async () => {
-        const timeline = document.getElementById('experience-timeline');
-        if (!timeline || !window.location.pathname.includes('experiences')) return;
-
-        try {
-            const res = await fetch(`${backendUrl}/api/experiences`);
-            if (res.ok) {
-                const experiences = await res.json();
-                if (experiences.length > 0) {
-                    const articles = timeline.querySelectorAll('article');
-                    articles.forEach(a => a.remove());
-
-                    const fragment = document.createDocumentFragment();
-
-                    experiences.forEach((exp, i) => {
-                        const article = document.createElement('article');
-                        article.className = 'timeline-item fade-up is-visible';
-                        if (i > 0) article.classList.add(`delay-${i}`);
-                        article.style.position = 'relative';
-                        article.style.paddingLeft = 'var(--space-6)';
-                        article.style.marginBottom = 'var(--space-8)';
-
-                        const dot = document.createElement('div');
-                        dot.className = 'timeline-dot';
-                        dot.style.position = 'absolute';
-                        dot.style.left = '8px';
-                        dot.style.top = '0';
-                        dot.style.width = '16px';
-                        dot.style.height = '16px';
-                        dot.style.background = 'var(--accent-gold)';
-                        dot.style.borderRadius = '50%';
-                        dot.style.boxShadow = '0 0 0 4px var(--bg-dark)';
-                        dot.style.zIndex = '3';
-                        dot.style.transition = 'background var(--transition-base)';
-                        article.appendChild(dot);
-
-                        const endStr = exp.endDate ? new Date(exp.endDate).getFullYear() : 'Present';
-                        const startStr = new Date(exp.startDate).getFullYear();
-                        
-                        const timeSpan = document.createElement('span');
-                        timeSpan.style.display = 'block';
-                        timeSpan.style.color = 'var(--accent-gold)';
-                        timeSpan.style.fontWeight = '600';
-                        timeSpan.style.fontSize = '14px';
-                        timeSpan.style.letterSpacing = '1px';
-                        timeSpan.style.textTransform = 'uppercase';
-                        timeSpan.style.marginBottom = 'var(--space-1)';
-                        timeSpan.textContent = `${startStr} - ${endStr}`;
-                        article.appendChild(timeSpan);
-
-                        const title = document.createElement('h3');
-                        title.style.fontSize = '24px';
-                        title.style.color = 'var(--text-cream)';
-                        title.style.marginBottom = 'var(--space-1)';
-                        title.textContent = exp.title;
-                        article.appendChild(title);
-
-                        const company = document.createElement('p');
-                        company.style.color = 'var(--text-offwhite)';
-                        company.style.fontWeight = '500';
-                        company.style.marginBottom = 'var(--space-2)';
-                        company.textContent = `${exp.company} (${exp.type})`;
-                        article.appendChild(company);
-
-                        if (exp.description && exp.description.length > 0) {
-                            const ul = document.createElement('ul');
-                            ul.style.color = 'var(--text-muted)';
-                            ul.style.lineHeight = '1.6';
-                            ul.style.listStyleType = 'disc';
-                            ul.style.paddingLeft = 'var(--space-2)';
-                            exp.description.forEach(d => {
-                                const li = document.createElement('li');
-                                li.textContent = d;
-                                ul.appendChild(li);
-                            });
-                            article.appendChild(ul);
-                        } else {
-                            const pDesc = document.createElement('p');
-                            pDesc.style.color = 'var(--text-muted)';
-                            pDesc.style.lineHeight = '1.6';
-                            pDesc.textContent = `Role involves core responsibilities inside ${exp.company}.`;
-                            article.appendChild(pDesc);
-                        }
-
-                        fragment.appendChild(article);
-                    });
-                    
-                    timeline.appendChild(fragment);
-                }
-            }
-        } catch (e) {
-            console.log('Backend not available or experiences empty, using HTML fallback.');
-        }
-    };
-    fetchExperiences();
+    // --- Static site: projects & experiences are rendered straight from the HTML ---
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzdaowaa';
 
     // --- Contact Form Submission ---
     const contactForm = document.getElementById('contact-form');
@@ -328,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 try {
                     // Convert FormData to plain object for JSON proxying
                     const formObject = Object.fromEntries(formData.entries());
-                    const response = await fetch(`${backendUrl}/api/contact`, {
+                    const response = await fetch(FORMSPREE_ENDPOINT, {
                         method: 'POST',
                         body: JSON.stringify(formObject),
                         headers: {
@@ -515,28 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 mainContent.style.pointerEvents = mainOpacity < 0.2 ? 'none' : 'auto';
             }
 
-            // Helper to animate text based on a start and end progress window
-            const animateText = (el, p, start, end) => {
-                if (!el) return;
-                if (p > start && p < end) {
-                    const localP = (p - start) / (end - start); // 0 to 1
-                    // Sine wave for opacity (0 -> 1 -> 0)
-                    const opacity = Math.sin(localP * Math.PI);
-                    // Scale goes from 0.8 to 1.2
-                    const scale = 0.8 + (localP * 0.4);
-
-                    el.style.opacity = opacity.toFixed(3);
-                    el.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(3)})`;
-                } else if (p >= end && el.id === 'scroll-text-3') {
-                    // Keep the last text visible at the end of the scroll
-                    el.style.opacity = 0; // Wait, actually the user continues to the next section, so let it fade out or stay? Let's let it fade out so it doesn't overlap the next section.
-                    // Wait, if it fades out, it's consistent. Let's just use the strict start/end.
-                } else {
-                    el.style.opacity = 0;
-                }
-            };
-
-            // Cleaned up animateText version:
+            // Scroll-text reveal (single implementation):
             const runTextAnimation = (el, p, start, end) => {
                 if (!el) return;
                 if (p > start && p < end) {
@@ -770,8 +596,8 @@ window.closeProjectModal = function(event) {
    Lenis Smooth Scrolling Integration
    ========================================================================== */
 // Initialize Lenis exactly as requested
-const lenis = new window.Lenis({
-    duration: 1.2,
+const lenis = window.Lenis ? new window.Lenis({
+    duration: 1.4,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
     direction: 'vertical',
     gestureDirection: 'vertical',
@@ -780,11 +606,11 @@ const lenis = new window.Lenis({
     smoothTouch: false,
     touchMultiplier: 2,
     infinite: false,
-});
+}) : null;
 window.lenisInstance = lenis;
 
 function raf(time) {
-    lenis.raf(time);
+    if (lenis) lenis.raf(time);
     requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);

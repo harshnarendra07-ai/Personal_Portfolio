@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: *; connect-src 'self' http://localhost:3000 https://your-production-backend.com; frame-src *;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
     <title>Blog | Harshkumar Narendra</title>
     <meta name="description"
         content="Portfolio of Harshkumar Narendra, a creative and computing-focused professional showcasing expertise in Data Analytics and System Security.">
@@ -86,12 +86,11 @@
                 <canvas id="hero-canvas" class="hero-canvas"></canvas>
                 <div class="hero-overlay"></div>
                 <div class="container hero-content" id="dynamic-hero-content">
-                    <p class="hero-subtitle">Adventures & Explorations</p>
+                    <p class="hero-subtitle">Notes</p>
                     <h1 class="hero-title"><span class="typewriter-text cursor">My Blog</span></h1>
                     <p class="hero-description"
                         style="color: var(--text-offwhite); font-size: 1.1rem; line-height: 1.8; margin-top: var(--space-4); max-width: 600px;">
-                        Welcome to my personal space where I share my thoughts, experiences, and technical explorations
-                        in Data Analytics, Cyber Security, and everything in between.
+                        Longer write-ups on things I've done and seen in data and security.
                     </p>
                     <div class="hero-actions" style="margin-top: var(--space-6);">
                         <a href="#blog-feed" class="btn btn-primary premium-hover">Read Latest Posts</a>
@@ -119,8 +118,8 @@
                 </div>
                 <div class="liquid-glass-card generic-glass-card container">
                     <header class="section-header scroll-zoom">
-                        <h2 class="section-title">Visual Journeys & Articles</h2>
-                        <p class="section-subtitle">A collection of moments, insights, and personal thoughts.</p>
+                        <h2 class="section-title">Posts</h2>
+                        <p class="section-subtitle">A couple of write-ups, with more to come.</p>
                     </header>
 
                     <div class="blog-grid"
@@ -184,31 +183,6 @@
                             </article>
                         </a>
 
-                        <!-- Image Card 3 -->
-                        <article class="blog-card premium-hover scroll-zoom delay-2"
-                            style="border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; background: var(--surface-dark); border: 1px solid var(--surface-border);">
-                            <div
-                                style="width: 100%; height: 220px; position: relative; background: linear-gradient(135deg, #1f1f1f, #0a0a0a); border-bottom: 1px solid var(--surface-border); display: flex; align-items: center; justify-content: center;">
-                                <span style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">[Future
-                                    Image
-                                    Placeholder]</span>
-                            </div>
-                            <div class="blog-card-content" style="padding: var(--space-4);">
-                                <span class="blog-category"
-                                    style="color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">Life
-                                    & Tech</span>
-                                <h3 class="blog-title"
-                                    style="margin: var(--space-2) 0; font-size: 20px; color: var(--text-cream);">The
-                                    Startup
-                                    Mindset</h3>
-                                <p class="blog-excerpt"
-                                    style="color: var(--text-muted); font-size: 14px; line-height: 1.6; flex-grow: 1;">
-                                    Lessons learned from 48-hour coding sprints and collaborative chaos.</p>
-                                <span class="blog-date"
-                                    style="font-size: 12px; color: var(--text-muted); font-style: italic; margin-top: var(--space-4); display: block;">Sep
-                                    20, 2026</span>
-                            </div>
-                        </article>
                     </div>
                 </div>
             </div>
@@ -227,7 +201,7 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 

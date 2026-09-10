@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: *; connect-src 'self' http://localhost:3000 https://your-production-backend.com; frame-src *;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
     <title>Projects | Harshkumar Narendra</title>
     <meta name="description"
         content="Selected projects by Harshkumar Narendra, specializing in Data Analytics and System Security.">
@@ -111,7 +111,7 @@
                                         </button>
                                         <div class="sidebar-section">
                                             <h3>Project Overview</h3>
-                                            <p>This comprehensive data model represents a strategic supply chain analysis for a UK boutique cheese importer. The project maps financial risks and operational logistics across European borders.</p>
+                                            <p>A supply-chain model for a UK boutique cheese importer, mapping the financial risk and logistics of importing across European borders.</p>
                                         </div>
                                         <div class="sidebar-section">
                                             <h3>Analytical Tools</h3>
@@ -161,7 +161,7 @@
                                         </button>
                                         <div class="sidebar-section">
                                             <h3>Project Overview</h3>
-                                            <p>A premium, cinematic personal portfolio architected with AI-assisted workflows. Emphasizes modern design principles, scroll-intercepting animations, and dynamic typewriter aesthetics.</p>
+                                            <p>This portfolio site — built by hand in vanilla JS with a scroll-driven canvas hero and smooth scrolling, using AI as a pair-programmer along the way.</p>
                                         </div>
                                         <div class="sidebar-section">
                                             <h3>Core Stack</h3>
@@ -172,15 +172,15 @@
                                         <div class="presentation-container" id="portfolio-presentation" style="background: rgba(255,255,255,0.03); padding: var(--space-8); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
                                             <div class="presentation-slide active">
                                                 <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">1. Inspiration & Concept</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">The vision was to create a luxury, "award-winning agency" feel. Moving away from generic templates, the site utilizes a stark dark theme, perfectly contrasted with pure white entrance typography and cinematic Canvas API particle layers.</p>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">I wanted something that didn't look like a template: a dark theme, a bright entrance animation, and a canvas particle layer behind the hero.</p>
                                             </div>
                                             <div class="presentation-slide">
                                                 <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">2. Key Design Principles</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> Clean lines and strict 8px grid systems map visually to analytical precision.<br><strong>Accessibility:</strong> Semantic HTML5 and ARIA labels ensure the interactive dashboards and custom controls remain navigable for all users.</p>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> An 8px spacing grid keeps the layout consistent.<br><strong>Accessibility:</strong> Semantic HTML and ARIA labels keep the dashboards keyboard-navigable.</p>
                                             </div>
                                             <div class="presentation-slide">
                                                 <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">3. Custom Web Effects</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, displaying a sequence of CSS `@keyframes` manipulating `max-width` to create an authentic typewriter and blinking cursor effect before revealing the main layout.</p>
+                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, then runs a CSS typewriter and cursor effect before revealing the page.</p>
                                             </div>
                                             <div class="presentation-controls" style="margin-top: var(--space-8); border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-6);">
                                                 <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
@@ -218,7 +218,7 @@
                                         </button>
                                         <div class="sidebar-section">
                                             <h3>Project Overview</h3>
-                                            <p>A high-performance Power BI dashboard designed for real-time monitoring of customer behavioral trends and system health metrics.</p>
+                                            <p>A Power BI dashboard tracking customer-behaviour trends and system-health metrics.</p>
                                         </div>
                                         <div class="sidebar-section">
                                             <h3>Capabilities</h3>
@@ -257,267 +257,9 @@
                         </div>
                         </div>
 
-                    <!-- Project 4 (Mock) -->
-                    <div class="stack-card" style="--i: 3;" data-index="3" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">04</div>
-                            <h2 class="card-cat-title">Product<br>Design</h2>
-                            <p>Crafting experiences that inspire every day</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Product Design</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Project 5 (Mock) -->
-                    <div class="stack-card" style="--i: 4;" data-index="4" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">05</div>
-                            <h2 class="card-cat-title">Industrial<br>Design</h2>
-                            <p>Where physical engineering meets modern aesthetics</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Data Engineering</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 
-                <div class="projects-stack-container" style="margin-top: 10vh;">
-                    <!-- Project 6 (Mock) -->
-                    <div class="stack-card" style="--i: 0;" data-index="5" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">06</div>
-                            <h2 class="card-cat-title">Mobile<br>App</h2>
-                            <p>Cross-platform mobile applications</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Mobile App</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 7 (Mock) -->
-                    <div class="stack-card" style="--i: 1;" data-index="6" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">07</div>
-                            <h2 class="card-cat-title">Cloud<br>Infra</h2>
-                            <p>Scalable cloud infrastructure</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Cloud Infra</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 8 (Mock) -->
-                    <div class="stack-card" style="--i: 2;" data-index="7" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">08</div>
-                            <h2 class="card-cat-title">Data<br>Science</h2>
-                            <p>Machine learning & Data Science</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Data Science</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 9 (Mock) -->
-                    <div class="stack-card" style="--i: 3;" data-index="8" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">09</div>
-                            <h2 class="card-cat-title">Game<br>Dev</h2>
-                            <p>Interactive game development</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Game Dev</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 10 (Mock) -->
-                    <div class="stack-card" style="--i: 4;" data-index="9" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">10</div>
-                            <h2 class="card-cat-title">Hardware<br>Eng</h2>
-                            <p>Embedded systems & Robotics</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Hardware Engineering</h2>
-                                        <p>Coming Soon</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)" style="margin-top: 0; margin-bottom: var(--space-8);">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Status</h3>
-                                            <p>This project is currently under development.</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="viewer-frame-container" style="display: flex; align-items:center; justify-content:center; color: var(--text-muted);">
-                                            Module Loading...
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </main>
@@ -534,7 +276,7 @@
         </div>
     </footer>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 
