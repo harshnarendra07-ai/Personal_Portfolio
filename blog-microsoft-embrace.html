@@ -1,352 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
-    <title>From Soft Skills to Cybersecurity | Blog</title>
-    <meta name="description"
-        content="Completing the Microsoft Embrace Mentoring Journey. Moving from digital workshops to the heart of the tech industry.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-src 'none';">
+    <title>From Soft Skills to Cybersecurity | Harshkumar Narendra</title>
+    <meta name="description" content="Completing the Microsoft Embrace Mentoring Programme: from online workshops to meeting my mentor at Microsoft.">
 
+    <meta property="og:title" content="From Soft Skills to Cybersecurity">
+    <meta property="og:description" content="Completing the Microsoft Embrace Mentoring Programme.">
+    <meta property="og:image" content="https://personal-portfolio-pi-ten-48.vercel.app/images/microsoft/microsoft4.jpg">
+    <meta property="og:url" content="https://personal-portfolio-pi-ten-48.vercel.app/blog-microsoft-embrace.html">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .blog-post-wrapper {
-            background: var(--surface-dark);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--surface-border);
-            padding: var(--space-8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-header {
-            text-align: center;
-            margin-bottom: var(--space-8);
-        }
-
-        .post-title {
-            font-size: clamp(40px, 6vw, 85px);
-            line-height: 1;
-            font-family: var(--font-display);
-            color: var(--text-cream);
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            margin: 0;
-        }
-
-        .post-title-italic {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: lowercase;
-            font-weight: 600;
-            color: var(--accent-gold);
-            font-size: 1.1em;
-            letter-spacing: 0;
-        }
-        
-        .title-group {
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-2);
-            margin-top: var(--space-6);
-        }
-
-        .tag-pill {
-            background: var(--text-cream);
-            color: var(--bg-dark);
-            padding: var(--space-2) var(--space-4);
-            border-radius: 50px;
-            font-family: var(--font-display);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            white-space: nowrap;
-            transition: transform var(--transition-fast);
-        }
-        .tag-pill:hover {
-            transform: scale(1.05);
-        }
-
-        .article-content {
-            color: var(--text-offwhite);
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .article-content h2, .article-content h3 {
-            font-family: var(--font-display);
-            color: var(--text-cream);
-            margin-top: var(--space-8);
-            margin-bottom: var(--space-4);
-            font-size: clamp(28px, 4vw, 40px);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .article-content p {
-            margin-bottom: var(--space-4);
-            font-family: var(--font-main);
-        }
-
-        .article-content img {
-            max-width: 45%;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--surface-border);
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin-bottom: var(--space-4);
-        }
-
-        .img-left {
-            float: left;
-            margin-right: var(--space-6);
-            margin-top: var(--space-2);
-        }
-
-        .img-right {
-            float: right;
-            margin-left: var(--space-6);
-            margin-top: var(--space-2);
-        }
-
-        .article-content::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .article-quote {
-            font-size: 24px;
-            color: var(--text-cream);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-align: center;
-            padding: var(--space-6) var(--space-12);
-            margin: var(--space-8) 0;
-            position: relative;
-        }
-
-        .article-quote::before {
-            content: "“";
-            font-family: var(--font-display);
-            font-size: 80px;
-            color: var(--accent-gold);
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.3;
-        }
-
-        .article-list {
-            margin-bottom: var(--space-4);
-            padding-left: var(--space-4);
-        }
-
-        .article-list li {
-            margin-bottom: var(--space-2);
-            position: relative;
-        }
-        
-        .article-list li::before {
-            content: '•';
-            color: var(--accent-gold);
-            position: absolute;
-            left: -1em;
-            font-weight: bold;
-        }
-
-        /* Essential fix for back link */
-        .back-link {
-            position: relative;
-            z-index: 100;
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-cream);
-            text-decoration: none;
-            font-family: var(--font-display);
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--space-6);
-            transition: all var(--transition-base);
-            padding: var(--space-2) var(--space-4);
-            border: 1px solid var(--surface-border);
-            border-radius: 100px;
-            background: var(--bg-dark);
-            cursor: pointer;
-        }
-        .back-link:hover {
-            color: var(--bg-dark);
-            background: var(--text-cream);
-            border-color: var(--text-cream);
-        }
-        .back-link svg {
-            margin-right: var(--space-2);
-            transition: transform var(--transition-fast);
-        }
-        .back-link:hover svg {
-            transform: translateX(-5px);
-        }
-
-        @media (max-width: 768px) {
-            .article-content img.img-left,
-            .article-content img.img-right {
-                float: none;
-                max-width: 100%;
-                margin-left: 0;
-                margin-right: 0;
-                display: block;
-            }
-            .post-title {
-                font-size: clamp(32px, 8vw, 50px);
-                white-space: normal;
-            }
-            .blog-post-wrapper {
-                padding: var(--space-4);
-            }
-            .title-group {
-                white-space: normal;
-            }
-            .article-quote {
-                padding: var(--space-4);
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra
-                    Portfolio</span><span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" aria-label="Main">
+        <div class="wrap">
+            <a class="me" href="index.html">Harshkumar Narendra</a>
+            <ul id="nav-links">
+                <li><a href="projects.html">Work</a></li>
+                <li><a href="experiences.html">Experience</a></li>
+                <li><a href="blog.html" aria-current="page">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="section-padding scroll-zoom"
-            style="padding-top: calc(var(--space-12) + var(--space-8)); position: relative; min-height: 100vh;">
-            <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;">
-                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%;">
-                    <div class="hero-overlay"
-                         style="background: var(--bg-dark); position: absolute; left: 0; width: 100%; height: 100%;">
-                    </div>
-                </div>
+            <div class="nav-tools">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+                <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
             </div>
-            
-            <div class="container" style="position: relative; z-index: 2;">
-                <!-- Fixed the back link to ensure clickability -->
-                <a href="blog.html" class="back-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    Back to Blog
-                </a>
+        </div>
+    </nav>
 
-                <div class="blog-post-wrapper scroll-zoom delay-1">
-                    <header class="post-header">
-                        <h1 class="post-title">
-                            <span class="title-group">From Soft <span class="post-title-italic">skills</span></span><br>
-                            <span class="title-group">To <span class="post-title-italic">cyber</span>SECURITY</span>
-                        </h1>
-                        <div class="tags-container">
-                            <span class="tag-pill">Microsoft Mentorship</span>
-                            <span class="tag-pill">In-Person</span>
-                            <span class="tag-pill">AI & Security</span>
-                        </div>
-                    </header>
+    <main id="main" class="wrap">
+        <article class="article">
+            <a class="label back" href="blog.html">← All posts</a>
+            <span class="label" style="display:block"><b>Mentoring</b> &nbsp;March 2026</span>
+            <h1>From soft skills to <em>cybersecurity</em></h1>
+            <div class="tags"><span>Microsoft Mentorship</span><span>In-Person</span><span>AI &amp; Security</span></div>
 
-                    <article class="article-content">
-                        <!-- Floating Image Left -->
-                        <img src="images/microsoft/microsoft.jpg" alt="Walking into the Microsoft environment" class="img-left" />
-                        
-                        <p>Recently I spent time on-site with Microsoft. As part of the <strong>FY26 Microsoft Embrace Mentoring Programme</strong>, I went from online workshops to actually being on-site. Seeing the scale of the place up close was a good reminder of why I want to work at the intersection of data analytics and cybersecurity.</p>
+            <div class="prose">
+                <figure><img src="images/microsoft/microsoft.jpg" alt="Walking into the Microsoft office"></figure>
 
-                        <h2 style="clear: both; padding-top: var(--space-4);">Stepping Into Innovation: <span class="post-title-italic" style="color:var(--text-cream); font-size: 1em;">The In-Person Advantage</span></h2>
-                        <!-- Floating Image Right -->
-                        <img src="images/microsoft/microsoft3.jpg" alt="Meeting Nathalie Maslen at Microsoft" class="img-right" />
-                        <p>The campus has a real energy to it, and it's clearly built around teams working closely together. The highlight for me was finally meeting my Microsoft mentor, Nathalie Maslen, in person — until then, everything between us had been over a screen.</p>
-                        
-                        <p>Meeting in person changed the tone of her mentoring. We didn't just talk about technical skills — a lot of it was about building confidence and thinking about longer-term direction. Her advice on navigating the corporate tech world was genuinely useful, and it reinforced how much good mentorship can do for someone starting out.</p>
+                <p>Recently I spent time on-site with Microsoft. As part of the <strong>FY26 Microsoft Embrace Mentoring Programme</strong>, I went from online workshops to actually being on-site. Seeing the scale of the place up close was a good reminder of why I want to work at the intersection of data analytics and cybersecurity.</p>
 
-                        <blockquote class="article-quote" style="clear: both;">
-                            "Being there in person, not just online, made the whole thing click."
-                        </blockquote>
+                <h2>Stepping into innovation: the in-person advantage</h2>
+                <p>The campus has a real energy to it, and it's clearly built around teams working closely together. The highlight for me was finally meeting my Microsoft mentor, Nathalie Maslen, in person — until then, everything between us had been over a screen.</p>
+                <figure><img src="images/microsoft/microsoft3.jpg" alt="Meeting mentor Nathalie Maslen at Microsoft" loading="lazy"></figure>
+                <p>Meeting in person changed the tone of her mentoring. We didn't just talk about technical skills — a lot of it was about building confidence and thinking about longer-term direction. Her advice on navigating the corporate tech world was genuinely useful, and it reinforced how much good mentorship can do for someone starting out.</p>
 
-                        <h2 style="clear: both; padding-top: var(--space-4);">A Strategic Foundation</h2>
-                        <!-- Floating Image Left -->
-                        <img src="images/microsoft/badges.jpg" alt="Networking and Badges" class="img-left" />
-                        
-                        <p>The earlier part of the programme ran online and focused on practical, job-ready skills before the on-site visit.</p>
-                        
-                        <ul class="article-list">
-                            <li><strong>LinkedIn and online presence:</strong> Making my profile easy to find and clear about the data and security work I do.</li>
-                            <li><strong>Interview practice:</strong> Practising how to explain technical and analytical work clearly under interview conditions.</li>
-                        </ul>
-                        
-                        <p>That groundwork made the technical sessions later on a lot more useful.</p>
+                <blockquote><p>Being there in person, not just online, made the whole thing click.</p></blockquote>
 
-                        <h2 style="clear: both; padding-top: var(--space-4);">The Technical Deep Dive</h2>
-                        <!-- Floating Image Right -->
-                        <img src="images/microsoft/microsoft (2).jpg" alt="Technical Sessions at Microsoft" class="img-right" />
-                        
-                        <p>The final phase was the most technical. I completed sessions on two areas I care a lot about:</p>
-                        
-                        <ul class="article-list">
-                            <li><strong>Applied Artificial Intelligence:</strong> How Microsoft and its partners are actually using AI to solve real business problems at scale.</li>
-                            <li><strong>Advanced Cybersecurity:</strong> The core concepts and modern patterns behind securing large, fast-changing systems.</li>
-                        </ul>
+                <h2>A strategic foundation</h2>
+                <p>The earlier part of the programme ran online and focused on practical, job-ready skills before the on-site visit.</p>
+                <ul>
+                    <li><strong>LinkedIn and online presence:</strong> Making my profile easy to find and clear about the data and security work I do.</li>
+                    <li><strong>Interview practice:</strong> Practising how to explain technical and analytical work clearly under interview conditions.</li>
+                </ul>
+                <figure><img src="images/microsoft/badges.jpg" alt="Programme badges and networking" loading="lazy"></figure>
+                <p>That groundwork made the technical sessions later on a lot more useful.</p>
 
-                        <p>Overall I came away with a much more practical sense of how the industry works, and the foundations to build real things in AI and secure systems.</p>
+                <h2>The technical deep dive</h2>
+                <p>The final phase was the most technical. I completed sessions on two areas I care a lot about:</p>
+                <ul>
+                    <li><strong>Applied Artificial Intelligence:</strong> How Microsoft and its partners are actually using AI to solve real business problems at scale.</li>
+                    <li><strong>Advanced Cybersecurity:</strong> The core concepts and modern patterns behind securing large, fast-changing systems.</li>
+                </ul>
+                <figure><img src="images/microsoft/microsoft%20(2).jpg" alt="Technical session at Microsoft" loading="lazy"></figure>
+                <p>Overall I came away with a much more practical sense of how the industry works, and the foundations to build real things in AI and secure systems.</p>
 
-                        <h2 style="clear: both; padding-top: var(--space-8);">A Heartfelt Thank You</h2>
-                        <p>Thanks to the sponsors at Microsoft, Amber Joyce and Jeramie Sutton, and the whole programme team. A special thank you to EDI and Dr. Frances Trought (DUniv) for backing the programme and opening doors for people like me. I'm grateful for the experience and everything I picked up.</p>
-                    </article>
-                </div>
+                <h2>Thank you</h2>
+                <p>Thanks to the sponsors at Microsoft, Amber Joyce and Jeramie Sutton, and the whole programme team. A special thank you to EDI and Dr. Frances Trought (DUniv) for backing the programme and opening doors for people like me. I'm grateful for the experience and everything I picked up.</p>
             </div>
-        </section>
+
+            <div class="links" style="margin-top:48px"><a class="btn" href="blog.html">← All posts</a><a class="btn" href="blog-bentchley.html">Next: Bletchley Park →</a></div>
+        </article>
     </main>
 
-    <footer style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: var(--space-6) 0; margin-top: var(--space-12); background: transparent;">
-        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);">
-            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px;">Digital Portfolio</span>
-            <ul class="sci" style="margin: 0; min-height: 40px; display: flex; justify-content: flex-end; align-items: center;">
-                <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra" target="_blank">LinkedIn</a></li>
-                <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai" target="_blank">GitHub</a></li>
-                <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra" target="_blank">Instagram</a></li>
+    <footer class="site-foot">
+        <div class="wrap label">
+            <span>© 2026 Harshkumar Narendra</span>
+            <ul>
+                <li><a class="label" href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a class="label" href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a class="label" href="https://instagram.com/harshnarendra" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a class="label" href="mailto:harshnarendra07@gmail.com">Email</a></li>
             </ul>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="site.js"></script>
 </body>
 </html>

@@ -1,283 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
     <title>Projects | Harshkumar Narendra</title>
-    <meta name="description"
-        content="Selected projects by Harshkumar Narendra, specializing in Data Analytics and System Security.">
+    <meta name="description" content="Data analytics, BI and software projects by Harshkumar Narendra: Power BI, PostgreSQL, Python, Django, React and Java.">
 
-    <!-- Open Graph / Social Sharing Meta Tags -->
     <meta property="og:title" content="Projects | Harshkumar Narendra">
-    <meta property="og:description"
-        content="Selected projects by Harshkumar Narendra, specializing in Data Analytics and System Security.">
-    <meta property="og:image"
-        content="https://personal-portfolio-pi-ten-48.vercel.app/images/heroanimation/Make_this_cinematic_extended_9d076d2d50_075.jpg">
+    <meta property="og:description" content="Data analytics, BI and software projects: Power BI, PostgreSQL, Python, Django, React and Java.">
+    <meta property="og:image" content="https://personal-portfolio-pi-ten-48.vercel.app/images/harsh-portrait.jpg">
     <meta property="og:url" content="https://personal-portfolio-pi-ten-48.vercel.app/projects.html">
     <meta property="og:type" content="website">
-
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Projects | Harshkumar Narendra">
-    <meta name="twitter:description"
-        content="Selected projects by Harshkumar Narendra, specializing in Data Analytics and System Security.">
-    <meta name="twitter:image"
-        content="https://personal-portfolio-pi-ten-48.vercel.app/images/heroanimation/Make_this_cinematic_extended_9d076d2d50_075.jpg">
 
+    <script>
+        document.documentElement.classList.remove('no-js');
+        try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra Portfolio</span><span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html" style="color: var(--text-cream);">Projects</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <nav class="nav" aria-label="Main">
+        <div class="wrap">
+            <a class="me" href="index.html">Harshkumar Narendra</a>
+            <ul id="nav-links">
+                <li><a href="projects.html" aria-current="page">Work</a></li>
+                <li><a href="experiences.html">Experience</a></li>
                 <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
-        </nav>
-    </header>
-
-    <main>
-        <section class="section-padding scroll-zoom"
-            style="padding-top: calc(var(--space-16) + var(--space-8)); position: relative; min-height: 100vh;">
-            <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;">
-                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%; background: #070707;">
-                </div>
+            <div class="nav-tools">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+                <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
             </div>
-            <div class="container" style="position: relative; z-index: 2;">
-                <div class="projects-stack-container" id="projects-stack">
-                    <div class="card-modal-overlay" id="modal-overlay" onclick="closeProjectModal()"></div>
+        </div>
+    </nav>
 
-                    <!-- Project 1 -->
-                    <div class="stack-card" style="--i: 0;" data-index="0" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">01</div>
-                            <h2 class="card-cat-title">Data Analytics</h2>
-                            <p>Specialty Cheese Importation</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>Data Analytics Project</h2>
-                                        <p>Interactive Data Insights & Strategy</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Project Overview</h3>
-                                            <p>A supply-chain model for a UK boutique cheese importer, mapping the financial risk and logistics of importing across European borders.</p>
-                                        </div>
-                                        <div class="sidebar-section">
-                                            <h3>Analytical Tools</h3>
-                                            <p>• Microsoft Excel (Power Query)<br>• Advanced DAX Modeling<br>• Dynamic FX Rate Tracking<br>• Supply Chain Logistics API</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div style="margin-bottom: var(--space-8);">
-                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 1px;">01. Live Interactive Data Model</h3>
-                                            <div class="viewer-frame-container">
-                                                <iframe src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&edaebf=rslc0"></iframe>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase; letter-spacing: 1px;">02. Strategy Presentation</h3>
-                                            <div class="viewer-frame-container">
-                                                <iframe src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"></iframe>
-                                            </div>
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 2 -->
-                    <div class="stack-card" style="--i: 1;" data-index="1" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">02</div>
-                            <h2 class="card-cat-title">Web Engineering</h2>
-                            <p>AI Driven Portfolio</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>AI Driven Web Portfolio</h2>
-                                        <p>Cinematic Experience & Architecture</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Project Overview</h3>
-                                            <p>This portfolio site — built by hand in vanilla JS with a scroll-driven canvas hero and smooth scrolling, using AI as a pair-programmer along the way.</p>
-                                        </div>
-                                        <div class="sidebar-section">
-                                            <h3>Core Stack</h3>
-                                            <p>• HTML5 / CSS3 / Vanilla JS<br>• Lenis (Smooth Scroll)<br>• Canvas API Particles<br>• Node.js & Express Backend</p>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div class="presentation-container" id="portfolio-presentation" style="background: rgba(255,255,255,0.03); padding: var(--space-8); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                                            <div class="presentation-slide active">
-                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">1. Inspiration & Concept</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">I wanted something that didn't look like a template: a dark theme, a bright entrance animation, and a canvas particle layer behind the hero.</p>
-                                            </div>
-                                            <div class="presentation-slide">
-                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">2. Key Design Principles</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);"><strong>Data-Driven Aesthetics:</strong> An 8px spacing grid keeps the layout consistent.<br><strong>Accessibility:</strong> Semantic HTML and ARIA labels keep the dashboards keyboard-navigable.</p>
-                                            </div>
-                                            <div class="presentation-slide">
-                                                <h3 style="color: var(--accent-gold); margin-bottom: var(--space-4);">3. Custom Web Effects</h3>
-                                                <p style="font-size: 16px; line-height: 1.8; color: var(--text-offwhite);">Features a custom JavaScript scroll-interceptor that locks the viewport upon entry, then runs a CSS typewriter and cursor effect before revealing the page.</p>
-                                            </div>
-                                            <div class="presentation-controls" style="margin-top: var(--space-8); border-top: 1px solid rgba(255,255,255,0.1); padding-top: var(--space-6);">
-                                                <button class="prev-slide" onclick="changeSlide(-1)">&#8592; Previous</button>
-                                                <span class="slide-counter"><span id="current-slide">1</span> / 3</span>
-                                                <button class="next-slide" onclick="changeSlide(1)">Next &#8594;</button>
-                                            </div>
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 3 -->
-                    <div class="stack-card" style="--i: 2;" data-index="2" onclick="openProjectModal(this)">
-                        <div class="card-content-preview">
-                            <div class="card-number">03</div>
-                            <h2 class="card-cat-title">System Insights</h2>
-                            <p>Analytics Dashboard</p>
-                        </div>
-                        <div class="card-content-detailed">
-                            <div class="modal-dashboard-container">
-                                <header class="modal-dashboard-header">
-                                    <div class="modal-header-left">
-                                        <h2>System Insights Dashboard</h2>
-                                        <p>Power BI Analytics & Data Visualisation</p>
-                                    </div>
-                                    <button class="close-card-btn" onclick="closeProjectModal(event)">&times;</button>
-                                </header>
-                                <div class="modal-dashboard-body">
-                                    <aside class="modal-sidebar-area">
-                                        <button class="back-to-stack-btn" onclick="closeProjectModal(event)">
-                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-                                            Go Back to Stack
-                                        </button>
-                                        <div class="sidebar-section">
-                                            <h3>Project Overview</h3>
-                                            <p>A Power BI dashboard tracking customer-behaviour trends and system-health metrics.</p>
-                                        </div>
-                                        <div class="sidebar-section">
-                                            <h3>Capabilities</h3>
-                                            <p>• Advanced Data Modeling<br>• Real-time Trend Analysis<br>• Automated ETL Pipelines<br>• Power BI Service Integration</p>
-                                        </div>
-                                        <div class="sidebar-section">
-                                            <h3>Action Required</h3>
-                                            <p>This interactive Power BI dashboard (.pbix) requires Power BI Desktop to run. Download the source file to explore the data locally.</p>
-                                            <a href="https://1drv.ms/u/c/d13601dfe1b270ff/IQTe0o_hCLhxTbGRlRDvDA1JAVWQyZDhoQi6uGiPtGJZ9mM" target="_blank" class="btn btn-primary premium-hover" style="text-decoration: none; padding: 12px 24px; font-weight: 500; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; margin-top: var(--space-4); width: 100%; justify-content: center;">
-                                                Download .pbix
-                                            </a>
-                                        </div>
-                                    </aside>
-                                    <main class="modal-main-content-area">
-                                        <div style="margin-bottom: var(--space-8);">
-                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase;">01. Customer Behaviour Dashboard</h3>
-                                            <div class="viewer-frame-container" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: var(--space-10);">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold); margin-bottom: var(--space-4);">
-                                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                                    <polyline points="7 10 12 15 17 10"></polyline>
-                                                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                                                </svg>
-                                                <h4 style="color: var(--text-cream); margin-bottom: var(--space-2); font-size: 24px;">Native Power BI File</h4>
-                                                <p style="color: var(--text-muted); font-size: 16px; margin-bottom: var(--space-6); max-width: 400px; line-height: 1.5;">Direct preview is restricted for .pbix files. Please use the download link in the sidebar.</p>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h3 style="color: var(--accent-gold); font-size: 13px; margin-bottom: var(--space-4); text-transform: uppercase;">02. Detailed Analytics Report</h3>
-                                            <div class="viewer-frame-container">
-                                                <iframe src="https://1drv.ms/p/c/d13601dfe1b270ff/IQSTqu4QUmf5RIac2jD5tnujAaiIwICgRmqqYuUdmcNguMU?wdAr=1.7777777777777777"></iframe>
-                                            </div>
-                                        </div>
-                                    </main>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-
-
-                </div>
-                
+    <main id="main">
+        <header class="page-hero">
+            <div class="wrap">
+                <span class="label"><b>Work</b> &nbsp;7 projects</span>
+                <h1>Projects &amp; <em>case studies</em></h1>
+                <p>Data analytics and BI first, then the software I've built along the way. Each one links to its code, and some open the live file.</p>
             </div>
-        </section>
+        </header>
+
+        <div class="wrap">
+
+            <!-- 01 Sales analytics -->
+            <article class="case" id="sales-analytics">
+                <div class="reveal">
+                    <div class="num">01</div>
+                    <h2>End-to-end sales analytics</h2>
+                    <p class="meta">Personal project · Dec 2025</p>
+                    <div class="stack" style="margin-top:16px"><span>Python</span><span>PostgreSQL</span><span>Power Query</span><span>Power BI</span><span>DAX</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>I wanted to take raw transaction data all the way to a dashboard a manager could use, and do each step properly.</p>
+                    <h3>What I did</h3>
+                    <ul>
+                        <li>Wrote a Python pipeline to clean the raw datasets and fill in missing values, so the reporting could be trusted.</li>
+                        <li>Loaded the cleaned data into PostgreSQL and reconciled it using window functions and CTEs.</li>
+                        <li>Modelled it in Power BI as a star schema: one sales fact table with customer, product, date and region dimensions, one-to-many relationships and single-direction filters.</li>
+                        <li>Used DAX variables and removed redundant columns and relationships to keep the report fast.</li>
+                    </ul>
+                    <h3>What it showed</h3>
+                    <ul>
+                        <li>A small share of customers brings in a large share of total revenue.</li>
+                        <li>Returning customers spend more on average than new ones.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn primary" href="https://github.com/harshnarendra07-ai/customer_behavior_analysis" target="_blank" rel="noopener">View on GitHub ↗</a>
+                        <a class="btn" href="https://1drv.ms/u/c/d13601dfe1b270ff/IQTe0o_hCLhxTbGRlRDvDA1JAVWQyZDhoQi6uGiPtGJZ9mM" target="_blank" rel="noopener">Download .pbix ↗</a>
+                    </div>
+                    <details class="embed">
+                        <summary>Analytics report (slides)</summary>
+                        <div class="frame"><iframe loading="lazy" title="Detailed analytics report" src="https://1drv.ms/p/c/d13601dfe1b270ff/IQSTqu4QUmf5RIac2jD5tnujAaiIwICgRmqqYuUdmcNguMU?wdAr=1.7777777777777777"></iframe></div>
+                    </details>
+                </div>
+            </article>
+
+            <!-- 02 WeCanCIC -->
+            <article class="case" id="wecan">
+                <div class="reveal">
+                    <div class="num">02</div>
+                    <h2>WeCanCIC community platform</h2>
+                    <p class="meta">The Cloud Crew CIC · client work · 2026</p>
+                    <div class="stack" style="margin-top:16px"><span>React</span><span>TypeScript</span><span>Supabase</span><span>Agile</span><span>GDPR</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>WeCan collects empty aluminium cans, sells them to scrap yards and uses the money to buy food for people in need. My team first worked with them at the Automation for Charities AI Hackathon, which we won. As interns at The Cloud Crew, we then built the platform.</p>
+                    <h3>The problem</h3>
+                    <p>The charity had no central place for volunteer sign-ups, community discussion or events.</p>
+                    <h3>What we built</h3>
+                    <ul>
+                        <li>Gathered requirements with the client and delivered an MVP on a Supabase backend: volunteer sign-up, a discussion forum, an FAQ chatbot for volunteers and points-based recognition.</li>
+                        <li>Released page by page in weekly sprints for client review and sign-off. I learned React and TypeScript in a month to build the front end.</li>
+                        <li>Applied the Data Protection Act and GDPR to 300+ users' data, storing volunteer locations at city level unless the user is signed in.</li>
+                    </ul>
+                    <h3>Outcome</h3>
+                    <p>We handed over a platform the client maintains themselves. They report more volunteer engagement and wider social reach after SEO work and social media integration.</p>
+                    <div class="links">
+                        <a class="btn primary" href="https://github.com/gifted-debug/we_can_cic" target="_blank" rel="noopener">View on GitHub ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 03 Sky -->
+            <article class="case" id="sky">
+                <div class="reveal">
+                    <div class="num">03</div>
+                    <h2>Sky engineering directory</h2>
+                    <p class="meta">University of Westminster · team lead · Sep 2025 – May 2026</p>
+                    <div class="stack" style="margin-top:16px"><span>Django</span><span>Python</span><span>SQL</span><span>Bootstrap 5</span><span>Trello</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>A corporate engineering directory and meeting-scheduling web app for Sky, built by a 6-person Agile team over 12 weeks and presented to a panel of Sky engineers. I led the team and was technical lead for the database, integration and security.</p>
+                    <h3>What I did</h3>
+                    <ul>
+                        <li><strong>Database:</strong> designed the relational structure and wrote the full logical ERD. Wrote an <code>import_data.py</code> script to generate teams and accounts, and scripted local test databases so the team stopped hitting merge conflicts.</li>
+                        <li><strong>Backend:</strong> built the meeting-coordination logic, with triggers that send live alerts to teams when an event is created.</li>
+                        <li><strong>Security:</strong> Django authentication with PBKDF2/SHA256 password hashing, <code>@login_required</code> on protected routes, and tests for CSRF tokens and edge-case inputs. Tightened <code>.gitignore</code> rules to stop sensitive files being exposed.</li>
+                        <li><strong>Front end:</strong> forms, profiles and login pages in Bootstrap 5, with visible focus states and high-contrast layouts for accessibility.</li>
+                        <li><strong>Delivery:</strong> ran sprints and risks on Trello, and managed the Git repository, branches and merges.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn primary" href="https://github.com/harshnarendra07-ai/westminster_group_project" target="_blank" rel="noopener">View on GitHub ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 04 Cheese -->
+            <article class="case" id="cheese">
+                <div class="reveal">
+                    <div class="num">04</div>
+                    <h2>Cheese importer forecasting model</h2>
+                    <p class="meta">Predictive data modelling</p>
+                    <div class="stack" style="margin-top:16px"><span>Excel</span><span>Power Query</span><span>SQL</span><span>Forecasting</span></div>
+                    <figure style="margin-top:24px;max-width:360px"><img src="images/projects/cheese_data_dashboard.png" alt="Dashboard from the cheese importer forecasting model" width="640" height="640" loading="lazy"></figure>
+                </div>
+                <div class="body reveal">
+                    <p>A model for a UK cheese importer that forecasts profit and loss under different Euro–Pound exchange rates and economic conditions.</p>
+                    <h3>What I did</h3>
+                    <ul>
+                        <li>Built a multi-layered data model in Excel and SQL for historical analysis and forecasting.</li>
+                        <li>Built a prediction sheet that calculates future values automatically, so budgeting no longer needs manual recalculation.</li>
+                        <li>Charted how the variables relate to each other to support long-term budget planning.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn primary" href="https://github.com/harshnarendra07-ai/cheese_forecasting_data_model" target="_blank" rel="noopener">View on GitHub ↗</a>
+                    </div>
+                    <details class="embed">
+                        <summary>Live data model (Excel)</summary>
+                        <div class="frame"><iframe loading="lazy" title="Live Excel data model" src="https://1drv.ms/x/c/d13601dfe1b270ff/IQSFA0HYPFdFRJjbdliA7fHlAU3WtcX0xI3jplRL35kQsCk?wdAllowInteractivity=True&amp;wdHideGridlines=True&amp;wdHideHeaders=True&amp;wdDownloadButton=True&amp;wdInConfigurator=True&amp;edaebf=rslc0"></iframe></div>
+                    </details>
+                    <details class="embed">
+                        <summary>Strategy presentation (slides)</summary>
+                        <div class="frame"><iframe loading="lazy" title="Strategy presentation" src="https://1drv.ms/p/c/d13601dfe1b270ff/IQQc73nuCjotQakJl2ZXN0NNAcGcb1z5KiVXAh1SNAc_mFo?wdAr=1.7777777777777777"></iframe></div>
+                    </details>
+                </div>
+            </article>
+
+            <!-- 05 Smart Campus -->
+            <article class="case" id="smart-campus">
+                <div class="reveal">
+                    <div class="num">05</div>
+                    <h2>Smart Campus REST API</h2>
+                    <p class="meta">University of Westminster · Mar – Apr 2026</p>
+                    <div class="stack" style="margin-top:16px"><span>Java</span><span>JAX-RS</span><span>Maven</span><span>Tomcat</span><span>Postman</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>A RESTful API in Java for a simulated smart campus, managing the state and sensor readings of thousands of rooms and sensors.</p>
+                    <ul>
+                        <li>Custom exception mappers return clean 403, 409 and 422 responses instead of leaking errors.</li>
+                        <li>Sub-resource locators keep each sensor's latest reading in step when new readings are posted.</li>
+                        <li>HATEOAS discovery links, following REST conventions throughout.</li>
+                        <li>Tested the whole request lifecycle in Postman.</li>
+                    </ul>
+                    <div class="links">
+                        <a class="btn primary" href="https://github.com/harshnarendra07-ai/SmartCampusAPI" target="_blank" rel="noopener">View on GitHub ↗</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- 06 Trazer -->
+            <article class="case" id="trazer">
+                <div class="reveal">
+                    <div class="num">06</div>
+                    <h2>Trazer: UK Parliament Hackathon</h2>
+                    <p class="meta">EasyA · finalist · Sep 2026</p>
+                    <div class="stack" style="margin-top:16px"><span>Research</span><span>Pitching</span><span>LLMs</span><span>RAG</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>Our team was picked as one of the top 100 from over 1,000 applicants to pitch inside the Houses of Parliament.</p>
+                    <p>Parliament records what ministers promise but doesn't track whether it happens. Trazer pulls commitments out of Hansard debates and written answers, looks for later evidence, and marks each one as fulfilled, in progress or no evidence found, with a source link.</p>
+                    <p>I researched the idea and built and presented the pitch deck; a teammate built the data pipeline.</p>
+                </div>
+            </article>
+
+            <!-- 07 EUROCONTROL -->
+            <article class="case" id="eurocontrol">
+                <div class="reveal">
+                    <div class="num">07</div>
+                    <h2>EUROCONTROL Data Challenge</h2>
+                    <p class="meta">In progress</p>
+                    <div class="stack" style="margin-top:16px"><span>Python</span><span>Machine learning</span></div>
+                </div>
+                <div class="body reveal">
+                    <p>Building a machine-learning model in Python to predict aircraft taxi-out times.</p>
+                </div>
+            </article>
+
+            <div class="gh-chart reveal">
+                <div class="head" style="margin-bottom:0"><span class="label">GitHub activity</span><a class="label" href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener">github.com/harshnarendra07-ai ↗</a></div>
+                <img src="https://ghchart.rshah.org/1f4bd8/harshnarendra07-ai" alt="GitHub contribution chart for harshnarendra07-ai" loading="lazy">
+            </div>
+        </div>
     </main>
 
-    <footer style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: var(--space-6) 0; margin-top: var(--space-12); background: transparent;">
-        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);">
-            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px;">Digital Portfolio</span>
-            <ul class="sci" style="margin: 0; min-height: 40px; display: flex; justify-content: flex-end; align-items: center;">
-                <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra" target="_blank">LinkedIn</a></li>
-                <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai" target="_blank">GitHub</a></li>
-                <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra" target="_blank">Instagram</a></li>
+    <footer class="site-foot">
+        <div class="wrap label">
+            <span>© 2026 Harshkumar Narendra</span>
+            <ul>
+                <li><a class="label" href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a class="label" href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a class="label" href="https://instagram.com/harshnarendra" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a class="label" href="mailto:harshnarendra07@gmail.com">Email</a></li>
             </ul>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="site.js"></script>
 </body>
-
 </html>

@@ -1,376 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
-    <title>Harshkumar Narendra | Premium Portfolio</title>
-    <meta name="description"
-        content="Portfolio of Harshkumar Narendra, a creative and computing-focused professional showcasing expertise in Data Analytics and System Security.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
+    <title>Harshkumar Narendra | Data Analyst</title>
+    <meta name="description" content="Harshkumar Narendra: data analyst working with SQL, Python and Power BI. Final-year Computer Science at the University of Westminster, graduating 2027.">
 
-    <!-- Open Graph / Social Sharing Meta Tags -->
-    <meta property="og:title" content="Harshkumar Narendra | Premium Portfolio">
-    <meta property="og:description"
-        content="Data Analytics and System Security enthusiast. View my projects, experiences, and connect for opportunities.">
-    <meta property="og:image"
-        content="https://personal-portfolio-pi-ten-48.vercel.app/images/heroanimation/Make_this_cinematic_extended_9d076d2d50_075.jpg">
+    <meta property="og:title" content="Harshkumar Narendra | Data Analyst">
+    <meta property="og:description" content="Final-year Computer Science at Westminster. SQL, Python, Power BI. Open to 2027 graduate schemes and internships.">
+    <meta property="og:image" content="https://personal-portfolio-pi-ten-48.vercel.app/images/harsh-portrait.jpg">
     <meta property="og:url" content="https://personal-portfolio-pi-ten-48.vercel.app/">
     <meta property="og:type" content="website">
-
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Harshkumar Narendra | Premium Portfolio">
-    <meta name="twitter:description"
-        content="Data Analytics and System Security enthusiast. View my projects, experiences, and connect for opportunities.">
-    <meta name="twitter:image"
-        content="https://personal-portfolio-pi-ten-48.vercel.app/images/heroanimation/Make_this_cinematic_extended_9d076d2d50_075.jpg">
+    <meta name="twitter:title" content="Harshkumar Narendra | Data Analyst">
+    <meta name="twitter:description" content="Final-year Computer Science at Westminster. SQL, Python, Power BI. Open to 2027 graduate schemes and internships.">
+    <meta name="twitter:image" content="https://personal-portfolio-pi-ten-48.vercel.app/images/harsh-portrait.jpg">
 
+    <script>
+        document.documentElement.classList.remove('no-js');
+        try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="site.css">
     <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
 <body>
-    <!-- Zoom Mask Scroll Wrapper -->
-    <div id="zoom-scroll-wrapper"
-        style="position: relative; height: 300vh; width: 100vw; z-index: 9000; background: transparent;">
-        <div id="zoom-sticky-container"
-            style="position: sticky; top: 0; left: 0; width: 100vw; height: 100vh; overflow: hidden;">
+    <a class="skip" href="#main">Skip to content</a>
 
-            <!-- Intro Sequence (Asset 1) - Canvas removed, wrapper kept for scroll effects -->
-            <div id="intro-sequence-wrapper" class="intro-sequence-wrapper"
-                style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; overflow: hidden; pointer-events: none;">
-            </div>
-
-            <!-- Entrance Animation Splash Screen (Mask) -->
-            <div id="splash-screen" class="splash-screen" style="z-index: 2;">
-
-                <!-- This container holds the text and will be scaled up via Javascript -->
-                <!-- The multiply blend mode makes the white text transparent against the black background, showing the underlying canvas -->
-                <div class="zoom-mask-container" id="zoom-mask-container">
-                    <div class="splash-box liquid-glass-card generic-glass-card" style="padding: var(--space-6); width: fit-content; max-width: 90vw; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center;">
-                        <div class="glowing-border-box">
-                            <div class="intro-heading" style="color: #000;">Hi, I'm Harsh. I am a</div>
-                            <div class="flip-container">
-                                <div class="flip-text" style="color: #000;">Innovator.</div>
-                                <div class="flip-text" style="color: #000;">Creator.</div>
-                                <div class="flip-text" style="color: #000;">Developer.</div>
-                                <div class="flip-text" style="color: #000;">Dreamer.</div>
-                            </div>
-                        </div>
-
-                        <!-- Swipe Track -->
-                        <p class="splash-hint" style="color: #000; font-size: 14px; margin-top: var(--space-4); margin-bottom: var(--space-2); opacity: 0.8;">Slide left for wisdom, right for a laugh.</p>
-                        <div class="splash-toggle-track pos-center" id="splash-quote-toggle">
-                            <span class="toggle-hole" id="toggle-hole"></span>
-                            <button class="toggle-zone" data-target="left" aria-label="Philosophy Quote"></button>
-                            <button class="toggle-zone" data-target="center" aria-label="Clear Quote"></button>
-                            <button class="toggle-zone" data-target="right" aria-label="Analytics Joke"></button>
-                        </div>
-                        <p class="splash-text-display" id="splash-text-display"
-                            style="color: #000; text-shadow: none; z-index: 10;"></p>
-                    </div>
-
-                    <!-- Removed duplicate toggle blocks here -->
-
-                    <div class="scroll-indicator scroll-zoom is-visible" style="color: #000; border-color: #000;">Scroll
-                        to View</div>
-                </div>
+    <nav class="nav" aria-label="Main">
+        <div class="wrap">
+            <a class="me" href="index.html">Harshkumar Narendra</a>
+            <ul id="nav-links">
+                <li><a href="projects.html">Work</a></li>
+                <li><a href="experiences.html">Experience</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-tools">
+                <button class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+                <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <header class="site-header">
-        <nav class="nav-container">
-            <!-- Notice the span classes wrapping the text to handle the timeline typewriter reveal -->
-            <a href="#" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra
-                    Portfolio</span><span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="blog.html">Blog</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="Toggle menu">
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                </svg>
-            </button>
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-                <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                </svg>
-                <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                </svg>
-            </button>
-        </nav>
-    </header>
+    <main id="main">
+        <!-- Hero -->
+        <header class="hero wrap">
+            <div class="hero-top">
+                <span class="label status"><i></i>Open to 2027 graduate schemes &amp; internships</span>
+                <span class="label">Wembley, London</span>
+            </div>
+            <h1 class="name"><span>Harshkumar</span><span class="it">Narendra</span></h1>
+            <div class="hero-foot">
+                <p><strong>Data analyst.</strong> Final-year Computer Science at the University of Westminster, predicted a First, graduating 2027. I work with SQL, Python and Power BI, and I've worked at McDonald's since 2020, now as a shift manager.</p>
+                <p class="now"><b>Now</b> · Junior Consultant Intern, The Cloud Crew<br><b>Also</b> · Shift Manager, McDonald's</p>
+                <div class="links">
+                    <a class="btn primary" href="#work">See my work</a>
+                    <a class="btn" href="resume.pdf" target="_blank" rel="noopener">CV</a>
+                </div>
+            </div>
+        </header>
 
-    <main>
-        <!-- Hero Section (Asset 2) -->
-        <section id="hero" class="hero-section scroll-zoom" style="transform-origin: center center; background: transparent;">
-            <canvas id="hero-bg-canvas" class="hero-canvas"></canvas>
-            <div class="hero-overlay"></div>
-            <div class="container hero-content" id="dynamic-hero-content">
-                <h1 class="hero-title"><span class="typewriter-text cursor">Decoding the Noise.<br>Securing the
-                        Perimeter.</span>
-                </h1>
+        <!-- About -->
+        <section class="block" id="about">
+            <div class="wrap">
+                <div class="head reveal"><span class="label"><b>01</b> &nbsp;About</span></div>
+                <div class="about-grid">
+                    <div>
+                        <p class="lede reveal">I joined McDonald's in 2020 as a crew member. Today I run shifts there, and I plan staffing from the store's sales trends. That's where I first saw what <em>data</em> could do. Since then I've studied Computer Science, won a charity AI hackathon, and gone on to build that same charity's platform as an intern.</p>
+                        <p class="aside-note reveal">Outside work: cricket (Westminster Cricket Club), swimming, hiking, fishing and chess.</p>
+                    </div>
+                    <figure class="reveal">
+                        <div class="portrait"><img src="images/harsh-portrait.jpg" alt="Harshkumar Narendra standing against a brick wall in a grey coat" width="900" height="1350" loading="lazy"></div>
+                    </figure>
+                </div>
+                <div class="facts reveal">
+                    <div class="fact"><div class="n">1st</div><p>Predicted First Class Honours, BSc Computer Science, 2027</p></div>
+                    <div class="fact"><div class="n">£50–75</div><p>saved per shift by scheduling staff from sales trends</p></div>
+                    <div class="fact"><div class="n">Winner</div><p>Morgan Stanley × Cloud Crew AI Hackathon, 2026</p></div>
+                    <div class="fact"><div class="n">Gold</div><p>Westminster Employability Award 2026, overall gold winner</p></div>
+                </div>
             </div>
         </section>
 
-        <!-- Detailed Landing Profile Section -->
-        <section id="landing-profile" class="landing-profile-section scroll-zoom" style="position: relative; z-index: 10;">
-            <div class="liquid-glass-container">
-                <div class="liquid-glass-background">
-                    <div class="liquid-blob liquid-blob-1"></div>
-                    <div class="liquid-blob liquid-blob-2"></div>
-                    <div class="liquid-blob liquid-blob-3"></div>
+        <!-- Journey (summary) -->
+        <section class="block" id="journey">
+            <div class="wrap">
+                <div class="head reveal"><span class="label"><b>02</b> &nbsp;Journey</span><a class="label" href="experiences.html">Full experience →</a></div>
+                <div class="chapters">
+                    <article class="chapter now reveal">
+                        <div class="when"><b>Jul 2026 —</b>Present</div>
+                        <div><h3>Junior Consultant Intern</h3><div class="org">The Cloud Crew CIC · London</div></div>
+                        <ul><li>Delivering WeCanCIC, a community platform for a charity client, in a 3-developer team from requirements to release.</li><li>Learned React and TypeScript in a month; applied GDPR to 300+ users' data.</li></ul>
+                    </article>
+                    <article class="chapter reveal">
+                        <div class="when"><b>Jun 2026</b>1 month</div>
+                        <div><h3>IEUK: Technology &amp; Engineering</h3><div class="org">Bright Network · Virtual internship</div></div>
+                        <ul><li>Wrote the product requirements, user stories, KPIs and wireframes for EcoCart, a receipt-scanning feature to cut food waste.</li></ul>
+                    </article>
+                    <article class="chapter reveal">
+                        <div class="when"><b>2026</b>6 months</div>
+                        <div><h3>Mentee</h3><div class="org">Microsoft Embrace Mentoring Programme</div></div>
+                        <ul><li>Mentored by Nathalie Maslen (Software Partnerships, Microsoft) on applying AI and cyber security in business. <a class="ref" href="blog-microsoft-embrace.html">Read the write-up →</a></li></ul>
+                    </article>
+                    <article class="chapter reveal">
+                        <div class="when"><b>Sep 2024 —</b>May 2027</div>
+                        <div><h3>BSc (Hons) Computer Science</h3><div class="org">University of Westminster · Predicted First</div></div>
+                        <ul><li>Team lead on the Sky project: a Django web application where I owned database design and testing.</li></ul>
+                    </article>
+                    <article class="chapter reveal">
+                        <div class="when"><b>May 2020 —</b>Present</div>
+                        <div><h3>Shift Manager</h3><div class="org">McDonald's · Wembley</div>
+                            <div class="steps"><span>Crew Member, May 2020</span><span>Crew Trainer, Aug 2021</span><span>Shift Manager, Jul 2023</span></div></div>
+                        <ul><li>Scheduling from sales trends cut overstaffing costs by £50–75 per shift.</li><li>Led the store's NSF health &amp; safety inspection to a 100% compliance report.</li></ul>
+                    </article>
                 </div>
-                
-                <div class="liquid-glass-card bio-glass-card container">
-                    <div class="profile-content scroll-zoom delay-1">
-                        <p class="hero-subtitle">BSc Computer Science Student</p>
-                        <h1 class="hero-title" style="font-size: 3.5rem; line-height: 1.1; margin-bottom: var(--space-4);">
-                            Data Analytics &<br><span style="color: var(--accent-gold);">Cyber Security</span>
-                        </h1>
-                        <p class="profile-description"
-                            style="color: var(--text-offwhite); font-size: 1.1rem; line-height: 1.8; margin-bottom: var(--space-6);">
-                            I'm a Computer Science student at the University of Westminster, looking for internships and graduate roles. I work across two sides of the same coin — finding patterns in data, and securing the systems that hold it — while working toward a SOC analyst role.
-                        </p>
+            </div>
+        </section>
 
-                        <div class="profile-highlights"
-                            style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
-                            <div class="highlight-item premium-hover"
-                                style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
-                                <h4
-                                    style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
-                                    Data Analytics</h4>
-                                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Python, Pandas,
-                                    SQL<br>Tableau, PowerBI</p>
-                            </div>
-                            <div class="highlight-item premium-hover"
-                                style="border-left: 2px solid var(--accent-gold); padding-left: var(--space-3); padding-top: var(--space-2); padding-bottom: var(--space-2); transition: all 0.3s ease;">
-                                <h4
-                                    style="color: var(--text-cream); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 4px;">
-                                    Cyber Security (SOC)</h4>
-                                <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Wireshark, Kali
-                                    Linux<br>Threat Analysis & Monitoring</p>
-                            </div>
-                        </div>
+        <!-- Work (selected) -->
+        <section class="block" id="work">
+            <div class="wrap">
+                <div class="head reveal"><span class="label"><b>03</b> &nbsp;Selected work</span><a class="label" href="projects.html">All projects →</a></div>
+                <div class="work reveal">
+                    <a class="card feature" href="projects.html#sales-analytics">
+                        <div class="top"><span class="tag">Data analytics · BI</span><span>Dec 2025</span></div>
+                        <h3>End-to-end sales analytics</h3>
+                        <p>A Python pipeline cleans the raw data and fills in missing values. The data then goes into PostgreSQL, where window functions and CTEs reconcile it. The Power BI dashboard sits on a star schema. What it showed: a small share of customers brings in a large share of revenue, and returning customers spend more on average than new ones.</p>
+                        <div class="stack"><span>Python</span><span>PostgreSQL</span><span>Power BI</span><span>DAX</span></div>
+                        <span class="go">Read the case study →</span>
+                    </a>
+                    <a class="card feature" href="projects.html#wecan">
+                        <div class="top"><span class="tag">Client work · Cloud Crew</span><span>2026</span></div>
+                        <h3>WeCanCIC community platform</h3>
+                        <p>The charity had no central place for volunteer sign-ups, discussion or events. After our team won the hackathon for them, we built the MVP on Supabase. The client now runs it themselves and reports more volunteer engagement.</p>
+                        <div class="stack"><span>React</span><span>TypeScript</span><span>Supabase</span><span>GDPR</span></div>
+                        <span class="go">Read the case study →</span>
+                    </a>
+                    <a class="card" href="projects.html#sky">
+                        <div class="top"><span class="tag">Team lead · Full stack</span><span>Sep 2025 – May 2026</span></div>
+                        <h3>Sky engineering directory</h3>
+                        <p>Led a 6-person team for 12 weeks. I designed the database and ERD, wrote the meeting-scheduling backend and handled security.</p>
+                        <div class="stack"><span>Django</span><span>Python</span><span>Bootstrap 5</span></div>
+                        <span class="go">Read the case study →</span>
+                    </a>
+                    <a class="card" href="projects.html#cheese">
+                        <div class="top"><span class="tag">Data modelling</span><span></span></div>
+                        <h3>Cheese importer forecasting model</h3>
+                        <p>Excel and SQL model forecasting a UK cheese importer's profit and loss under different Euro–Pound exchange rates.</p>
+                        <div class="stack"><span>Excel</span><span>SQL</span><span>Forecasting</span></div>
+                        <span class="go">Open the live model →</span>
+                    </a>
+                </div>
+                <div class="more reveal"><a class="btn" href="projects.html">All 7 projects →</a></div>
+            </div>
+        </section>
 
-                        <div class="hero-actions scroll-zoom"
-                            style="display: flex; gap: var(--space-3); flex-wrap: nowrap; justify-content: flex-start; align-items: center; margin-top: var(--space-4);">
-                            <a href="#cta" class="btn btn-primary premium-hover"
-                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Connect
-                                me</a>
-                            <a href="resume.pdf" class="btn btn-primary premium-hover" target="_blank"
-                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">Download
-                                Resume</a>
-                            <a href="projects.html" class="btn btn-primary premium-hover"
-                                style="white-space: nowrap; border: 1px solid var(--accent-gold); color: var(--accent-gold);">View
-                                Projects</a>
-                        </div>
+        <!-- Recognition -->
+        <section class="block" id="recognition">
+            <div class="wrap">
+                <div class="head reveal"><span class="label"><b>04</b> &nbsp;Recognition</span></div>
+                <div class="awards reveal">
+                    <div class="award"><span class="d">Jul 2026</span><div><h4>Winner, Automation for Charities AI Hackathon</h4><p>Team of four, working on problems for the charity WeCan</p></div><span class="by">Morgan Stanley × The Cloud Crew</span></div>
+                    <div class="award"><span class="d">Sep 2026</span><div><h4>Finalist, UK Parliament Hackathon</h4><p>Top 100 of 1,000+ applicants</p></div><span class="by">EasyA</span></div>
+                    <div class="award"><span class="d">Apr 2026</span><div><h4>Westminster Employability Award: overall Gold winner</h4><p>After Bronze and Silver earlier in 2026</p></div><span class="by">University of Westminster</span></div>
+                    <div class="award"><span class="d">Jan 2026</span><div><h4>Pre Security certificate</h4><p>Networking, Linux and web fundamentals</p></div><span class="by">TryHackMe</span></div>
+                    <div class="award"><span class="d">Ongoing</span><div><h4>Manager of the Month &amp; Manager of the Quarter</h4><p>Awarded multiple times</p></div><span class="by">McDonald's</span></div>
+                </div>
 
-                        <!-- GitHub Contribution Chart -->
-                        <div class="scroll-zoom delay-3"
-                            style="background: rgba(255,255,255,0.02); padding: var(--space-2); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); margin-top: var(--space-6); width: 100%; max-width: 500px;">
-                            <h4
-                                style="color: var(--text-muted); font-size: 14px; margin-bottom: var(--space-2); text-transform: uppercase; letter-spacing: 1px;">
-                                Github Contribution</h4>
-                            <img src="https://ghchart.rshah.org/d4af37/harshnarendra07-ai"
-                                alt="Github chart for harshnarendra07-ai" style="width: 100%; display: block;" />
+                <div class="head reveal" style="margin-top: clamp(70px, 9vw, 110px);"><span class="label">What people say</span></div>
+                <div class="quotes">
+                    <blockquote class="reveal">
+                        <p>You helped validate ideas, challenge assumptions, and maintain focus, preventing scope creep and ensuring clarity.</p>
+                        <footer>Claire Spiller<span>Founder, The Cloud Crew CIC</span></footer>
+                    </blockquote>
+                    <blockquote class="reveal">
+                        <p>One of his greatest strengths is his ability to act as a balanced voice within the team, helping to consolidate different perspectives and shape them into practical solutions.</p>
+                        <footer>Kabir Ansari<span>Junior Consultant, The Cloud Crew · hackathon teammate</span></footer>
+                    </blockquote>
+                    <blockquote class="reveal">
+                        <p>Harsh is friendly, confident and ambitious, and I have no doubt he will thrive in whichever role he moves into next.</p>
+                        <footer>Nathalie Maslen<span>Software Partnerships, Microsoft · his mentor</span></footer>
+                    </blockquote>
+                    <blockquote class="reveal">
+                        <p>A hardworking and reliable manager who leads by example, follows procedures, and consistently ensures tasks are completed to a high standard.</p>
+                        <footer>Shivani Savant<span>Assistant Manager, McDonald's · managed Harsh directly</span></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="wrap">
+                <span class="label reveal"><b>05</b> &nbsp;Contact</span>
+                <div class="contact-grid">
+                    <div class="reveal">
+                        <h2>Hiring for a 2027<br>data or BI role?<br><a href="mailto:harshnarendra07@gmail.com">Let's talk.</a></h2>
+                        <div class="links">
+                            <a class="btn primary" href="mailto:harshnarendra07@gmail.com">harshnarendra07@gmail.com</a>
+                            <a class="btn" href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener">LinkedIn ↗</a>
+                            <a class="btn" href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener">GitHub ↗</a>
                         </div>
                     </div>
-
-                    <div class="profile-visual scroll-zoom delay-2" style="position: relative;">
-                        <img src="images/harsh.png" alt="Harshkumar Narendra"
-                            style="width: 100%; max-width: 400px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); object-fit: cover; border: 1px solid var(--surface-border); display: block; margin: 0 auto; transform: rotate(-90deg);">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interests Section (Structured & Stunning - No Canvas) -->
-        <section id="interests" class="interests-section section-padding scroll-zoom"
-            style="position: relative; overflow: hidden; min-height: 60vh; display: flex; align-items: center;">
-            <div class="liquid-glass-container" style="padding: 0;">
-                <div class="liquid-glass-background">
-                    <div class="liquid-blob liquid-blob-1"></div>
-                    <div class="liquid-blob liquid-blob-2"></div>
-                    <div class="liquid-blob liquid-blob-3"></div>
-                </div>
-
-            <div class="liquid-glass-card generic-glass-card container" style="position: relative; z-index: 2; width: 100%;">
-
-                <header class="section-header scroll-zoom" style="text-align: center; margin-bottom: var(--space-8);">
-                    <h2 class="section-title">Interests</h2>
-                    <p class="section-subtitle" style="margin: 0 auto; max-width: 600px;">What I get up to when I'm away from a keyboard.</p>
-                </header>
-
-                <div class="features-grid"
-                    style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-6);">
-                    <article class="feature-card premium-hover scroll-zoom delay-1"
-                        style="text-align: center; padding: var(--space-6);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🏏</div>
-                        <h3 class="feature-title">Cricket</h3>
-                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">Strategy, timing and staying calm under pressure — a lot of the same thinking I bring to data.</p>
-                    </article>
-                    <article class="feature-card premium-hover scroll-zoom delay-2"
-                        style="text-align: center; padding: var(--space-6);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">✈️</div>
-                        <h3 class="feature-title">Travel</h3>
-                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">New places, new problems to work out. Good for perspective.</p>
-                    </article>
-                    <article class="feature-card premium-hover scroll-zoom delay-3"
-                        style="text-align: center; padding: var(--space-6);">
-                        <div style="font-size: 3rem; margin-bottom: var(--space-4);">🥘</div>
-                        <h3 class="feature-title">Food</h3>
-                        <p class="feature-desc" style="font-size: 0.95rem; line-height: 1.6;">Cooking rewards patience and precision — same as good engineering.</p>
-                    </article>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials-section section-padding">
-            <div class="liquid-glass-container" style="padding: 0;">
-                <div class="liquid-glass-background">
-                    <div class="liquid-blob liquid-blob-1"></div>
-                    <div class="liquid-blob liquid-blob-2"></div>
-                    <div class="liquid-blob liquid-blob-3"></div>
-                </div>
-
-            <div class="liquid-glass-card generic-glass-card container">
-                <header class="section-header scroll-zoom">
-                    <h2 class="section-title">Trusted</h2>
-                    <p class="section-subtitle">A reputation built on reliability and teamwork.</p>
-                </header>
-
-                <div class="testimonials-grid">
-                    <article class="testimonial-card scroll-zoom">
-                        <p class="testimonial-text">"Harshkumar transformed workplace with his presence. The attention
-                            to
-                            detail is truly unparalleled. It felt like watching an artist at work."</p>
-                        <footer class="testimonial-author">
-                            <strong>Reema Mavani</strong>
-                            <span>KYLU Franchise Owner</span>
-                        </footer>
-                    </article>
-                    <article class="testimonial-card scroll-zoom delay-1">
-                        <p class="testimonial-text">"He brings a rare combination of robust computing fundamentals and
-                            an incredible eye for high-end design aesthetics."</p>
-                        <footer class="testimonial-author">
-                            <strong>Nadaf Babu</strong>
-                            <span>University of Westminster Professor</span>
-                        </footer>
-                    </article>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section id="cta" class="cta-section section-padding">
-            <div class="liquid-glass-container" style="padding: 0;">
-                <div class="liquid-glass-background">
-                    <div class="liquid-blob liquid-blob-1"></div>
-                    <div class="liquid-blob liquid-blob-2"></div>
-                    <div class="liquid-blob liquid-blob-3"></div>
-                </div>
-            <div class="liquid-glass-card generic-glass-card container cta-container scroll-zoom cta-grid-layout"
-                style="background: transparent; border: none; box-shadow: none;">
-                <div class="cta-content">
-                    <h2 class="cta-title" style="margin-bottom: var(--space-4);">Looking for an Analytical Mind?</h2>
-                    <p class="cta-desc" style="max-width: 100%; margin-bottom: var(--space-6);">I am currently open for
-                        Data Analytics and System Security internships. Let's connect.</p>
-                </div>
-
-                <div class="cta-form-wrapper"
-                    style="background: var(--surface-dark); padding: var(--space-6); border-radius: 8px; border: 1px solid var(--surface-border);">
-                    <form id="contact-form" action="https://formspree.io/f/mzdaowaa" method="POST" style="display: flex; flex-direction: column; gap: var(--space-4);">
-                        <!-- Honeypot Field -->
-                        <input type="text" name="_gotcha" style="display:none" />
-                        <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                            <label for="name"
-                                style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Full
-                                Name</label>
-                            <input type="text" id="name" name="name" required
-                                style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);"
-                                placeholder="John Doe">
-                        </div>
-                        <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                            <label for="email"
-                                style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Email
-                                Address</label>
-                            <input type="email" id="email" name="email" required
-                                style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main);"
-                                placeholder="john@example.com">
-                        </div>
-                        <div class="form-group" style="display: flex; flex-direction: column; gap: var(--space-2);">
-                            <label for="message"
-                                style="color: var(--text-offwhite); font-weight: 500; font-size: 14px;">Message</label>
-                            <textarea id="message" name="message" required rows="4"
-                                style="background: var(--bg-dark); border: 1px solid var(--surface-border); padding: var(--space-3); color: var(--text-cream); border-radius: 4px; font-family: var(--font-main); resize: vertical;"
-                                placeholder="Tell me about your project..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary"
-                            style="margin-top: var(--space-2); width: 100%; justify-content: center;">Send
-                            Message</button>
-                        <p id="form-status" style="margin-top: var(--space-2); font-size: 14px; display: none;"></p>
+                    <form class="form reveal" id="contact-form" action="https://formspree.io/f/mzdaowaa" method="POST">
+                        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <label>Name<input type="text" name="name" required autocomplete="name"></label>
+                        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+                        <label>Message<textarea name="message" rows="4" required></textarea></label>
+                        <div><button class="btn primary" type="submit">Send message</button></div>
+                        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
                     </form>
                 </div>
-            </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <p>Digital Portfolio</p>
-            </div>
-            <div class="footer-links scroll-zoom" style="display: flex; flex-direction: column; align-items: flex-end;">
-                <ul class="sci"
-                    style="margin-top: 0; min-height: 40px; display: flex; justify-content: flex-end; gap: 32px; align-items: center;">
-                    <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra"
-                            target="_blank">LinkedIn</a></li>
-                    <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai"
-                            target="_blank">GitHub</a></li>
-                    <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                    <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra"
-                            target="_blank">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="year"></span> Harshkumar Narendra. All rights reserved.</p>
+    <footer class="site-foot">
+        <div class="wrap label">
+            <span>© 2026 Harshkumar Narendra</span>
+            <ul>
+                <li><a class="label" href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a class="label" href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a class="label" href="https://instagram.com/harshnarendra" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a class="label" href="mailto:harshnarendra07@gmail.com">Email</a></li>
+            </ul>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <script src="site.js"></script>
 </body>
-
 </html>
