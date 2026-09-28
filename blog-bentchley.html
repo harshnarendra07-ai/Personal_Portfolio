@@ -1,425 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://ghchart.rshah.org; connect-src 'self' https://formspree.io; frame-src https://1drv.ms https://onedrive.live.com https://*.officeapps.live.com https://*.live.com;">
-    <title>A Journey Through Bletchley Park | Blog</title>
-    <meta name="description"
-        content="Exploring the historical grounds of Bletchley Park, the birthplace of modern computing and cybersecurity.">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500&family=Ubuntu:wght@700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .blog-post-wrapper {
-            background: var(--surface-dark);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--surface-border);
-            padding: var(--space-8);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .post-header {
-            text-align: center;
-            margin-bottom: var(--space-8);
-        }
-
-        .post-title {
-            font-size: clamp(40px, 6vw, 85px);
-            line-height: 1;
-            font-family: var(--font-display);
-            color: var(--text-cream);
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            margin: 0;
-        }
-
-        .post-title-italic {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-transform: lowercase;
-            font-weight: 600;
-            color: var(--accent-gold);
-            font-size: 1.1em;
-            letter-spacing: 0;
-        }
-        
-        .title-group {
-            display: inline-block;
-            white-space: nowrap;
-        }
-
-        .tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-2);
-            margin-top: var(--space-6);
-        }
-
-        .tag-pill {
-            background: var(--text-cream);
-            color: var(--bg-dark);
-            padding: var(--space-2) var(--space-4);
-            border-radius: 50px;
-            font-family: var(--font-display);
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            white-space: nowrap;
-            transition: transform var(--transition-fast);
-        }
-        
-        @media (prefers-reduced-motion: no-preference) {
-            .tag-pill:hover {
-                transform: scale(1.05);
-            }
-        }
-
-        .article-content {
-            color: var(--text-offwhite);
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .article-content h2, .article-content h3 {
-            font-family: var(--font-display);
-            color: var(--text-cream);
-            margin-top: var(--space-8);
-            margin-bottom: var(--space-4);
-            font-size: clamp(28px, 4vw, 40px);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .article-content p {
-            margin-bottom: var(--space-4);
-            font-family: var(--font-main);
-            text-align: left;
-        }
-
-        .article-content figure {
-            margin-bottom: var(--space-4);
-            text-align: center;
-            display: inline-block;
-            width: 100%;
-            margin-left: 0;
-            margin-right: 0;
-        }
-
-        .article-content figure img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--surface-border);
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            display: block;
-        }
-        
-        .article-content figcaption {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-style: italic;
-            margin-top: var(--space-2);
-            display: block;
-        }
-
-        .img-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-6);
-            margin-bottom: var(--space-4);
-        }
-        
-        .img-grid.three-cols {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        }
-        
-        .img-grid figure {
-            margin-bottom: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        
-        .img-grid figure img {
-            height: 100%;
-            object-fit: cover;
-            flex-grow: 1;
-        }
-
-        .img-center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: var(--space-8) 0;
-            width: 100%;
-        }
-
-        .img-center img {
-            max-width: 100%;
-            max-height: 70vh;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--surface-border);
-            object-fit: contain;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .article-content::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .article-quote {
-            font-size: 24px;
-            color: var(--text-cream);
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            text-align: center;
-            padding: var(--space-6) var(--space-12);
-            margin: var(--space-8) 0;
-            position: relative;
-        }
-
-        .article-quote::before {
-            content: "“";
-            font-family: var(--font-display);
-            font-size: 80px;
-            color: var(--accent-gold);
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0.3;
-        }
-
-        .article-list {
-            margin-bottom: var(--space-4);
-            padding-left: var(--space-4);
-        }
-
-        .article-list li {
-            margin-bottom: var(--space-2);
-            position: relative;
-        }
-        
-        .article-list li::before {
-            content: '•';
-            color: var(--accent-gold);
-            position: absolute;
-            left: -1em;
-            font-weight: bold;
-        }
-
-        .back-link {
-            position: relative;
-            z-index: 100;
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-cream);
-            text-decoration: none;
-            font-family: var(--font-display);
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--space-6);
-            transition: all var(--transition-base);
-            padding: var(--space-2) var(--space-4);
-            border: 1px solid var(--surface-border);
-            border-radius: 100px;
-            background: var(--bg-dark);
-            cursor: pointer;
-        }
-        
-        .back-link:hover {
-            color: var(--bg-dark);
-            background: var(--text-cream);
-            border-color: var(--text-cream);
-        }
-        
-        .back-link svg {
-            margin-right: var(--space-2);
-            transition: transform var(--transition-fast);
-        }
-        
-        @media (prefers-reduced-motion: no-preference) {
-            .back-link:hover svg {
-                transform: translateX(-5px);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .post-title {
-                font-size: clamp(32px, 8vw, 50px);
-                white-space: normal;
-            }
-            .blog-post-wrapper {
-                padding: var(--space-4);
-            }
-            .title-group {
-                white-space: normal;
-            }
-            .article-quote {
-                padding: var(--space-4);
-            }
-        }
-    </style>
-    <script>
-      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Echoes of innovation at Bletchley Park • Harshkumar Narendra</title>
+<meta name="description" content="Echoes of innovation at Bletchley Park">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://formspree.io; frame-src 'none';">
+<meta property="og:title" content="Echoes of innovation at Bletchley Park • Harshkumar Narendra">
+<meta property="og:description" content="Echoes of innovation at Bletchley Park">
+<meta property="og:image" content="https://personal-portfolio-pi-ten-48.vercel.app/images/harsh-portrait.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="site.css">
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
+<body data-page="post" data-label="Blog">
+<div class="loading-container" aria-hidden="true">
+  <div class="loading-screen">
+    <div class="rounded-div-wrap top"><div class="rounded-div"></div></div>
+    <div class="loading-words"></div>
+    <div class="rounded-div-wrap bottom"><div class="rounded-div"></div></div>
+  </div>
+</div>
+<main>
+  <div class="btn btn-hamburger"><div class="btn-click magnetic" data-strength="50" data-strength-text="25" role="button" aria-label="Menu"><div class="btn-fill"></div><div class="btn-text"><div class="btn-bars"></div></div></div></div>
+  <div class="fixed-nav-back"></div>
+  <div class="fixed-nav theme-dark">
+    <div class="fixed-nav-rounded"><div class="wrap"><div class="rd"></div></div></div>
+    <div class="fixed-nav-inner">
+      <div><h5>Navigation</h5><div class="stripe"></div><ul class="nav-links"><li class="btn btn-link"><a href="index.html" data-label="Home" class="btn-click magnetic" data-strength="24" data-strength-text="12"><span class="btn-text"><span class="btn-text-inner">Home</span></span></a></li><li class="btn btn-link"><a href="projects.html" data-label="Work" class="btn-click magnetic" data-strength="24" data-strength-text="12"><span class="btn-text"><span class="btn-text-inner">Work</span></span></a></li><li class="btn btn-link"><a href="experiences.html" data-label="Experience" class="btn-click magnetic" data-strength="24" data-strength-text="12"><span class="btn-text"><span class="btn-text-inner">Experience</span></span></a></li><li class="btn btn-link active"><a href="blog.html" data-label="Blog" class="btn-click magnetic" data-strength="24" data-strength-text="12"><span class="btn-text"><span class="btn-text-inner">Blog</span></span></a></li><li class="btn btn-link"><a href="contact.html" data-label="Contact" class="btn-click magnetic" data-strength="24" data-strength-text="12"><span class="btn-text"><span class="btn-text-inner">Contact</span></span></a></li></ul></div>
+      <div class="socials"><h5>Socials</h5><ul><li class="btn btn-link btn-link-external"><a href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">LinkedIn</span></span></a></li><li class="btn btn-link btn-link-external"><a href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">GitHub</span></span></a></li><li class="btn btn-link btn-link-external"><a href="https://instagram.com/harshnarendra" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Instagram</span></span></a></li></ul></div>
+    </div>
+  </div>
+  <header class="section case-top theme-dark">
+    <div class="nav-bar theme-dark">
+    <div class="btn btn-link btn-left-top"><a href="index.html" data-label="Home" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="credit"><span>©</span></span><span class="cbd"><span class="code-by">Data by</span><span class="first">Harsh<span class="last">Narendra</span></span></span></span></a></div>
+    <ul class="links-wrap"><li class="btn btn-link"><a href="projects.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Work</span></span></a></li><li class="btn btn-link"><a href="experiences.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Experience</span></span></a></li><li class="btn btn-link active"><a href="blog.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Blog</span></span></a></li><li class="btn btn-link"><a href="contact.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Contact</span></span></a></li><li class="btn btn-link btn-menu"><div class="btn-click magnetic" data-strength="20" data-strength-text="10" role="button"><div class="btn-text"><span class="btn-text-inner">Menu</span></div></div></li></ul>
+  </div>
+    <div class="container medium once-in"><h5>Tech history · April 2026</h5><h1><span>Echoes of innovation at Bletchley Park</span></h1></div>
+  </header>
+  <div class="footer-rounded-div dark"><div class="rounded-div-wrap" style="height:10vh"><div class="rounded-div" style="background:var(--color-dark)"></div></div></div>
+  <section class="section case-body">
+    <div class="container medium">
+      <div class="prose"><p>Bletchley Park is where modern computing and cybersecurity really began. It was the top-secret home of the WWII codebreakers, and walking the grounds where Alan Turing and his colleagues cracked the Enigma code was genuinely humbling — this is the history behind the field I want to work in.</p>
 
-<body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="index.html" class="logo"><span id="nav-logo" class="nav-logo-typewriter cursor-nav">Harshkumar Narendra
-                    Portfolio</span><span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experiences.html">Experiences</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="section-padding scroll-zoom"
-            style="padding-top: calc(var(--space-12) + var(--space-8)); position: relative; min-height: 100vh;">
-            <div style="position: absolute; top:0; left:0; width:100%; height:100%; z-index: 0;">
-                <div style="position: sticky; top:0; height:100vh; overflow: hidden; width:100%;">
-                    <div class="hero-overlay"
-                         style="background: var(--bg-dark); position: absolute; left: 0; width: 100%; height: 100%;">
-                    </div>
+                <div class="pair">
+                    <figure>
+                        <img src="images/bentchley/IMG_2318.jpeg" alt="Alan Turing slate statue" loading="lazy">
+                        <figcaption>Standing alongside the iconic Alan Turing slate statue, paying homage to the brilliant mind behind modern computing.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/bentchley/IMG_2323.jpeg" alt="Historic library at Bletchley Park" loading="lazy">
+                        <figcaption>Taking in the atmosphere of the historic library, surrounded by classic furniture and floor-to-ceiling bookshelves.</figcaption>
+                    </figure>
                 </div>
-            </div>
-            
-            <div class="container" style="position: relative; z-index: 2;">
-                <a href="blog.html" class="back-link">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="19" y1="12" x2="5" y2="12"></line>
-                        <polyline points="12 19 5 12 12 5"></polyline>
-                    </svg>
-                    Back to Blog
-                </a>
 
-                <article class="blog-post-wrapper scroll-zoom delay-1">
-                    <header class="post-header">
-                        <h1 class="post-title">
-                            <span class="title-group">Echoes of <span class="post-title-italic">innovation</span></span><br>
-                            <span class="title-group">At <span class="post-title-italic">bletchley</span>PARK</span>
-                        </h1>
-                        <div class="tags-container">
-                            <span class="tag-pill">Cyber Security</span>
-                            <span class="tag-pill">Tech History</span>
-                            <span class="tag-pill">Cryptography</span>
-                        </div>
-                    </header>
+                <h2>The codebreaking machinery</h2>
+                <p>Before advanced firewalls, zero-trust architectures, and AI-driven threat detection, the foundations of securing and intercepting information were laid right here. Walking through the exhibits highlighting the intricate machines used for cryptanalysis underscores the timeless nature of cryptography. The core challenge—protecting vital data while attempting to uncover the adversary's secrets—remains exactly the same today, only the medium and scale have changed.</p>
 
-                    <div class="article-content">
-                        <p>Bletchley Park is where modern computing and cybersecurity really began. It was the top-secret home of the WWII codebreakers, and walking the grounds where Alan Turing and his colleagues cracked the Enigma code was genuinely humbling — this is the history behind the field I want to work in.</p>
+                <figure>
+                    <img src="images/bentchley/IMG_2315.jpeg" alt="Lorenz SZ42 cipher attachment" loading="lazy">
+                    <figcaption>A Lorenz SZ42 Cipher Attachment on display, an incredible piece of complex mechanical engineering utilized during the war.</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/bentchley/IMG_2320.jpeg" alt="Enigma-style cipher machine and Japanese Good Luck Flag in a display case" loading="lazy">
+                    <figcaption>A museum display case featuring historical documents, a Japanese "Good Luck Flag" (Yosegaki Hinomaru), and an Enigma-style cipher machine.</figcaption>
+                </figure>
 
-                        <div class="img-grid">
-                            <figure>
-                                <img src="images/bentchley/IMG_2318.jpeg" alt="Alan Turing slate statue" />
-                                <figcaption>Standing alongside the iconic Alan Turing slate statue, paying homage to the brilliant mind behind modern computing.</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="images/bentchley/IMG_2323.jpeg" alt="Historic Library at Bletchley Park" />
-                                <figcaption>Taking in the atmosphere of the historic library, surrounded by classic furniture and floor-to-ceiling bookshelves.</figcaption>
-                            </figure>
-                        </div>
+                <p>Piecing fragments of noisy data into something useful is exactly what data analysis is. The tools have moved on; the underlying logic really hasn't.</p>
 
-                        <h2>The Codebreaking <span class="post-title-italic" style="color:var(--text-cream); font-size: 1em;">Machinery</span></h2>
-                        
-                        <p>Before advanced firewalls, zero-trust architectures, and AI-driven threat detection, the foundations of securing and intercepting information were laid right here. Walking through the exhibits highlighting the intricate machines used for cryptanalysis underscores the timeless nature of cryptography. The core challenge—protecting vital data while attempting to uncover the adversary's secrets—remains exactly the same today, only the medium and scale have changed.</p>
-                        
-                        <figure class="img-center">
-                            <img src="images/bentchley/IMG_2315.jpeg" alt="Lorenz SZ42 Cipher Attachment" />
-                            <figcaption>A Lorenz SZ42 Cipher Attachment on display, an incredible piece of complex mechanical engineering utilized during the war.</figcaption>
-                        </figure>
-                        
-                        <figure class="img-center">
-                            <img src="images/bentchley/IMG_2320.jpeg" alt="Enigma-style cipher machine and Japanese Good Luck Flag" />
-                            <figcaption>A museum display case featuring historical documents, a Japanese "Good Luck Flag" (Yosegaki Hinomaru), and an Enigma-style cipher machine.</figcaption>
-                        </figure>
+                <blockquote><p>The core problem hasn't changed — protect your data, break theirs. Only the machines have.</p></blockquote>
 
-                        <p>Piecing fragments of noisy data into something useful is exactly what data analysis is. The tools have moved on; the underlying logic really hasn't.</p>
+                <h2>The organisation and environment</h2>
+                <p>What struck me most was the setting: plain wooden huts on the outside, world-changing work on the inside. The scale of it shows in the org charts and the main house itself.</p>
 
-                        <blockquote class="article-quote">
-                            "The core problem hasn't changed — protect your data, break theirs. Only the machines have."
-                        </blockquote>
+                <div class="pair">
+                    <figure>
+                        <img src="images/bentchley/IMG_2330.jpeg" alt="GC&amp;CS organisational chart" loading="lazy">
+                        <figcaption>The extensive GC&amp;CS organizational chart from September 1939, mapping out the vast network of brilliant minds and sections.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/bentchley/IMG_2333.jpeg" alt="Grand ballroom at Bletchley Park" loading="lazy">
+                        <figcaption>The grand ballroom at Bletchley Park, showcasing a highly ornate wood-coffered ceiling and classic wood-paneled walls.</figcaption>
+                    </figure>
+                </div>
 
-                        <h2>The Organization and <span class="post-title-italic" style="color:var(--text-cream); font-size: 1em;">Environment</span></h2>
-                        
-                        <p>What struck me most was the setting: plain wooden huts on the outside, world-changing work on the inside. The scale of it shows in the org charts and the main house itself.</p>
-                        
-                        <div class="img-grid">
-                            <figure>
-                                <img src="images/bentchley/IMG_2330.jpeg" alt="GC&CS Organizational Chart" />
-                                <figcaption>The extensive GC&CS organizational chart from September 1939, mapping out the vast network of brilliant minds and sections.</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="images/bentchley/IMG_2333.jpeg" alt="Grand Ballroom at Bletchley Park" />
-                                <figcaption>The grand ballroom at Bletchley Park, showcasing a highly ornate wood-coffered ceiling and classic wood-paneled walls.</figcaption>
-                            </figure>
-                        </div>
+                <h2>Transitioning to the age of AI</h2>
+                <p>The site doesn't just look back — it links the early mechanical computers straight through to where things are heading now, with modern exhibits on AI and silicon.</p>
 
-                        <h2>Transitioning to the <span class="post-title-italic" style="color:var(--text-cream); font-size: 1em;">Age of AI</span></h2>
+                <figure>
+                    <img src="images/bentchley/IMG_2338.jpeg" alt="The Age of AI neon exhibit" loading="lazy">
+                    <figcaption>Standing in front of the modern neon exhibit 'def The_Age_of_AI():', surrounded by futuristic circuit-like lighting.</figcaption>
+                </figure>
 
-                        <p>The site doesn't just look back — it links the early mechanical computers straight through to where things are heading now, with modern exhibits on AI and silicon.</p>
+                <div class="pair">
+                    <figure>
+                        <img src="images/bentchley/IMG_2339.jpeg" alt="AI exhibit information displays" loading="lazy">
+                        <figcaption>Information displays designed to look like CPU chips, detailing the evolution of artificial intelligence.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="images/bentchley/IMG_2342.jpeg" alt="Motherboard plaque with Braille" loading="lazy">
+                        <figcaption>A tactile modern motherboard plaque complete with historical text and Braille for accessibility.</figcaption>
+                    </figure>
+                </div>
 
-                        <figure class="img-center">
-                            <img src="images/bentchley/IMG_2338.jpeg" alt="The Age of AI neon exhibit" />
-                            <figcaption>Standing in front of the modern neon exhibit 'def The_Age_of_AI():', surrounded by futuristic circuit-like lighting.</figcaption>
-                        </figure>
-
-                        <div class="img-grid">
-                            <figure>
-                                <img src="images/bentchley/IMG_2339.jpeg" alt="AI Exhibit Information Displays" />
-                                <figcaption>Information displays designed to look like CPU chips, detailing the evolution of artificial intelligence.</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="images/bentchley/IMG_2342.jpeg" alt="Modern motherboard plaque" />
-                                <figcaption>A tactile modern motherboard plaque complete with historical text and Braille for accessibility.</figcaption>
-                            </figure>
-                        </div>
-
-                        <p style="margin-top: var(--space-4);">I left with a lot to think about. Seeing where cryptography and computing started puts today's security problems in perspective — and it's a good reminder that with enough persistence, even the hardest problems get solved.</p>
-
-                    </div>
-                </article>
-            </div>
-        </section>
-    </main>
-
-    <footer style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: var(--space-6) 0; margin-top: var(--space-12); background: transparent;">
-        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--space-4);">
-            <span style="font-family: var(--font-mono); color: var(--text-muted); font-size: 13px; letter-spacing: 0.5px;">Digital Portfolio</span>
-            <ul class="sci" style="margin: 0; min-height: 40px; display: flex; justify-content: flex-end; align-items: center;">
-                <li style="--count: 4; --index: 0"><a href="https://www.linkedin.com/in/harshnarendra" target="_blank">LinkedIn</a></li>
-                <li style="--count: 4; --index: 1"><a href="https://github.com/harshnarendra07-ai" target="_blank">GitHub</a></li>
-                <li style="--count: 4; --index: 2"><a href="mailto:harshnarendra07@gmail.com">Email</a></li>
-                <li style="--count: 4; --index: 3"><a href="https://instagram.com/harshnarendra" target="_blank">Instagram</a></li>
-            </ul>
+                <p>I left with a lot to think about. Seeing where cryptography and computing started puts today's security problems in perspective — and it's a good reminder that with enough persistence, even the hardest problems get solved.</p></div>
+      <a class="next-case" href="blog-microsoft-embrace.html" data-label="Blog"><p>Next post</p><h2>From soft skills to cybersecurity</h2></a>
+    </div>
+  </section>
+  <div class="footer-rounded-div"><div class="rounded-div-wrap"><div class="rounded-div"></div></div></div>
+  <div class="footer-wrap theme-dark">
+    <footer class="section footer">
+      <div class="container medium">
+        <div class="row"><div class="flex-col" style="width:100%"><div class="arrow"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="1.5"><g transform="translate(7 7) rotate(90) translate(-6 -6)"><polyline points="2.77 0 12 0 12 9.23"/><line x1="12" y1="0" x2="0" y2="12"/></g></svg></div><h2><span><span class="profile-picture"></span> Let's work</span><span>together</span></h2></div></div>
+        <div class="row"><div class="flex-col"><div class="stripe"></div>
+          <div class="btn-fixed"><div class="btn btn-round"><a href="contact.html" data-label="Contact" class="btn-click magnetic" data-strength="100" data-strength-text="50"><div class="btn-fill"></div><span class="btn-text"><span class="btn-text-inner">Get in touch</span></span></a></div></div>
+        </div></div>
+        <div class="row"><div class="flex-col">
+          <div class="btn btn-normal"><a href="mailto:harshnarendra07@gmail.com" class="btn-click magnetic" data-strength="25" data-strength-text="15"><div class="btn-fill"></div><span class="btn-text"><span class="btn-text-inner change">harshnarendra07@gmail.com</span></span></a></div>
+          <div class="btn btn-normal"><a href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="25" data-strength-text="15"><div class="btn-fill"></div><span class="btn-text"><span class="btn-text-inner change">LinkedIn ↗</span></span></a></div>
+        </div></div>
+      </div>
+      <div class="container" style="padding:0"><div class="row bottom-footer">
+        <div class="flex-col">
+          <div class="credits"><h5>Version</h5><p>2026 © Edition</p></div>
+          <div class="time"><h5>Local time</h5><p><span class="clock" data-clock>--:-- -- ---</span></p></div>
         </div>
+        <div class="flex-col"><div class="socials"><h5>Socials</h5><ul><li class="btn btn-link btn-link-external"><a href="https://www.linkedin.com/in/harshnarendra/" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">LinkedIn</span></span></a></li><li class="btn btn-link btn-link-external"><a href="https://github.com/harshnarendra07-ai" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">GitHub</span></span></a></li><li class="btn btn-link btn-link-external"><a href="https://instagram.com/harshnarendra" target="_blank" rel="noopener" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Instagram</span></span></a></li></ul></div></div>
+      </div></div>
     </footer>
-
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js" integrity="sha384-li4UtcFCH6QeUqR4JyV58/VgTprMuz9aauj+oWtew7V4Y7ZVjnvz5px9Y3UCG0Ea" crossorigin="anonymous"></script>
-    <script src="script.js"></script>
+    <div class="overlay overlay-gradient"></div>
+  </div>
+</main>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="site.js"></script>
 </body>
 </html>
