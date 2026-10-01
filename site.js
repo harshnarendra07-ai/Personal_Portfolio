@@ -209,6 +209,40 @@ window.PROJECTS = [
   qa('.btn-hamburger, .btn-menu').forEach(b => b.addEventListener('click', () => setMenu(!main.classList.contains('nav-active'))));
   qa('.fixed-nav-back').forEach(b => b.addEventListener('click', () => setMenu(false)));
   addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  /* ---------- One-minute summary video ---------- */
+  const vModal = q('#overview-modal'), vEl = q('#overview-video');
+  let vOpener = null, vTimer = null;
+  function setVideo(open) {
+    if (!vModal || !vEl) return;
+    clearTimeout(vTimer);
+    if (open) {
+      vOpener = document.activeElement;
+      if (!vEl.getAttribute('src')) vEl.setAttribute('src', vEl.dataset.src);
+      vModal.hidden = false;
+      requestAnimationFrame(() => requestAnimationFrame(() => vModal.classList.add('open')));
+      stop();
+      vEl.play().catch(() => {});
+      q('.video-close', vModal).focus({ preventScroll: true });
+    } else {
+      vModal.classList.remove('open');
+      vEl.pause();
+      vTimer = setTimeout(() => { vModal.hidden = true; }, 600);
+      start();
+      if (vOpener) vOpener.focus({ preventScroll: true });
+    }
+  }
+  qa('[data-video-open]').forEach(b => b.addEventListener('click', () => setVideo(true)));
+  qa('[data-video-close]').forEach(b => b.addEventListener('click', () => setVideo(false)));
+  addEventListener('keydown', e => {
+    if (!vModal || vModal.hidden) return;
+    if (e.key === 'Escape') setVideo(false);
+    if (e.key === 'Tab') { // keep focus inside the dialog
+      const f = qa('button, video', vModal);
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
   const onScroll = () => main && main.classList.toggle('scrolled', scrollY > innerHeight * .3);
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
 

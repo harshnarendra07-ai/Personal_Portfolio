@@ -32,6 +32,16 @@
   <div class="mouse-pos-list-span no-select"><p>View</p></div>
   <div class="btn btn-hamburger"><div class="btn-click magnetic" data-strength="50" data-strength-text="25" role="button" aria-label="Menu"><div class="btn-fill"></div><div class="btn-text"><div class="btn-bars"></div></div></div></div>
   <div class="fixed-nav-back"></div>
+  <div class="video-modal" id="overview-modal" role="dialog" aria-modal="true" aria-label="One-minute portfolio summary" hidden>
+    <div class="video-back" data-video-close></div>
+    <div class="video-shell">
+      <button type="button" class="video-close" data-video-close aria-label="Close video">Close <span aria-hidden="true">×</span></button>
+      <video id="overview-video" controls playsinline preload="none" poster="video/overview-poster.jpg" data-src="video/overview.mp4">
+        Your browser can't play this video. The portfolio below covers the same ground.
+      </video>
+      <p class="video-note">About a minute. Sound on is nicer, but it reads fine without.</p>
+    </div>
+  </div>
   <div class="fixed-nav theme-dark">
     <div class="fixed-nav-rounded"><div class="wrap"><div class="rd"></div></div></div>
     <div class="fixed-nav-inner">
@@ -66,6 +76,10 @@
     <ul class="links-wrap"><li class="btn btn-link"><a href="projects.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Work</span></span></a></li><li class="btn btn-link"><a href="experiences.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Experience</span></span></a></li><li class="btn btn-link"><a href="blog.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Blog</span></span></a></li><li class="btn btn-link"><a href="contact.html" class="btn-click magnetic" data-strength="20" data-strength-text="10"><span class="btn-text"><span class="btn-text-inner">Contact</span></span></a></li><li class="btn btn-link btn-menu"><div class="btn-click magnetic" data-strength="20" data-strength-text="10" role="button"><div class="btn-text"><span class="btn-text-inner">Menu</span></div></div></li></ul>
   </div>
     <p class="hover-hint once-in">Hover over me ↘</p>
+    <button type="button" class="rush once-in" data-video-open aria-haspopup="dialog" aria-controls="overview-modal">
+      <span class="rush-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+      <span class="rush-text"><small>Short on time?</small><strong>Watch the 1-minute summary</strong></span>
+    </button>
     <div class="container once-in">
       <div class="row"><div class="flex-col">
         <div class="header-above-h4"><div class="arrow"><svg viewBox="0 0 14 14" fill="none" stroke="#fff" stroke-width="1.5"><g transform="translate(7 7) rotate(90) translate(-6 -6)"><polyline points="2.77 0 12 0 12 9.23"/><line x1="12" y1="0" x2="0" y2="12"/></g></svg></div></div>
